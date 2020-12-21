@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/components/h2_title.dart';
 
 class BasicIconDemo extends StatelessWidget {
   final List iconList = [
@@ -30,13 +31,7 @@ class BasicIconDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 8),
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          color: Colors.blue,
-          child:
-              Text('内置图标', style: TextStyle(fontSize: 20, color: Colors.white)),
-        ),
+        H2Title(title: '内置图标'),
         GridView.builder(
           itemCount: nzIconList.length,
           shrinkWrap: true,
@@ -59,13 +54,7 @@ class BasicIconDemo extends StatelessWidget {
             );
           },
         ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 8),
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          color: Colors.blue,
-          child: Text('自定义图标',
-              style: TextStyle(fontSize: 20, color: Colors.white)),
-        ),
+        H2Title(title: '自定义图标'),
         Container(
           padding: EdgeInsets.all(10.0),
           child: Column(
