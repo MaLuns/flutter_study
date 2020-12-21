@@ -65,6 +65,11 @@ class BasicTextDemo extends StatelessWidget {
         ],
       ),
     ),
+    Text(
+      '自定义字体 hello Flutter',
+      style: TextStyle(fontFamily: 'Mango', color: Colors.white),
+      textAlign: TextAlign.center,
+    ),
   ];
 
   Widget _itemBuilder(context, index) {

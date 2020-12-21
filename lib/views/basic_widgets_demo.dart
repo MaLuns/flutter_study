@@ -3,7 +3,9 @@ import 'package:flutter_study/components/tab_controller.dart';
 import 'package:flutter_study/models/tab_model.dart';
 import 'package:flutter_study/views/basic_widgets/basic_appbar_demo.dart';
 import 'package:flutter_study/views/basic_widgets/basic_button_demo.dart';
+import 'package:flutter_study/views/basic_widgets/basic_form_demo.dart';
 import 'package:flutter_study/views/basic_widgets/basic_image_demo.dart';
+import 'package:flutter_study/views/basic_widgets/basic_layout_demo.dart';
 import 'basic_widgets/basic_icon_demo.dart';
 import 'basic_widgets/basic_text_demo.dart';
 
@@ -19,7 +21,9 @@ class BasicWidgetsDemo extends StatelessWidget {
         TabModel(tab: Tab(text: 'AppBar'), page: BasicAppBarDemo()),
         TabModel(tab: Tab(text: 'Image'), page: BasicImageDemo()),
         TabModel(tab: Tab(text: 'Icon'), page: BasicIconDemo()),
-        TabModel(tab: Tab(text: 'Align'), page: BasicIconDemo()),
+        TabModel(tab: Tab(text: 'Form'), page: BasicFormDemo()),
+        TabModel(tab: Tab(text: 'Layout'), page: BasicLayoutDemo()),
+        TabModel(tab: Tab(text: '容器'), page: BasicIconDemo()),
         TabModel(tab: Tab(text: 'Padding'), page: BasicIconDemo()),
         TabModel(tab: Tab(text: 'AspectRatio'), page: BasicIconDemo()),
       ],

@@ -80,3 +80,6 @@ flutter:
   - family: IconFont
     fonts:
       - asset: asset/fonts/iconfont.ttf
+  - family: Mango
+    fonts:
+      - asset: asset/fonts/Mango-Regular-2.otf
