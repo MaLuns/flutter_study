@@ -16,7 +16,9 @@ class GridViewDemo extends StatelessWidget {
           tab: Tab(text: '示例二'),
           page: GridViewDemoTwo(data: hotMovieModelData),
         ),
-        TabModel(tab: Tab(text: '示例三'), page: Text('data')),
+        TabModel(
+            tab: Tab(text: '示例三'),
+            page: GirdViewDemoThreex(data: navItemViewModelData)),
       ],
     );
   }
@@ -48,7 +50,7 @@ class GridViewDemoOne extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
+            maxCrossAxisExtent: 150,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
           ),
@@ -69,6 +71,17 @@ class GridViewDemoTwo extends StatelessWidget {
   Widget _itemBuilder(context, index) {
     HotMovieModel item = this.data[index];
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 5,
+            color: Color.fromARGB(10, 0, 0, 0),
+          )
+        ],
+        color: Colors.white,
+      ),
+      clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
           // 海报高度
@@ -95,7 +108,7 @@ class GridViewDemoTwo extends StatelessWidget {
                           end: Alignment.bottomCenter,
                           colors: [
                             Color.fromARGB(0, 0, 0, 0),
-                            Color.fromARGB(180, 0, 0, 0),
+                            Color.fromARGB(155, 0, 0, 0),
                           ],
                         ),
                       ),
@@ -104,17 +117,22 @@ class GridViewDemoTwo extends StatelessWidget {
                   Positioned(
                     bottom: 10,
                     left: 10,
-                    child: Text(
-                      item.name,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
                     right: 10,
-                    child: Text(
-                      item.score > 0 ? item.score.toString() : '',
-                      style: TextStyle(color: Colors.white),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            item.name,
+                            style: TextStyle(color: Colors.white),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Text(
+                          item.score > 0 ? item.score.toString() : '',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -125,7 +143,7 @@ class GridViewDemoTwo extends StatelessWidget {
           Expanded(
             child: Container(
               width: double.maxFinite,
-              color: Color(0xffeb002a),
+              color: Color(0xff38acfa),
               child: Center(
                 child: Text(
                   '选座购票',
@@ -146,12 +164,46 @@ class GridViewDemoTwo extends StatelessWidget {
       padding: EdgeInsets.all(10),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
         childAspectRatio: 8 / 13,
       ),
       itemBuilder: _itemBuilder,
       itemCount: this.data.length,
+    );
+  }
+}
+
+// 示例三
+class GirdViewDemoThreex extends StatelessWidget {
+  final List<NavItemViewModel> data;
+  GirdViewDemoThreex({this.data}) : super();
+
+  Widget _getItem(item) {
+    return Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(bottom: 5),
+      child: Column(
+        children: <Widget>[
+          Expanded(child: item.icon),
+          Text(
+            item.title,
+            style: TextStyle(
+              fontSize: 13,
+              color: Color(0xFF333333),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 5,
+      padding: EdgeInsets.symmetric(vertical: 0),
+      children: data.map((item) => _getItem(item)).toList(),
     );
   }
 }

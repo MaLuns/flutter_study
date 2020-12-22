@@ -11,6 +11,7 @@ import 'package:flutter_study/models/list_model.dart';
 import 'package:flutter_study/views/basic_widgets_demo.dart';
 import 'package:flutter_study/views/grid_view_demo.dart';
 import 'package:flutter_study/views/list_view_demo.dart';
+import 'package:flutter_study/views/sliver_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App Name',
+      title: 'Flutter Name',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue[600],
@@ -33,6 +34,33 @@ class MyApp extends StatelessWidget {
           elevation: 0.0,
         ),
         body: WidgetStudy(),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
+          child: Row(
+            children: [
+              IconButton(icon: Icon(Icons.home), onPressed: () {}),
+              SizedBox(), //中间位置空出
+              IconButton(icon: Icon(Icons.business), onPressed: () {}),
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: new Builder(builder: (BuildContext context) {
+          return new FloatingActionButton(
+            child: const Icon(Icons.add),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue,
+            heroTag: null,
+            elevation: 2.0,
+            highlightElevation: 3.0,
+            onPressed: () {},
+            mini: false,
+            shape: new CircleBorder(),
+            isExtended: false,
+          );
+        }),
       ),
     );
   }
@@ -56,6 +84,12 @@ final List<ListModel> listModel = [
     subtitle: '多个子元素',
     icon: Icons.grid_view,
     route: GridViewDemo(),
+  ),
+  ListModel(
+    title: 'Sliver 组件',
+    subtitle: 'Sliver',
+    icon: Icons.slideshow,
+    route: SliverDemo(),
   ),
 ];
 

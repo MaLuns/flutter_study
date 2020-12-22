@@ -25,7 +25,6 @@ class BasicWidgetsDemo extends StatelessWidget {
         TabModel(tab: Tab(text: 'Form'), page: BasicFormDemo()),
         TabModel(tab: Tab(text: 'Layout'), page: BasicLayoutDemo()),
         TabModel(tab: Tab(text: 'Container'), page: BasicContainerDemo()),
-        TabModel(tab: Tab(text: 'AspectRatio'), page: BasicIconDemo()),
       ],
     );
   }

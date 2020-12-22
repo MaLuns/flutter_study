@@ -163,3 +163,12 @@ class HotMovieInfoModel {
     this.time,
   });
 }
+
+class NavItemViewModel {
+  final Icon icon;
+  final String title;
+  const NavItemViewModel({
+    this.icon,
+    this.title,
+  });
+}

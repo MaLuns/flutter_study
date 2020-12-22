@@ -134,18 +134,20 @@ class BasicLayoutDemo extends StatelessWidget {
             );
           }).toList(),
         ),
-        Container(
-          width: 300,
-          child: Flow(
-            delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),
-            children: <Widget>[
-              new Container(width: 80.0, height: 80.0, color: Colors.red),
-              new Container(width: 80.0, height: 80.0, color: Colors.green),
-              new Container(width: 80.0, height: 80.0, color: Colors.blue),
-              new Container(width: 80.0, height: 80.0, color: Colors.yellow),
-              new Container(width: 80.0, height: 80.0, color: Colors.brown),
-              new Container(width: 80.0, height: 80.0, color: Colors.purple),
-            ],
+        UnconstrainedBox(
+          child: Container(
+            width: 200,
+            child: Flow(
+              delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),
+              children: <Widget>[
+                new Container(width: 80.0, height: 80.0, color: Colors.red),
+                new Container(width: 80.0, height: 80.0, color: Colors.green),
+                new Container(width: 80.0, height: 80.0, color: Colors.blue),
+                new Container(width: 80.0, height: 80.0, color: Colors.yellow),
+                new Container(width: 80.0, height: 80.0, color: Colors.brown),
+                new Container(width: 80.0, height: 80.0, color: Colors.purple),
+              ],
+            ),
           ),
         ),
         H2Title(title: '层叠布局 Stack、Positioned'),

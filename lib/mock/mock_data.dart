@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_study/models/list_model.dart';
 
 // 宠物card
@@ -1305,6 +1306,90 @@ List<HotMovieModel> hotMovieModelData = [
       area: '地区：中国大陆',
       language: '语言：汉语普通话',
       time: '片长：86分钟',
+    ),
+  ),
+];
+
+// 菜单示例
+List<NavItemViewModel> navItemViewModelData = [
+  NavItemViewModel(
+    title: '精选早餐',
+    icon: Icon(
+      Icons.g_translate_outlined,
+      size: 25,
+      color: Colors.lightBlue,
+    ),
+  ),
+  NavItemViewModel(
+    title: '包子',
+    icon: Icon(
+      Icons.bathtub,
+      size: 25,
+      color: Colors.orangeAccent,
+    ),
+  ),
+  NavItemViewModel(
+    title: '炸鸡',
+    icon: Icon(
+      Icons.verified_outlined,
+      size: 29,
+      color: Colors.deepOrangeAccent,
+    ),
+  ),
+  NavItemViewModel(
+    title: '网红甜品',
+    icon: Icon(
+      Icons.format_align_justify_outlined,
+      size: 30,
+      color: Colors.pinkAccent,
+    ),
+  ),
+  NavItemViewModel(
+    title: '湘菜',
+    icon: Icon(
+      Icons.unsubscribe_rounded,
+      size: 20,
+      color: Colors.redAccent,
+    ),
+  ),
+  NavItemViewModel(
+    title: '减免配送费',
+    icon: Icon(
+      Icons.offline_bolt_outlined,
+      size: 25,
+      color: Colors.orange,
+    ),
+  ),
+  NavItemViewModel(
+    title: '美团专送',
+    icon: Icon(
+      Icons.keyboard_arrow_down_sharp,
+      size: 28,
+      color: Colors.blueAccent,
+    ),
+  ),
+  NavItemViewModel(
+    title: '到点自取',
+    icon: Icon(
+      Icons.thirteen_mp,
+      size: 25,
+      color: Colors.lightGreen,
+    ),
+  ),
+  NavItemViewModel(
+    title: '跑腿代购',
+    icon: Icon(
+      Icons.eco_sharp,
+      size: 25,
+      color: Colors.red,
+    ),
+  ),
+  NavItemViewModel(
+    title: '全部分类',
+    icon: Icon(
+      Icons.menu_open,
+      size: 25,
+      color: Colors.amber,
     ),
   ),
 ];
