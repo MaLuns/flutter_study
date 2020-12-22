@@ -30,6 +30,7 @@ class BasicIconDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      physics: BouncingScrollPhysics(),
       children: [
         H2Title(title: '内置图标'),
         GridView.builder(
