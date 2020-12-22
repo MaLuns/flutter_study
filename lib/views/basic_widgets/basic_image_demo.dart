@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/components/h2_title.dart';
 
 class BasicImageDemo extends StatelessWidget {
-  AssetImage img = AssetImage('asset/images/demo.png');
+  final AssetImage img = AssetImage('asset/images/demo.png');
 
   @override
   Widget build(BuildContext context) {
