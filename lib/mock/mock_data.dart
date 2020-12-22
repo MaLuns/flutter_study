@@ -247,7 +247,7 @@ List<UserItemModel> userItemData = [
   ),
 ];
 
-//
+// 知乎热榜
 List<ZhiHuBillboardModel> zhiHuBillboardModelData = [
   ZhiHuBillboardModel(
     title: '男子高速收费站 10 秒击败两黑衣大汉，什么技术？',
@@ -601,5 +601,710 @@ List<ZhiHuBillboardModel> zhiHuBillboardModelData = [
     description:
         '我和她是 17 年夏天认识的，到前一段 9.1 分开。异地，在一起三年多，感情和相处和兴趣爱好还有喜欢的东西什么的都很融洽，也很合拍。三年时间中间一年我是和她在她的城市租房子同居了一年，后来我回家了，然后疫情结束后四月多又跑去和她租房住，到九月多，我俩都很爱很爱对方，都想和对方结婚，她说起未来的生活也包含我。就是有个问题，我高中毕业后就进入社会了，她是大学毕业，学历上差很多，分手前一两个月吧，我俩聊天越来越少，因为工作都很忙，回到家她还要忙工作，我也不能打扰她。交流变得很少，因为学历问题，有时候她说的一些东西我都听不懂，我说的她觉得没意思。我们中间就有了一层屏障，她之前去哪里玩都是我陪着，后来她总会在晚上自己去吃吃饭，逛一逛，散散心。之前她下班我都是去接她陪她一起回去，后来不让我去接她了，再后来我看时间太晚去接她，她会故意从后门或者别的地方先回去，然后假装没碰到我，9.1 那天晚上跟我提了分手，说让我回去考成人高考，考研究生考公务员，提升自己，等到提升自己了以后再来找她，还说到时候有之前的感情基础，还会再选择我，我知道她说的对，如果以后想结婚，很多东西都要考虑，要给她一个好的生活，所以我也同意了，后来我们就分手了，我回家学习考试健身。但是我还是很想她，现在每天晚上都睡不着，看之前的聊天记录，看她的各种社交软件动态。我不太爱说话，在家里也基本不说话，现在感觉自己每天都很焦虑烦躁，一想到要好久都见不到就很烦躁难受，我都想要去看心理医生，我不知道该怎么改变自己的想法和心态。 还有就是这个提升自己的想法是她提出的，在我们分手前一个月差不多提出的，所以我当时下了班就会去学习，或者看一些文章提升自己的知识面。 还有就是分开前几天晚上她情绪都不是很好，有时候会偷偷的哭，我就问她怎么回事，她哭着抱着我说她真的很想很想和我结婚，要我一定要好好努力，我当时真的特难受，也很坚定要好好努力。希望大家提一些建议，我会好好听取的 又想到一些事情，就是在她把我联系方式都删掉的时候，对我说让我去追求属于自己的幸福，不要在她身上浪费时间了。但是我自己是希望现在好好的去提升自己，等以后再去重新追求她 再补充一些吧，就是当时 9.1 分手的，然后我 9.5 回得家，中间有几天都还是继续跟她住在一起，晚上也会抱着她睡觉，我那几天也一直都在跟她说我不想分手，能不能不分手，我会好好提升自己好好努力，但是她说她不想谈恋爱了，跟我也不想。她说她太累了，分开了以后一年之内是不会再谈恋爱了，但是不会跟我保证两年或者三年之内不会谈，当时听她这样说，我也没再多说什么了，然后到了晚上，我又说起这个事情，还是说自己不想分手，然后她就说你想让我那么累吗？，我就说不想，后来我们就没再说这个话题了，我觉得我俩分手很大一部分原因是跟我在一起让她觉得很心累吧。抱歉写的很乱，影响大家观感了 首先感谢各位的回复和建议，我是能接受任何建议的人。我自己也接受了我俩已经结束了的事实。她会对我越来越冷淡。我们会变成陌生人，她的温柔和爱都不会再给我一分。我去提升自己，去学习和健身，为的是自己也不是为了她。我们已经没关系了。在这之前，我总会为几年以后还能不能和她再有些交集而烦恼烦躁。我总是想，如果我俩再也见不到了，那该多糟糕。但是还好，我还有和她一起养的一只猫陪着我。猫咪会一直粘着我，陪着我。而我也会好好的爱自己。好好的提升自己。 我还是有些不甘心，我从没想过我俩会分开，我以后我可以和她一直在一起，很可惜。但我尊重她的选择和决定。 还是很感谢大家的回复和建议。谢谢各位 人总是会给回忆搞上一层滤镜啊，我回想起坐火车坐高铁的时候感觉窗外的阳光都变得很温暖，温柔，下午三四点在火车上看着窗外的景色向后退去。耳机里传来的音乐带着车厢里嘈杂的声音。坐上五六个小时的火车。疲惫劳累。但是很开心。我之前还以为自己是喜欢坐火车到处逛。后来我发现，其实我不是喜欢坐火车。我是喜欢每次去找她的时候，在路上的那种感觉。对见面的期待，对她的想念。马上就能见到她的开心。各种情绪混合在一起，让坐火车的劳累和腰酸背痛烟消云散。还带上些浪漫气息。随便写一些什么东西，要说真的放下的怎么可能呢，每次想她的时候我就告诉自己， I don\'t care，这样会让我好受些。就这样吧',
     hot: '65 万热度',
+  ),
+];
+
+// 热映电影
+List<HotMovieModel> hotMovieModelData = [
+  HotMovieModel(
+    name: '紧急救援',
+    score: 9.1,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01sofgJl1zBemFBMHPv_!!6000000006676-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：林超贤',
+      actors: '主演：彭于晏,王彦霖,辛芷蕾,蓝盈莹,王雨甜',
+      type: '类型：动作,灾难',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：134分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '沐浴之王',
+    score: 8.7,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01TcGCQR1UirP1kMz4N_!!6000000002552-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：易小星',
+      actors: '主演：彭昱畅,乔杉,卜冠今,苇青,金世佳',
+      type: '类型：喜剧,动作',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：103分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '神奇女侠1984',
+    score: 7.8,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN016VnA3e1y2fO2DrDDX_!!6000000006521-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：派蒂·杰金斯',
+      actors: '主演：盖尔·加朵,克里斯·派恩,克里斯汀·韦格,佩德罗·帕斯卡,罗宾·怀特,康妮·尼尔森',
+      type: '类型：动作,奇幻,冒险',
+      area: '地区：美国',
+      language: '语言：英语',
+      time: '片长：151分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '拆弹专家2',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/TB11SA1VWL7gK0jSZFBXXXZZpXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：邱礼涛',
+      actors:
+          '主演：刘德华,刘青云,倪妮,谢君豪,姜皓文,吴卓羲,马浴柯,黄德斌,郑子诚,洪天明,袁富华,刘浩龙,凌文龙,赵永洪,蔡瀚亿,张竣杰,张扬',
+      type: '类型：动作,犯罪',
+      area: '地区：中国香港,中国大陆',
+      language: '语言：粤语,汉语普通话',
+      time: '片长：121分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '晴雅集',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01hWCLkF1ujTx8c52HG_!!6000000006073-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：郭敬明',
+      actors: '主演：赵又廷,邓伦,王子文,春夏,汪铎',
+      type: '类型：奇幻,爱情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：132分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '明天你是否依然爱我',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN0186Mk6g1VxLY15Jbvw_!!6000000002719-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：周楠',
+      actors: '主演：杨颖,李鸿其,黄柏钧',
+      type: '类型：爱情,剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：99分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '如果声音不记得',
+    score: 7.8,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01e7equ81QgKkCc2eaQ_!!6000000002005-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：落落',
+      actors: '主演：章若楠,孙晨竣,王彦霖,严屹宽,左小青,张瑶,郭姝彤',
+      type: '类型：爱情,奇幻',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：102分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '送你一朵小红花',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/TB1v6V0g9R26e4jSZFEXXbwuXXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：韩延',
+      actors: '主演：易烊千玺,刘浩存,朱媛媛,高亚麟',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：128分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '疯狂原始人2',
+    score: 8.9,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN01V7jPEM1jWEiaAi4p0_!!6000000004555-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：乔尔·克劳福德',
+      actors: '主演：尼古拉斯·凯奇,艾玛·斯通,瑞安·雷诺兹,凯瑟琳·基纳',
+      type: '类型：动画,喜剧',
+      area: '地区：美国',
+      language: '语言：英语',
+      time: '片长：96分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '温暖的抱抱',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/TB1GL0TSUz1gK0jSZLeXXb9kVXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：常远',
+      actors: '主演：常远,李沁,沈腾,乔杉',
+      type: '类型：喜剧',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：112分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '猎杀T34',
+    score: 9.1,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN01RCUyIu1pA9JbDcrc3_!!6000000005319-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：阿列克赛·西多洛夫',
+      actors: '主演：亚历山大·佩特罗夫,文森兹·凯弗,伊琳娜·斯达申鲍姆,维克多·多勃朗拉沃夫,尤里·鲍里索夫',
+      type: '类型：动作,历史,战争',
+      area: '地区：俄罗斯',
+      language: '语言：俄语',
+      time: '片长：126分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '哆啦A梦：大雄的新恐龙',
+    score: 8.8,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01ADMjEO1XRP93tT6PK_!!6000000002920-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：今井一晓',
+      actors: '主演：水田山葵,关智一,木村昴,大原惠美,嘉数由美',
+      type: '类型：动画,剧情,冒险',
+      area: '地区：日本',
+      language: '语言：日语',
+      time: '片长：111分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '光语者',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01AQ66hn1RR39SOZyBX_!!6000000002107-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：孙辉,冯冯,杨紫云,周全',
+      actors: '主演：刘杨',
+      type: '类型：纪录片',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话,英语,挪威语',
+      time: '片长：97分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '棒！少年',
+    score: 9.1,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN011j0Fml1PUaz8l75ys_!!6000000001844-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：许慧晶',
+      actors: '主演：马虎,梁正双,张锦新,孙岭峰,郭忠健',
+      type: '类型：纪录片',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：108分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '心灵奇旅',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01rZi5il1tJ5VNjCDah_!!6000000005880-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：彼特·道格特, 坎普·鲍尔斯',
+      actors: '主演：杰米·福克斯,蒂娜·菲,约翰·拉岑贝格,戴维德·迪格斯',
+      type: '类型：动画,冒险,喜剧',
+      area: '地区：美国',
+      language: '语言：英语',
+      time: '片长：101分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '崖上的波妞',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01pvsQhM1mRbZ4MkD81_!!6000000004951-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：宫崎骏',
+      actors: '主演：奈良柚莉爱,土井洋辉,山口智子,长岛一茂,天海佑希',
+      type: '类型：动画,冒险',
+      area: '地区：日本',
+      language: '语言：日语',
+      time: '片长：101分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '隐形人',
+    score: 8.3,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN019zb6o31bCWkCkKRIU_!!6000000003429-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：雷·沃纳尔',
+      actors: '主演：奥利弗·杰森-科恩,伊丽莎白·莫斯,哈丽特·戴尔,阿尔迪斯·霍吉,斯托姆·瑞德',
+      type: '类型：科幻,惊悚,恐怖',
+      area: '地区：美国',
+      language: '语言：英语',
+      time: '片长：124分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '除暴',
+    score: 8.6,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01yhU3BV1EMqVS8Jqef_!!6000000000338-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：刘浩良',
+      actors: '主演：王千源,吴彦祖,春夏,卫诗雅',
+      type: '类型：犯罪,剧情,动作',
+      area: '地区：中国大陆,中国香港',
+      language: '语言：汉语普通话,粤语',
+      time: '片长：95分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '赤狐书生',
+    score: 7.5,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN01tpn3Hr1n7k05AGAEX_!!6000000005043-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：宋灏霖, 伊力奇',
+      actors: '主演：陈立农,李现,哈妮克孜,裴魁山,姜超,张晨光,李晓川,王耀庆,杨紫',
+      type: '类型：奇幻,古装,喜剧',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：125分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '城市猎人',
+    score: 8.1,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN01mxcd9Q1D9HA6JulqZ_!!6000000000173-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：菲利普·拉肖',
+      actors: '主演：菲利普·拉肖,艾罗娣·方坦,塔雷克·布达里,朱利安·阿鲁蒂',
+      type: '类型：喜剧,动作,爱情',
+      area: '地区：法国',
+      language: '语言：法语',
+      time: '片长：89分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '宝可梦：超梦的逆袭 进化',
+    score: 8.3,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01Q6CV6h1mkqBwCY4yP_!!6000000004993-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：汤山邦彦, 榊原幹典',
+      actors: '主演：松本梨香,大谷育江,市村正亲,饭冢雅弓',
+      type: '类型：动作,动画,家庭',
+      area: '地区：日本',
+      language: '语言：日语',
+      time: '片长：97分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '封口者',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01rkvEHb28Mx5FzUNH3_!!6000000007919-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：蔡明',
+      actors: '主演：左溢,安宁,马翰,裴筝筝',
+      type: '类型：爱情,悬疑,惊悚',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：94分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '一秒钟',
+    score: 8.3,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN01umZKX91JW4ZUAdLOK_!!6000000001035-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：张艺谋',
+      actors: '主演：张译,刘浩存,范伟,余皑磊,张邵勃',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：104分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '胡柚娃',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/TB1Il9wWuH2gK0jSZJnXXaT1FXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：周一愚, 徐祖明',
+      actors: '主演：',
+      type: '类型：剧情,动画',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：82分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '少女佳禾',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01Ny29FB20YO387i0OS_!!6000000006861-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：周笋',
+      actors: '主演：邓恩熙,李感',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：100分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '金刚川',
+    score: 9.5,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01pB8JTt1E1mHTDBrw1_!!6000000000292-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：管虎, 郭帆, 路阳, 田羽生',
+      actors: '主演：张译,吴京,李九霄,魏晨,邓超,邱天,周思羽',
+      type: '类型：剧情,历史,战争',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：122分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '剩女觅爱记',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01CsmiZe1Zs5STIeoHp_!!6000000003249-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：史震飞',
+      actors: '主演：秦雅思,孟翔,吴海棠,张净桐',
+      type: '类型：爱情,喜剧',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：90分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '奇妙王国之魔法奇缘',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01vhKsRx20iSkxqGZgS_!!6000000006883-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：陈设',
+      actors: '主演：卢瑶,张洋,陈新玥',
+      type: '类型：动画,冒险,家庭',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：79分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '野性的呼唤',
+    score: 9.0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01tbQl4m1EiN7QSdXns_!!6000000000385-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：克里斯·桑德斯',
+      actors: '主演：哈里森·福特,丹·史蒂文斯,凯伦·吉兰,布莱德利·惠特福德',
+      type: '类型：冒险,剧情',
+      area: '地区：美国,加拿大',
+      language: '语言：英语,法语',
+      time: '片长：100分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '汪汪队立大功之超能救援',
+    score: 8.4,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01aRAOmp247bLK2HpHG_!!6000000007344-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：安德鲁·斯特里梅迪斯',
+      actors: '主演：杨鸥,韩娇娇,李敏妍,王晓彤,骆妍倩,张安琪,张琦',
+      type: '类型：动画,儿童,冒险',
+      area: '地区：加拿大,美国',
+      language: '语言：英语',
+      time: '片长：89分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '闺蜜心窍',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/TB18bKHmBBh1e4jSZFhXXcC9VXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：',
+      actors: '主演：金晨,姜潮,朱璇,王美人',
+      type: '类型：恐怖',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：88分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '钱在囧途',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01Gmdlmc1xDpQLA6wEP_!!6000000006410-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：侯懿洋',
+      actors: '主演：林雪,巴多,连晋,董立范,彭波',
+      type: '类型：喜剧,动作',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：88分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '日光之下',
+    score: 7.6,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN01COpGuI1f8BSNW9qLk_!!6000000003961-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：梁鸣',
+      actors: '主演：吕星辰,吴晓亮,王佳佳,王维申',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：104分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '太空熊猫英雄诞生',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01cFENVa1gSckdRXpnm_!!6000000004141-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：李杨, 陈磊',
+      actors: '主演：唐泽宗,郑方,王雪沁,苏旖旎,张成杰,程振坤',
+      type: '类型：动画,冒险,喜剧',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：77分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '末日逃生',
+    score: 7.9,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01KnqRxT1C9u5H0qBcp_!!6000000000039-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：里克·罗曼·沃夫',
+      actors: '主演：杰拉德·巴特勒,莫瑞娜·巴卡琳,大卫·丹曼,霍普·戴维斯',
+      type: '类型：灾难,动作,剧情',
+      area: '地区：美国,英国',
+      language: '语言：英语',
+      time: '片长：120分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '网络凶铃',
+    score: 6.6,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/TB1fNgVkmslXu8jSZFuXXXg7FXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：鹤田法男',
+      actors: '主演：孙伊涵,张云亭,傅孟柏,韩朴俊,王嫚笛',
+      type: '类型：惊悚,恐怖',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：95分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '祝福',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/TB16vEQRFT7gK0jSZFpXXaTkpXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：桑弧',
+      actors: '主演：白杨,邸力,李景波,史林,管宗祥',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：98分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '乌鸦与麻雀',
+    score: 9.0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01OpiPgZ1S7dz9T2aUw_!!6000000002200-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：郑君里',
+      actors: '主演：赵丹,上官云珠,孙道临,李天济,黄宗英',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：106分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '龙须沟',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01sjY2LA1i9VS0iwtlE_!!6000000004370-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：冼群',
+      actors: '主演：于是之,叶仲寅,张伐,于蓝',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：108分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '掬水月在手',
+    score: 9.0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/TB17uOzkyDsXe8jSZR0XXXK6FXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：陈传兴',
+      actors: '主演：叶嘉莹',
+      type: '类型：传记,纪录片',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：120分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '早春二月',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01zj6SIR1OGZEsYRH55_!!6000000001678-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：谢铁骊',
+      actors: '主演：孙道临,谢芳,上官云珠,高博',
+      type: '类型：剧情,爱情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：120分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '流浪地球：飞跃2020特别版',
+    score: 9.2,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01OdOgDV1aVvuldt39n_!!6000000003336-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：郭帆',
+      actors: '主演：吴京,屈楚萧,李光洁,吴孟达,赵今麦,屈菁菁,张亦驰,杨皓宇,李虹辰,杨轶,姜志刚,张欢',
+      type: '类型：剧情,科幻',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：137分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '海底小纵队：火焰之环',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN01Oyfulm23mX7wDdUes_!!6000000007298-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：布莱尔.西蒙斯, 周沁',
+      actors: '主演：郭盛,苏俣,方宇',
+      type: '类型：奇幻,冒险',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：78分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '英雄儿女',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/TB1eXc5bFY7gK0jSZKzXXaikpXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：武兆堤',
+      actors: '主演：田方,周文彬,刘尚娴',
+      type: '类型：剧情,战争',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：113分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '上甘岭',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/TB1Vps8bKH2gK0jSZFEXXcqMpXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：沙蒙, 林杉',
+      actors: '主演：高保成,徐林格,刘玉茹,张良,刘磊',
+      type: '类型：剧情,战争',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：126分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '五朵金花',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i3/O1CN013C1yGE1hYPMvyQ3oC_!!6000000004289-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：王家乙',
+      actors: '主演：杨丽坤,莫梓江,孙静贞,谭尧中,王苏娅',
+      type: '类型：爱情,歌舞',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：105分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '枯木逢春',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/O1CN01hwxKmQ1sSsMH6OAP4_!!6000000005766-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：郑君里',
+      actors: '主演：尤嘉,徐志骅,上官云珠',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：99分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '锦上添花',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i4/O1CN014OYBRk28TMdNYxWPJ_!!6000000007933-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：谢添, 陈方千, 吴国光',
+      actors: '主演：韩非,赵子岳,田烈,凌元',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：71分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '李双双',
+    score: 7.3,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i2/TB1_YqXaLWG3KVjSZFPXXXaiXXa_.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：鲁韧',
+      actors: '主演：张瑞芳,仲星火,张文蓉,李康尔',
+      type: '类型：剧情',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：98分钟',
+    ),
+  ),
+  HotMovieModel(
+    name: '小破孩大状元',
+    score: 0,
+    url:
+        'https://img.alicdn.com/bao/uploaded/i1/O1CN01IsS6vh27Qmn2LqdXI_!!6000000007792-0-alipicbeacon.jpg_160x240.jpg',
+    info: HotMovieInfoModel(
+      auth: '导演：拾荒, 郑成峰',
+      actors: '主演：',
+      type: '类型：喜剧,动画,奇幻',
+      area: '地区：中国大陆',
+      language: '语言：汉语普通话',
+      time: '片长：86分钟',
+    ),
   ),
 ];

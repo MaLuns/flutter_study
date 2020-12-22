@@ -137,3 +137,29 @@ class ZhiHuBillboardModel {
     this.imgUrl,
   });
 }
+
+// 热映电影
+class HotMovieModel {
+  String name;
+  double score;
+  String url;
+  HotMovieInfoModel info;
+  HotMovieModel({this.name, this.score, this.url, this.info});
+}
+
+class HotMovieInfoModel {
+  String auth;
+  String actors;
+  String type;
+  String area;
+  String language;
+  String time;
+  HotMovieInfoModel({
+    this.auth,
+    this.actors,
+    this.type,
+    this.area,
+    this.language,
+    this.time,
+  });
+}

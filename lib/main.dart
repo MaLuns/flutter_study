@@ -1,7 +1,15 @@
+/*
+ * @Author: ml
+ * @Date: 2020-12-21 09:26:24
+ * @LastEditors: ml
+ * @LastEditTime: 2020-12-22 16:20:13
+ * @Description: 
+ */
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/list_title.dart';
 import 'package:flutter_study/models/list_model.dart';
 import 'package:flutter_study/views/basic_widgets_demo.dart';
+import 'package:flutter_study/views/grid_view_demo.dart';
 import 'package:flutter_study/views/list_view_demo.dart';
 
 void main() => runApp(MyApp());
@@ -47,66 +55,7 @@ final List<ListModel> listModel = [
     title: 'GridView 组件',
     subtitle: '多个子元素',
     icon: Icons.grid_view,
-  ),
-  ListModel(
-    title: '支付宝转账',
-    subtitle: '卡片',
-    icon: Icons.layers_outlined,
-  ),
-  ListModel(
-    title: '蚂蚁森林',
-    subtitle: '多个子元素',
-    icon: Icons.more_vert_outlined,
-  ),
-  ListModel(
-    title: '蚂蚁庄园',
-    subtitle: '多个子元素',
-    icon: Icons.list_alt,
-  ),
-  ListModel(
-    title: 'Card',
-    subtitle: '卡片',
-    icon: Icons.layers_outlined,
-  ),
-  ListModel(
-    title: 'Multi-child',
-    subtitle: '多个子元素',
-    icon: Icons.more_vert_outlined,
-  ),
-  ListModel(
-    title: 'ListView',
-    subtitle: '多个子元素',
-    icon: Icons.list_alt,
-  ),
-  ListModel(
-    title: 'Card',
-    subtitle: '卡片',
-    icon: Icons.layers_outlined,
-  ),
-  ListModel(
-    title: 'Multi-child',
-    subtitle: '多个子元素',
-    icon: Icons.more_vert_outlined,
-  ),
-  ListModel(
-    title: 'ListView',
-    subtitle: '多个子元素',
-    icon: Icons.list_alt,
-  ),
-  ListModel(
-    title: 'Card',
-    subtitle: '卡片',
-    icon: Icons.layers_outlined,
-  ),
-  ListModel(
-    title: 'Multi-child',
-    subtitle: '多个子元素',
-    icon: Icons.more_vert_outlined,
-  ),
-  ListModel(
-    title: 'ListView',
-    subtitle: '多个子元素',
-    icon: Icons.list_alt,
+    route: GridViewDemo(),
   ),
 ];
 
