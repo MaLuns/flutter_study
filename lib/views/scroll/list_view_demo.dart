@@ -99,7 +99,6 @@ class _ListViewLoadMoreState extends State<ListViewLoadMore> {
   void initState() {
     super.initState();
     this.scrollController.addListener(() {
-      print(this.scrollController.position.pixels);
       if (!this.isLoading &&
           this.scrollController.position.pixels >=
               this.scrollController.position.maxScrollExtent) {

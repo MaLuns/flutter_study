@@ -8,10 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/list_title.dart';
 import 'package:flutter_study/models/list_model.dart';
-import 'package:flutter_study/views/basic_widgets_demo.dart';
-import 'package:flutter_study/views/grid_view_demo.dart';
-import 'package:flutter_study/views/list_view_demo.dart';
-import 'package:flutter_study/views/sliver_demo.dart';
+import 'package:flutter_study/views/basic_widgets/basic_widgets_demo.dart';
+import 'package:flutter_study/views/scroll/scroll_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -74,22 +72,10 @@ final List<ListModel> listModel = [
     route: BasicWidgetsDemo(),
   ),
   ListModel(
-    title: 'ListView 组件',
-    subtitle: '列表滚动组件',
-    icon: Icons.layers_outlined,
-    route: ListViewDemo(),
-  ),
-  ListModel(
-    title: 'GridView 组件',
-    subtitle: '多个子元素',
-    icon: Icons.grid_view,
-    route: GridViewDemo(),
-  ),
-  ListModel(
-    title: 'Sliver 组件',
-    subtitle: 'Sliver',
-    icon: Icons.slideshow,
-    route: SliverDemo(),
+    title: '可滚动组件',
+    subtitle: 'Scrollable',
+    icon: Icons.scatter_plot_outlined,
+    route: ScrollDemo(),
   ),
 ];
 

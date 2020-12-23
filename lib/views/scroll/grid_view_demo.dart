@@ -13,12 +13,12 @@ class GridViewDemo extends StatelessWidget {
       title: "GridView",
       isScrollable: true,
       tabModels: <TabModel>[
-        TabModel(tab: Tab(text: '示例一'), page: GridViewDemoOne()),
+        TabModel(tab: Tab(text: 'GridView'), page: GridViewDemoOne()),
         TabModel(
-            tab: Tab(text: '示例二'),
+            tab: Tab(text: 'GridView.builder'),
             page: GridViewDemoTwo(data: hotMovieModelData)),
         TabModel(
-            tab: Tab(text: '示例三'),
+            tab: Tab(text: 'GridView.count'),
             page: GirdViewDemoThreex(data: navItemViewModelData)),
         TabModel(
             tab: Tab(text: 'StaggeredGridView'), page: StaggeredGridViewDemo()),

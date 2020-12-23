@@ -24,37 +24,33 @@ class ListTitleComponent extends StatelessWidget {
             ),
             Padding(padding: EdgeInsets.only(left: 15)),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        item.title,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF333333),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          item.title,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF333333),
+                          ),
                         ),
-                      ),
-                      Text(
-                        '昨天',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFF999999),
-                        ),
-                      )
-                    ],
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 2)),
-                  Text(
-                    item.subtitle,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Color(0xFF999999),
+                        Padding(padding: EdgeInsets.only(top: 2)),
+                        Text(
+                          item.subtitle,
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Color(0xFF999999),
+                          ),
+                        )
+                      ],
                     ),
-                  )
+                  ),
+                  item.route != null ? Icon(Icons.navigate_next) : Text(''),
                 ],
               ),
             ),
