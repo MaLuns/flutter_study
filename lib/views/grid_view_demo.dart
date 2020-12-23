@@ -4,21 +4,24 @@ import 'package:flutter_study/components/tab_controller.dart';
 import 'package:flutter_study/mock/mock_data.dart';
 import 'package:flutter_study/models/list_model.dart';
 import 'package:flutter_study/models/tab_model.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class GridViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabCoontrollerComponent(
       title: "GridView",
+      isScrollable: true,
       tabModels: <TabModel>[
         TabModel(tab: Tab(text: '示例一'), page: GridViewDemoOne()),
         TabModel(
-          tab: Tab(text: '示例二'),
-          page: GridViewDemoTwo(data: hotMovieModelData),
-        ),
+            tab: Tab(text: '示例二'),
+            page: GridViewDemoTwo(data: hotMovieModelData)),
         TabModel(
             tab: Tab(text: '示例三'),
             page: GirdViewDemoThreex(data: navItemViewModelData)),
+        TabModel(
+            tab: Tab(text: 'StaggeredGridView'), page: StaggeredGridViewDemo()),
       ],
     );
   }
@@ -206,4 +209,58 @@ class GirdViewDemoThreex extends StatelessWidget {
       children: data.map((item) => _getItem(item)).toList(),
     );
   }
+}
+
+// StaggeredGridView 示例
+class StaggeredGridViewDemo extends StatelessWidget {
+  final List<StaggeredGridViewDemoModel> _list = [
+    StaggeredGridViewDemoModel(Colors.green, Icons.menu_outlined, w: 2, h: 2),
+    StaggeredGridViewDemoModel(Colors.blue, Icons.wifi, w: 2),
+    StaggeredGridViewDemoModel(Colors.orange, Icons.outdoor_grill, h: 2),
+    StaggeredGridViewDemoModel(Colors.yellow, Icons.gradient_sharp, w: 2, h: 2),
+    StaggeredGridViewDemoModel(Colors.red, Icons.handyman_rounded),
+    StaggeredGridViewDemoModel(Colors.yellow, Icons.quickreply_sharp, h: 2),
+    StaggeredGridViewDemoModel(Colors.red, Icons.accessibility_sharp),
+    StaggeredGridViewDemoModel(Colors.blue, Icons.games, w: 3),
+    StaggeredGridViewDemoModel(Colors.teal, Icons.offline_bolt),
+    StaggeredGridViewDemoModel(Colors.cyan, Icons.library_add_sharp, w: 4),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return StaggeredGridView.countBuilder(
+      crossAxisCount: 4,
+      padding: EdgeInsets.all(8.0),
+      itemCount: _list.length,
+      itemBuilder: (BuildContext context, int index) {
+        var item = _list[index];
+        return GestureDetector(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              color: item.color,
+            ),
+            child: Center(child: Icon(item.icon, color: Colors.white)),
+          ),
+          onTap: () {
+            debugPrint(index.toString());
+          },
+        );
+      },
+      staggeredTileBuilder: (int index) {
+        var item = _list[index];
+        return StaggeredTile.count(item.w, item.h);
+      },
+      mainAxisSpacing: 8.0,
+      crossAxisSpacing: 8.0,
+    );
+  }
+}
+
+class StaggeredGridViewDemoModel {
+  Color color;
+  IconData icon;
+  int w;
+  int h;
+  StaggeredGridViewDemoModel(this.color, this.icon, {this.w = 1, this.h = 1});
 }

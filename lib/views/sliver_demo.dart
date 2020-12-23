@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/tab_controller.dart';
 import 'package:flutter_study/models/tab_model.dart';
@@ -8,15 +9,16 @@ class SliverDemo extends StatelessWidget {
     return TabCoontrollerComponent(
       title: "Sliver",
       tabModels: <TabModel>[
-        TabModel(tab: Tab(text: 'SliverGrid'), page: SliverGridOne()),
-        TabModel(tab: Tab(text: '示例二'), page: Text('示例二')),
+        TabModel(tab: Tab(text: 'SliverGrid'), page: SliverGridDemo()),
+        TabModel(tab: Tab(text: '示例二'), page: StllDemo()),
         TabModel(tab: Tab(text: '示例三'), page: Text('示例三')),
       ],
     );
   }
 }
 
-class SliverGridOne extends StatelessWidget {
+// SliverGrid demo
+class SliverGridDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -31,16 +33,38 @@ class SliverGridOne extends StatelessWidget {
               mainAxisSpacing: 8,
             ),
             delegate: SliverChildBuilderDelegate(
-              (contet, index) {
-                return Container(
-                  color: Colors.red[200],
-                );
-              },
+              (contet, index) => Container(color: Colors.red[200]),
               childCount: 21,
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class StllDemo extends StatelessWidget {
+/*   Widget _viewportBuilder(BuildContext context, position) {
+    return ListView();
+  } */
+
+  @override
+  Widget build(BuildContext context) {
+    String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    return CupertinoScrollbar(
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            //动态创建一个List<Widget>
+            children: str
+                .split("")
+                .map((c) => Text(c, textScaleFactor: 2.0))
+                .toList(),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/h2_title.dart';
-import 'dart:math' as math;
 
 class BasicContainerDemo extends StatelessWidget {
   @override

@@ -77,10 +77,7 @@ class ListViewDemo extends StatelessWidget {
             ),
           ),
         ),
-        TabModel(
-          tab: Tab(text: '上拉加载'),
-          page: ListViewLoadMore(),
-        ),
+        TabModel(tab: Tab(text: '上拉加载'), page: ListViewLoadMore()),
       ],
     );
   }
@@ -102,6 +99,7 @@ class _ListViewLoadMoreState extends State<ListViewLoadMore> {
   void initState() {
     super.initState();
     this.scrollController.addListener(() {
+      print(this.scrollController.position.pixels);
       if (!this.isLoading &&
           this.scrollController.position.pixels >=
               this.scrollController.position.maxScrollExtent) {
@@ -182,6 +180,42 @@ class _ListViewLoadMoreState extends State<ListViewLoadMore> {
           );
         } else {
           return renderLoadMore();
+        }
+      },
+      separatorBuilder: (context, index) {
+        return Divider(
+          height: .5,
+          thickness: 1,
+          color: Color(0xFFeeeeee),
+        );
+      },
+    );
+  }
+}
+
+// 下拉加载更多
+class ListViewLoadMore2 extends StatefulWidget {
+  @override
+  _ListViewLoadMore2State createState() => _ListViewLoadMore2State();
+}
+
+class _ListViewLoadMore2State extends State<ListViewLoadMore2> {
+  List _list = List.from(zhiHuBillboardModelData);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      physics: BouncingScrollPhysics(),
+      itemCount: _list.length,
+      itemBuilder: (context, index) {
+        print(index);
+        if (index < this._list.length) {
+          return ZhiHuBillboard(
+            data: this._list[index],
+            index: index + 1,
+          );
+        } else {
+          return Text('loading');
         }
       },
       separatorBuilder: (context, index) {
