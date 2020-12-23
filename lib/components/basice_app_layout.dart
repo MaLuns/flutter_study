@@ -6,7 +6,7 @@ class BasiceAppLayout extends StatelessWidget {
   final double pt;
   final double pl;
   final double pr;
-  final double bt;
+  final double pb;
 
   BasiceAppLayout({
     @required this.body,
@@ -14,7 +14,7 @@ class BasiceAppLayout extends StatelessWidget {
     this.pt = 0.0,
     this.pl = 16.0,
     this.pr = 16.0,
-    this.bt = 16.0,
+    this.pb = 16.0,
   });
 
   @override
@@ -25,7 +25,7 @@ class BasiceAppLayout extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(pl, pt, pr, bt),
+        padding: EdgeInsets.fromLTRB(pl, pt, pr, pb),
         child: body,
       ),
     );

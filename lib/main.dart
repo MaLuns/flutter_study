@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/components/list_title.dart';
 import 'package:flutter_study/models/list_model.dart';
 import 'package:flutter_study/views/basic_widgets/basic_widgets_demo.dart';
+import 'package:flutter_study/views/pointer_event/pointer_event_demo.dart';
 import 'package:flutter_study/views/scroll_widgets/scroll_demo.dart';
 
 void main() => runApp(MyApp());
@@ -76,6 +77,12 @@ final List<ListModel> listModel = [
     subtitle: 'Scrollable',
     icon: Icons.scatter_plot_outlined,
     route: ScrollDemo(),
+  ),
+  ListModel(
+    title: '事件',
+    subtitle: '指针和手势',
+    icon: Icons.touch_app,
+    route: PointerEventDemo(),
   ),
 ];
 
