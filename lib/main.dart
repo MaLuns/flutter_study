@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/components/list_title.dart';
 import 'package:flutter_study/models/list_model.dart';
 import 'package:flutter_study/views/basic_widgets/basic_widgets_demo.dart';
-import 'package:flutter_study/views/scroll/scroll_demo.dart';
+import 'package:flutter_study/views/scroll_widgets/scroll_demo.dart';
 
 void main() => runApp(MyApp());
 

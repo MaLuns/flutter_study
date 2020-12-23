@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/components/basice_app_layout.dart';
 import 'package:flutter_study/components/list_title.dart';
 import 'package:flutter_study/models/list_model.dart';
-import 'package:flutter_study/views/scroll/basci_scroll_demo.dart';
-import 'package:flutter_study/views/scroll/custom_scrollview_demo.dart';
-import 'package:flutter_study/views/scroll/grid_view_demo.dart';
-import 'package:flutter_study/views/scroll/list_view_demo.dart';
+import './basci_scroll_demo.dart';
+import './custom_scrollview_demo.dart';
+import './grid_view_demo.dart';
+import './list_view_demo.dart';
 
 class ScrollDemo extends StatelessWidget {
   final List<ListModel> listModel = [
