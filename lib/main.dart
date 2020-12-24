@@ -6,19 +6,26 @@
  * @Description: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_study/components/list_title.dart';
+import 'package:flutter_study/demo_app/theme_shop/index.dart';
 import 'package:flutter_study/models/list_model.dart';
 import 'package:flutter_study/views/basic_widgets/basic_widgets_demo.dart';
 import 'package:flutter_study/views/pointer_event/pointer_event_demo.dart';
 import 'package:flutter_study/views/scroll_widgets/scroll_demo.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+  //设置状态栏透明
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Name',
+      title: 'Flutter Study',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue[600],
@@ -83,6 +90,12 @@ final List<ListModel> listModel = [
     subtitle: '指针和手势',
     icon: Icons.touch_app,
     route: PointerEventDemo(),
+  ),
+  ListModel(
+    title: '主题商店',
+    subtitle: '仿oppo主题商店',
+    icon: Icons.shop_two,
+    route: ThemeShopHome(),
   ),
 ];
 
