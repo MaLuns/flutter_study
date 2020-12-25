@@ -93,7 +93,7 @@ final List<ListModel> listModel = [
   ),
   ListModel(
     title: '主题商店',
-    subtitle: '仿oppo主题商店',
+    subtitle: '仿oppo主题商店布局练习',
     icon: Icons.shop_two,
     route: ThemeShopHome(),
   ),

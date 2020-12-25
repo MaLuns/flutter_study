@@ -15,9 +15,11 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
     Text('Page3'),
     Text('Page4'),
   ];
+
   _ThemeShopHomeState() {
     _curWidget = _list[_currentIndex];
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,6 +31,7 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
         splashColor: Color.fromRGBO(0, 0, 0, 0),
       ),
       home: Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(child: _curWidget),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,

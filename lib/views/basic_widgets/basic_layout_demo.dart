@@ -26,7 +26,7 @@ class BasicLayoutDemo extends StatelessWidget {
         Padding(padding: EdgeInsets.only(top: 10)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [1, 2, 3].map((e) {
+          children: List.generate(3, (e) {
             return Container(
               width: 100,
               height: 50,
@@ -39,7 +39,7 @@ class BasicLayoutDemo extends StatelessWidget {
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [1, 2, 3].map((e) {
+          children: List.generate(3, (e) {
             return Container(
               margin: EdgeInsets.symmetric(vertical: 8),
               height: 50,

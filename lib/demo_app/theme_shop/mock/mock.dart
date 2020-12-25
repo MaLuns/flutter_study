@@ -123,43 +123,43 @@ List<ThemeFlowModel> themeFlowModelData = [
 
 List<NavItemViewModel> navItemViewModelData = [
   NavItemViewModel(
-    title: '精选',
-    icon: Icon(
-      Icons.g_translate_outlined,
-      size: 25,
-      color: Colors.lightBlue,
-    ),
+    title: '排行',
+    icon: Icon(Icons.spa, size: 25, color: Colors.red),
   ),
   NavItemViewModel(
-    title: '热门',
-    icon: Icon(
-      Icons.format_align_justify_outlined,
-      size: 30,
-      color: Colors.pinkAccent,
-    ),
+    title: '福利',
+    icon: Icon(Icons.next_week, size: 30, color: Colors.red),
   ),
   NavItemViewModel(
-    title: '免费榜',
-    icon: Icon(
-      Icons.bathtub,
-      size: 25,
-      color: Colors.orangeAccent,
-    ),
+    title: '最新',
+    icon: Icon(Icons.trending_up, size: 25, color: Colors.red),
   ),
   NavItemViewModel(
-    title: '排行榜',
-    icon: Icon(
-      Icons.verified_outlined,
-      size: 29,
-      color: Colors.deepOrangeAccent,
-    ),
+    title: '必看',
+    icon: Icon(Icons.explore_outlined, size: 29, color: Colors.red),
   ),
   NavItemViewModel(
-    title: '排行榜',
-    icon: Icon(
-      Icons.verified_outlined,
-      size: 29,
-      color: Colors.deepOrangeAccent,
-    ),
+    title: '话题',
+    icon: Icon(Icons.alternate_email, size: 29, color: Colors.red),
+  ),
+  NavItemViewModel(
+    title: '排行',
+    icon: Icon(Icons.spa, size: 25, color: Colors.red),
+  ),
+  NavItemViewModel(
+    title: '福利',
+    icon: Icon(Icons.next_week, size: 30, color: Colors.red),
+  ),
+  NavItemViewModel(
+    title: '最新',
+    icon: Icon(Icons.trending_up, size: 25, color: Colors.red),
+  ),
+  NavItemViewModel(
+    title: '必看',
+    icon: Icon(Icons.explore_outlined, size: 29, color: Colors.red),
+  ),
+  NavItemViewModel(
+    title: '话题',
+    icon: Icon(Icons.alternate_email, size: 29, color: Colors.red),
   ),
 ];

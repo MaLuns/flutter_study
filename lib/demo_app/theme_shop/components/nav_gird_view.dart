@@ -30,8 +30,7 @@ class NavGirdView extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
+        mainAxisSpacing: 10,
       ),
       itemCount: data.length,
       itemBuilder: renderItemBuilder,
