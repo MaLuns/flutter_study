@@ -1,10 +1,10 @@
 // 推荐
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../../models/list.dart';
-import '../../components/carousel_card.dart';
-import '../../components/theme_flow.dart';
-import '../../mock/mock.dart';
+import '../../../models/list.dart';
+import '../../../components/carousel_card.dart';
+import '../../../components/theme_flow.dart';
+import '../../../mock/mock.dart';
 
 class ShopHomePush extends StatefulWidget {
   @override
@@ -13,16 +13,14 @@ class ShopHomePush extends StatefulWidget {
 
 class _ShopHomePushState extends State<ShopHomePush> {
   bool isLoading = false;
-  List<ThemeFlowModel> data = List.from(themeFlowModelData);
+  List<ThemeFlowModel> data = List.from(tuijianFlowModelData);
   ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     scrollController.addListener(() {
-      if (!this.isLoading &&
-          this.scrollController.position.pixels + 300 >=
-              this.scrollController.position.maxScrollExtent) {
+      if (!this.isLoading && this.scrollController.position.pixels + 300 >= this.scrollController.position.maxScrollExtent) {
         setState(() {
           this.isLoading = true;
           this.loadMoreData();
@@ -41,7 +39,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
   Future loadMoreData() {
     return Future.delayed(Duration(seconds: 1), () {
       setState(() {
-        this.data.addAll(themeFlowModelData.where((element) => !element.isAd));
+        this.data.addAll(tuijianFlowModelData.where((element) => !element.isAd));
         this.isLoading = false;
       });
     });
@@ -55,19 +53,9 @@ class _ShopHomePushState extends State<ShopHomePush> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              width: 20,
-              height: 20,
-              child: CircularProgressIndicator(strokeWidth: 3),
-            ),
+            SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 3)),
             Padding(padding: EdgeInsets.only(left: 10)),
-            Text(
-              '努力加载中...',
-              style: TextStyle(
-                fontSize: 15,
-                color: Color(0xFF333333),
-              ),
-            ),
+            Text('努力加载中...', style: TextStyle(fontSize: 15, color: Color(0xFF333333))),
           ],
         ),
       );
@@ -75,13 +63,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
       return Container(
         padding: EdgeInsets.symmetric(vertical: 15),
         alignment: Alignment.center,
-        child: Text(
-          '上拉加载更多',
-          style: TextStyle(
-            fontSize: 15,
-            color: Color(0xFF333333),
-          ),
-        ),
+        child: Text('上拉加载更多', style: TextStyle(fontSize: 15, color: Color(0xFF333333))),
       );
     }
   }
@@ -130,7 +112,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           decoration: BoxDecoration(
             color: Colors.orange[50],
             borderRadius: BorderRadius.circular(5),
@@ -139,10 +121,10 @@ class _ShopHomePushState extends State<ShopHomePush> {
           padding: EdgeInsets.only(left: 12, top: 8, bottom: 8),
           child: Row(
             children: [
-              Icon(Icons.notifications, color: Colors.orange[800], size: 20),
+              Icon(Icons.notifications, color: Colors.orange[400], size: 16),
               Text(
                 ' 积分免费领, 快来看看 >>',
-                style: TextStyle(color: Colors.orange[800], fontSize: 14),
+                style: TextStyle(color: Colors.orange[400], fontSize: 12),
               ),
             ],
           ),
@@ -161,8 +143,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
 // 分片
 class ImgSliver extends StatelessWidget {
   final List<String> str = ['活动', '主题', '字体', '视频铃声', '动态壁纸'];
-  final String _url =
-      'https://tse3-mm.cn.bing.net/th/id/OIP.H3sZxL6gbG19WwnLKqXpwgHaEL?w=308&h=180&c=7&o=5&pid=1.7';
+  final String _url = 'https://tse3-mm.cn.bing.net/th/id/OIP.H3sZxL6gbG19WwnLKqXpwgHaEL?w=308&h=180&c=7&o=5&pid=1.7';
 
   @override
   Widget build(BuildContext context) {

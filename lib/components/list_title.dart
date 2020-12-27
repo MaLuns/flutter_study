@@ -58,9 +58,9 @@ class ListTitleComponent extends StatelessWidget {
         ),
       ),
       onTap: () {
-        if (item.route != null)
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => item.route));
+        if (item.route != null) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => item.route));
+        }
       },
     );
   }

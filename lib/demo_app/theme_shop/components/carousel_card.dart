@@ -112,13 +112,7 @@ class _CarouselCardState extends State<CarouselCard> {
                   margin: EdgeInsets.symmetric(horizontal: 5),
                   width: 5,
                   height: 5,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: (currentIndex == index ||
-                              widget.urls.length - 1 == currentIndex &&
-                                  index == 0)
-                          ? Colors.red
-                          : Colors.white),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: (currentIndex == index || widget.urls.length - 1 == currentIndex && index == 0) ? Colors.red : Colors.white),
                 );
               }).toList(),
             ),

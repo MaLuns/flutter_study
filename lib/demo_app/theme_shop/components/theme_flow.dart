@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_study/demo_app/theme_shop/models/list.dart';
+import '../models/list.dart';
+import '../views/detail/theme_detail.dart';
 
 // 列表瀑布流
 class ThemeFlow extends StatelessWidget {
@@ -10,7 +11,7 @@ class ThemeFlow extends StatelessWidget {
   // tag
   Widget renderTag(txt) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(3),
         color: Color.fromRGBO(0, 0, 0, 0.6),
@@ -18,14 +19,14 @@ class ThemeFlow extends StatelessWidget {
       child: Center(
         child: Text(
           txt,
-          style: TextStyle(color: Colors.white, height: 1, fontSize: 11),
+          style: TextStyle(color: Colors.white, fontSize: 10),
         ),
       ),
     );
   }
 
   // 渲染列表项
-  Widget renderItem(index) {
+  Widget renderItem(context, index) {
     ThemeFlowModel item = this.data[index];
     return GestureDetector(
       child: Stack(
@@ -40,12 +41,13 @@ class ThemeFlow extends StatelessWidget {
               border: Border.all(color: Colors.black12, width: 0.2),
             ),
           ),
-          Positioned(left: 8, top: 8, child: renderTag(item.typeName)),
-          Positioned(left: 8, bottom: 8, child: renderTag(item.tag)),
+          Positioned(left: 5, top: 5, child: renderTag(item.typeName)),
+          Positioned(left: 5, bottom: 5, child: renderTag(item.tag)),
         ],
       ),
       onTap: () {
         debugPrint(index.toString());
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ThemeDetailPage()));
       },
     );
   }
@@ -74,7 +76,7 @@ class ThemeFlow extends StatelessWidget {
         if (data[index].isAd) {
           return renderAdItem(index);
         } else {
-          return renderItem(index);
+          return renderItem(context, index);
         }
       },
       staggeredTileBuilder: (int index) {
