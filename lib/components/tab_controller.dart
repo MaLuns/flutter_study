@@ -6,26 +6,19 @@ class TabCoontrollerComponent extends StatefulWidget {
   final List<TabModel> tabModels;
   final String title;
   final bool isScrollable;
-  const TabCoontrollerComponent(
-      {Key key,
-      @required this.tabModels,
-      @required this.title,
-      this.isScrollable = false})
-      : super(key: key);
+  const TabCoontrollerComponent({Key key, @required this.tabModels, @required this.title, this.isScrollable = false}) : super(key: key);
 
   @override
   _TabCoontrollerComponent createState() => _TabCoontrollerComponent();
 }
 
-class _TabCoontrollerComponent extends State<TabCoontrollerComponent>
-    with SingleTickerProviderStateMixin {
+class _TabCoontrollerComponent extends State<TabCoontrollerComponent> with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(vsync: this, length: widget.tabModels.length);
+    _tabController = TabController(vsync: this, length: widget.tabModels.length);
   }
 
   @override
@@ -40,6 +33,7 @@ class _TabCoontrollerComponent extends State<TabCoontrollerComponent>
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        elevation: 0,
         bottom: TabBar(
           unselectedLabelColor: Colors.white54,
           indicatorColor: Colors.white,

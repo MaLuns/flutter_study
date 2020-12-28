@@ -63,12 +63,7 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
   ThemeWallhavenDetail(
     title: '彩虹电量恐龙键盘',
     desc: [''],
-    urls: [
-      'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7',
-      'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7',
-      'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
-      'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7'
-    ],
+    urls: ['https://tse3-mm.cn.bing.net/th/id/OIP.slUJlz2aR9RIaYPdYW_rnQHaQC?w=161&h=349&c=7&o=5&pid=1.7', 'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7', 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7', 'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7'],
     size: 3.1,
     downCount: 2.3,
     money: 3,
@@ -80,11 +75,7 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
   ThemeWallhavenDetail(
     title: '雕刻时光',
     desc: [''],
-    urls: [
-      'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
-      'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7',
-      'https://tse4-mm.cn.bing.net/th/id/OIP.tevwpIiw8A03LF6t517PjAHaNK?w=187&h=333&c=7&o=5&pid=1.7'
-    ],
+    urls: ['https://tse4-mm.cn.bing.net/th/id/OIP.I5fOG4L6Df9U0h--ULRBWgHaNK?w=184&h=328&c=7&o=5&pid=1.7', 'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7', 'https://tse4-mm.cn.bing.net/th/id/OIP.tevwpIiw8A03LF6t517PjAHaNK?w=187&h=333&c=7&o=5&pid=1.7'],
     size: 3.1,
     downCount: 2.3,
     money: 3,
@@ -96,12 +87,7 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
   ThemeWallhavenDetail(
     title: '一笔一划',
     desc: [''],
-    urls: [
-      'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7',
-      'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7',
-      'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
-      'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7'
-    ],
+    urls: ['https://tse3-mm.cn.bing.net/th/id/OIP.DP2CZGs5aZ6MnFyB0ZNuMwHaNK?w=184&h=328&c=7&o=5&pid=1.7', 'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7', 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7', 'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7'],
     size: 3.1,
     downCount: 2.3,
     money: 3,

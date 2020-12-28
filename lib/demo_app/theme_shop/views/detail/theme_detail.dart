@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../components/theme_flow.dart';
 import '../../mock/mock.dart';
 import '../../models/list.dart';
 
@@ -27,7 +28,7 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                   print("开始滚动");
                   break;
                 case ScrollUpdateNotification:
-                  print(notification.scrollDelta);
+                  print('notification');
                   break;
                 case ScrollEndNotification:
                   print("滚动停止");
@@ -142,32 +143,21 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('1.xaxasd'),
+                      Text('2.xaxasd'),
+                      Text('3.xaxasd'),
                       Text('1.xaxasd'),
+                      Text('2.xaxasd'),
+                      Text('3.xaxasd'),
                       Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('1.xaxasd'),
+                      Text('2.xaxasd'),
+                      Text('3.xaxasd'),
                     ],
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CircleAvatar(backgroundImage: NetworkImage(item.avatar)),
                       Padding(padding: EdgeInsets.only(left: 16)),
@@ -180,8 +170,35 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                           ],
                         ),
                       ),
+                      IconButton(icon: Icon(Icons.navigate_next), onPressed: () {}),
                     ],
                   ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 16),
+                  height: 200,
+                  child: ListView.builder(
+                    itemCount: 6,
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return AspectRatio(
+                        aspectRatio: 2 / 3,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.black12,
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(image: NetworkImage(item.urls[0]), fit: BoxFit.cover),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: ThemeFlow(data: wallhavenFlowModelData),
                 ),
                 Container(height: 100),
               ],
@@ -238,7 +255,7 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromRGBO(0, 0, 0, 0),
         elevation: 0,
         title: Text(data[_index].title, style: TextStyle(color: Color.fromRGBO(0, 0, 0, _opacity))),
         actions: [
@@ -250,35 +267,15 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
       ),
       body: Container(
         color: Colors.white,
-        child: NotificationListener(
-          onNotification: (notification) {
-            /* print(notification); */
-            switch (notification.runtimeType) {
-              /*  case ScrollStartNotification:
-                print("开始滚动");
-                break;
-              case ScrollUpdateNotification:
-                print("正在滚动");
-                break;
-              case ScrollEndNotification:
-                print("滚动停止");
-                break; */
-              case OverscrollNotification:
-                print("滚动到边界");
-                break;
-            }
-            return true;
+        child: PageView.builder(
+          itemCount: this.data.length,
+          itemBuilder: renderPageView,
+          physics: BouncingScrollPhysics(),
+          onPageChanged: (index) {
+            setState(() {
+              _index = index;
+            });
           },
-          child: PageView.builder(
-            itemCount: this.data.length,
-            itemBuilder: renderPageView,
-            physics: BouncingScrollPhysics(),
-            onPageChanged: (index) {
-              setState(() {
-                _index = index;
-              });
-            },
-          ),
         ),
       ),
     );
