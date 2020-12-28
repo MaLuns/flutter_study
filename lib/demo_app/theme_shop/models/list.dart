@@ -58,3 +58,44 @@ class NavItemViewModel {
     this.title,
   });
 }
+
+class ThemeWallhavenDetail {
+  // 截图
+  List<String> urls;
+  // 标题
+  String title;
+  // 描述
+  List<String> desc;
+  // 大小
+  double size;
+  // 下载次数
+  double downCount;
+  // 可币
+  int money;
+  // 是否免费
+  bool isFree;
+  // 会员免费
+  bool vipIsFree;
+  // 标签
+  List<String> tags;
+  // 用户名称
+  String userName;
+  // 签名
+  String userDesc;
+  // 头像
+  String avatar;
+  ThemeWallhavenDetail({
+    @required this.avatar,
+    @required this.desc,
+    this.isFree = false,
+    @required this.money,
+    @required this.tags,
+    @required this.title,
+    @required this.urls,
+    @required this.userDesc,
+    @required this.userName,
+    this.vipIsFree = true,
+    @required this.downCount,
+    @required this.size,
+  });
+}

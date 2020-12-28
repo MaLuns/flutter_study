@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/demo_app/theme_shop/models/list.dart';
+import '../models/list.dart';
 
 // 列表数据
 List<ThemeFlowModel> tuijianFlowModelData = [
@@ -57,4 +57,57 @@ List<ThemeFlowModel> wallhavenFlowModelData = [
   ThemeFlowModel(url: 'https://tse2-mm.cn.bing.net/th/id/OIP.T8pmE_LsoDNqnSS1bqv0IwHaN4?w=182&h=342&c=7&o=5&pid=1.7', type: 1, isFree: false, money: 3, vipIsFree: false),
   ThemeFlowModel(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.WBqf_X098aDZEB3ICPwfOgHaNK?w=187&h=333&c=7&o=5&pid=1.7', type: 1, isFree: false, money: 3, vipIsFree: false),
   ThemeFlowModel(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.RvFVwKnlhRigygmodv3_UwHaNK?w=187&h=333&c=7&o=5&pid=1.7', type: 1, isFree: false, money: 3, vipIsFree: false),
+];
+
+List<ThemeWallhavenDetail> themeWallhavenDetailData = [
+  ThemeWallhavenDetail(
+    title: '彩虹电量恐龙键盘',
+    desc: [''],
+    urls: [
+      'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+      'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7',
+      'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+      'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7'
+    ],
+    size: 3.1,
+    downCount: 2.3,
+    money: 3,
+    userName: '白云苍狗',
+    userDesc: '在繁华中沉淀自我，在乱世中静静伫立，一笔一划，雕刻时光',
+    tags: ['标签一', '标签二'],
+    avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+  ),
+  ThemeWallhavenDetail(
+    title: '雕刻时光',
+    desc: [''],
+    urls: [
+      'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+      'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7',
+      'https://tse4-mm.cn.bing.net/th/id/OIP.tevwpIiw8A03LF6t517PjAHaNK?w=187&h=333&c=7&o=5&pid=1.7'
+    ],
+    size: 3.1,
+    downCount: 2.3,
+    money: 3,
+    userName: '张三',
+    userDesc: '彼岸花花开彼岸，断肠草草断肝肠',
+    tags: ['标签一', '标签二'],
+    avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+  ),
+  ThemeWallhavenDetail(
+    title: '一笔一划',
+    desc: [''],
+    urls: [
+      'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+      'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7',
+      'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+      'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7'
+    ],
+    size: 3.1,
+    downCount: 2.3,
+    money: 3,
+    userName: '李四',
+    userDesc: '',
+    tags: ['标签一', '标签二'],
+    avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+  ),
 ];
