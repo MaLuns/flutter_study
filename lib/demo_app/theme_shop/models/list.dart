@@ -59,6 +59,21 @@ class NavItemViewModel {
   });
 }
 
+class TuiJianModel {
+  String title;
+  String desc;
+  List<TuiJianItem> list;
+  TuiJianModel({this.title, this.desc, this.list});
+}
+
+class TuiJianItem {
+  String url;
+  String name;
+  bool isVipFree;
+  int money;
+  TuiJianItem({this.isVipFree = true, this.money = 3, this.name, this.url});
+}
+
 class ThemeWallhavenDetail {
   // 截图
   List<String> urls;
@@ -84,6 +99,8 @@ class ThemeWallhavenDetail {
   String userDesc;
   // 头像
   String avatar;
+  // 推荐
+  List<TuiJianItem> tuJian;
   ThemeWallhavenDetail({
     @required this.avatar,
     @required this.desc,
@@ -97,5 +114,6 @@ class ThemeWallhavenDetail {
     this.vipIsFree = true,
     @required this.downCount,
     @required this.size,
+    @required this.tuJian,
   });
 }

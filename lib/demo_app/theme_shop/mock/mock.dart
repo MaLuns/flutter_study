@@ -71,6 +71,12 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
     userDesc: '在繁华中沉淀自我，在乱世中静静伫立，一笔一划，雕刻时光',
     tags: ['标签一', '标签二'],
     avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+    tuJian: [
+      TuiJianItem(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7', money: 3, name: '水青', isVipFree: true),
+      TuiJianItem(url: 'https://tse4-mm.cn.bing.net/th/id/OIP.tevwpIiw8A03LF6t517PjAHaNK?w=187&h=333&c=7&o=5&pid=1.7', money: 3, name: '星夜', isVipFree: false),
+      TuiJianItem(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7', money: 3, name: '归途', isVipFree: true),
+      TuiJianItem(url: 'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7', money: 3, name: '最简约', isVipFree: false),
+    ],
   ),
   ThemeWallhavenDetail(
     title: '雕刻时光',
@@ -83,6 +89,12 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
     userDesc: '彼岸花花开彼岸，断肠草草断肝肠',
     tags: ['标签一', '标签二'],
     avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+    tuJian: [
+      TuiJianItem(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7', money: 3, name: '水青', isVipFree: true),
+      TuiJianItem(url: 'https://tse4-mm.cn.bing.net/th/id/OIP.tevwpIiw8A03LF6t517PjAHaNK?w=187&h=333&c=7&o=5&pid=1.7', money: 3, name: '星夜', isVipFree: false),
+      TuiJianItem(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7', money: 3, name: '归途', isVipFree: true),
+      TuiJianItem(url: 'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7', money: 3, name: '最简约', isVipFree: false),
+    ],
   ),
   ThemeWallhavenDetail(
     title: '一笔一划',
@@ -95,5 +107,11 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
     userDesc: '',
     tags: ['标签一', '标签二'],
     avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7',
+    tuJian: [
+      TuiJianItem(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.65T3iCYcCQvtmE1UY629yAAAAA?w=198&h=315&c=7&o=5&pid=1.7', money: 3, name: '水青', isVipFree: true),
+      TuiJianItem(url: 'https://tse4-mm.cn.bing.net/th/id/OIP.tevwpIiw8A03LF6t517PjAHaNK?w=187&h=333&c=7&o=5&pid=1.7', money: 3, name: '星夜', isVipFree: false),
+      TuiJianItem(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.hsvYvDZjKEsyLesyy47FhQHaNK?w=187&h=333&c=7&o=5&pid=1.7', money: 3, name: '归途', isVipFree: true),
+      TuiJianItem(url: 'https://tse2-mm.cn.bing.net/th/id/OIP.7NG3CW3Jsl8Yc4DmC9eZBwHaQC?w=161&h=349&c=7&o=5&pid=1.7', money: 3, name: '最简约', isVipFree: false),
+    ],
   ),
 ];

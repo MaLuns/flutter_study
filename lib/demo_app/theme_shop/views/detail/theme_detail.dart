@@ -52,7 +52,7 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                       return AspectRatio(
                         aspectRatio: 2 / 3,
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          margin: EdgeInsets.only(left: index == 0 ? 16 : 5, right: index == item.urls.length - 1 ? 16 : 5),
                           decoration: BoxDecoration(
                             color: Colors.black12,
                             borderRadius: BorderRadius.circular(10),
@@ -178,28 +178,94 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                   margin: EdgeInsets.only(top: 16),
                   height: 200,
                   child: ListView.builder(
-                    itemCount: 6,
+                    itemCount: item.tuJian.length,
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return AspectRatio(
                         aspectRatio: 2 / 3,
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.black12,
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(image: NetworkImage(item.urls[0]), fit: BoxFit.cover),
-                          ),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 30,
+                              child: Container(
+                                margin: EdgeInsets.only(left: index == 0 ? 16 : 5, right: index == item.tuJian.length - 1 ? 16 : 5),
+                                decoration: BoxDecoration(
+                                  color: Colors.black12,
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(image: NetworkImage(item.tuJian[index].url), fit: BoxFit.cover),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 40,
+                              left: 0,
+                              right: 0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 6,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(3),
+                                    ),
+                                    child: Text(
+                                      '试用',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              left: 16,
+                              right: 16,
+                              bottom: 0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    item.tuJian[index].name,
+                                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 10),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Padding(padding: EdgeInsets.only(top: 6)),
+                                  Row(
+                                    children: [
+                                      Text('${item.tuJian[index].money} 可币', style: TextStyle(fontSize: 10, height: 1, color: Colors.amber[900])),
+                                      Padding(padding: EdgeInsets.only(left: 6)),
+                                      item.tuJian[index].isVipFree
+                                          ? Text(
+                                              '会员免费',
+                                              style: TextStyle(fontSize: 10, height: 1, color: Colors.black54),
+                                            )
+                                          : Text('', style: TextStyle(height: 0)),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: ThemeFlow(data: wallhavenFlowModelData),
-                ),
+                Container(padding: EdgeInsets.all(16), child: ThemeFlow(data: wallhavenFlowModelData)),
                 Container(height: 100),
               ],
             ),
@@ -214,10 +280,7 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: <Color>[
-                    Color.fromRGBO(255, 255, 255, 0),
-                    Color.fromRGBO(255, 255, 255, 1),
-                  ],
+                  colors: <Color>[Color.fromRGBO(255, 255, 255, 0), Color.fromRGBO(255, 255, 255, 1)],
                 ),
               ),
             ),

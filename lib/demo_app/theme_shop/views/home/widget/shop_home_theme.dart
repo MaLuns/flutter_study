@@ -175,20 +175,12 @@ class TuiJian extends StatelessWidget {
                         children: [
                           Text(
                             item.title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                           ),
                           item.desc != null
                               ? Padding(
                                   padding: EdgeInsets.only(top: 6),
-                                  child: Text(
-                                    item.desc,
-                                    style: TextStyle(color: Colors.black38, fontSize: 10),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                  child: Text(item.desc, style: TextStyle(color: Colors.black38, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis),
                                 )
                               : Text('', style: TextStyle(height: 0))
                         ],
@@ -245,12 +237,7 @@ class TuiJian extends StatelessWidget {
                               ),
                               child: Text(
                                 '试用',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1,
-                                ),
+                                style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, height: 1),
                               ),
                             ),
                           ],
@@ -266,22 +253,12 @@ class TuiJian extends StatelessWidget {
                           children: [
                             Text(
                               item.list[index].name,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10,
-                              ),
+                              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 10),
                             ),
                             Padding(padding: EdgeInsets.only(top: 6)),
                             Row(
                               children: [
-                                Text(
-                                  '${item.list[index].money} 可币',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    height: 1,
-                                    color: Colors.amber[900],
-                                  ),
-                                ),
+                                Text('${item.list[index].money} 可币', style: TextStyle(fontSize: 10, height: 1, color: Colors.amber[900])),
                                 Padding(padding: EdgeInsets.only(left: 6)),
                                 item.list[index].isVipFree
                                     ? Text(
@@ -305,19 +282,4 @@ class TuiJian extends StatelessWidget {
       }).toList(),
     );
   }
-}
-
-class TuiJianModel {
-  String title;
-  String desc;
-  List<TuiJianItem> list;
-  TuiJianModel({this.title, this.desc, this.list});
-}
-
-class TuiJianItem {
-  String url;
-  String name;
-  bool isVipFree;
-  int money;
-  TuiJianItem({this.isVipFree = true, this.money = 3, this.name, this.url});
 }
