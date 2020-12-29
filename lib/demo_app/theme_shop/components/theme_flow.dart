@@ -74,18 +74,10 @@ class ThemeFlow extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(), // 禁用滚动
       itemBuilder: (BuildContext context, int index) {
-        if (data[index].isAd) {
-          return renderAdItem(index);
-        } else {
-          return renderItem(context, index);
-        }
+        return data[index].isAd ? renderAdItem(index) : renderItem(context, index);
       },
       staggeredTileBuilder: (int index) {
-        if (data[index].isAd) {
-          return StaggeredTile.count(3, 1);
-        } else {
-          return StaggeredTile.count(3, 5);
-        }
+        return data[index].isAd ? StaggeredTile.count(3, 1) : StaggeredTile.count(3, 5);
       },
       mainAxisSpacing: 8.0,
       crossAxisSpacing: 8.0,
@@ -93,6 +85,7 @@ class ThemeFlow extends StatelessWidget {
   }
 }
 
+// 渲染item
 class RenderThemeFlowItem extends StatefulWidget {
   final ThemeFlowModel data;
   RenderThemeFlowItem({Key key, @required this.data}) : super(key: key);
@@ -111,6 +104,12 @@ class _RenderThemeFlowItemState extends State<RenderThemeFlowItem> with SingleTi
     controller = AnimationController(duration: Duration(milliseconds: 100), vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     animation = Tween<double>(begin: 1.0, end: 0.96).animate(animation)..addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   // tag
@@ -154,7 +153,7 @@ class _RenderThemeFlowItemState extends State<RenderThemeFlowItem> with SingleTi
         Navigator.push(context, MaterialPageRoute(builder: (context) => ThemeDetailPage()));
       },
       /* onLongPress: () => controller.forward(), */
-      onTapCancel: () => controller.reverse(),
+      /* onTapCancel: () => controller.reverse(), */
       onLongPressEnd: (e) => controller.reverse(),
       onTapUp: (e) => controller.reverse(),
       onTapDown: (e) => controller.forward(),

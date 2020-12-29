@@ -14,7 +14,7 @@ class _AnimationDemoState extends State<AnimationDemo> with SingleTickerProvider
   void initState() {
     super.initState();
 
-    controller = new AnimationController(duration: const Duration(milliseconds: 500), vsync: this);
+    controller = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     widthAnimation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
     colorAnimation = ColorTween(begin: Color.fromRGBO(0, 0, 0, 1), end: Color.fromRGBO(255, 255, 0, 1)).animate(controller)
@@ -24,15 +24,30 @@ class _AnimationDemoState extends State<AnimationDemo> with SingleTickerProvider
         setState(() => {});
       });
 
-    widthAnimation = Tween(begin: 100.0, end: 300.0).animate(widthAnimation)..addListener(() => setState(() {}));
+    widthAnimation = Tween(begin: 100.0, end: 300.0).animate(widthAnimation); //..addListener(() => setState(() {}));
     controller.forward();
 
     /* Test()..aaa()..bbb()..ccc(); */
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: SafeArea(
+        child: GrowTransition(
+          child: Container(),
+          animation: widthAnimation,
+        ),
+      ),
+    );
+
+    /* return Scaffold(
       body: SafeArea(
         child: GestureDetector(
           child: Container(
@@ -51,6 +66,29 @@ class _AnimationDemoState extends State<AnimationDemo> with SingleTickerProvider
           },
         ),
       ),
+    ); */
+  }
+}
+
+class GrowTransition extends StatelessWidget {
+  final Animation<double> animation;
+  final Widget child;
+
+  GrowTransition({this.child, this.animation}) : super();
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animation,
+      child: child,
+      builder: (context, index) {
+        return Container(
+          height: animation.value,
+          width: animation.value,
+          color: Colors.red,
+          child: child,
+        );
+      },
     );
   }
 }
