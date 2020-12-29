@@ -102,8 +102,8 @@ class _RenderThemeFlowItemState extends State<RenderThemeFlowItem> with SingleTi
   void initState() {
     super.initState();
     controller = AnimationController(duration: Duration(milliseconds: 100), vsync: this);
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
-    animation = Tween<double>(begin: 1.0, end: 0.96).animate(animation)..addListener(() => setState(() {}));
+    animation = CurvedAnimation(parent: controller, curve: Curves.ease);
+    animation = Tween<double>(begin: 1.0, end: 0.9).animate(animation)..addListener(() => setState(() {}));
   }
 
   @override

@@ -86,7 +86,7 @@ class ThemeWallhavenDetail {
   // 下载次数
   double downCount;
   // 可币
-  int money;
+  double money;
   // 是否免费
   bool isFree;
   // 会员免费

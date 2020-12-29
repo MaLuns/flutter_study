@@ -71,8 +71,9 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(item.title, style: TextStyle(fontSize: 20)),
-                            Text('${item.size}MB | ${item.downCount}万次下载', style: TextStyle(color: Colors.black38, fontSize: 10)),
+                            Text(item.title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                            Padding(padding: EdgeInsets.only(top: 5)),
+                            Text('${item.size}MB  |  ${item.downCount}万次下载', style: TextStyle(color: Colors.black38, fontSize: 10)),
                           ],
                         ),
                       ),
@@ -99,8 +100,8 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('${item.money} ', style: TextStyle(fontSize: 20)),
-                          Text('可币'),
+                          Text('${item.money} ', style: TextStyle(fontSize: 16)),
+                          Text('可币', style: TextStyle(fontSize: 12)),
                           item.vipIsFree
                               ? Container(
                                   margin: EdgeInsets.only(left: 16),
@@ -141,17 +142,9 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                   padding: EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('1.xaxasd'),
-                      Text('2.xaxasd'),
-                      Text('3.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('2.xaxasd'),
-                      Text('3.xaxasd'),
-                      Text('1.xaxasd'),
-                      Text('2.xaxasd'),
-                      Text('3.xaxasd'),
-                    ],
+                    children: item.desc.map((e) {
+                      return Text(e, style: TextStyle(fontSize: 12, color: Colors.black));
+                    }).toList(),
                   ),
                 ),
                 Padding(
@@ -160,17 +153,18 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CircleAvatar(backgroundImage: NetworkImage(item.avatar)),
-                      Padding(padding: EdgeInsets.only(left: 16)),
+                      Padding(padding: EdgeInsets.only(left: 10)),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(item.userName),
+                            Padding(padding: EdgeInsets.only(top: 2)),
                             Text(item.userDesc, style: TextStyle(color: Colors.black38, fontSize: 12), maxLines: 1, overflow: TextOverflow.ellipsis),
                           ],
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.navigate_next), onPressed: () {}),
+                      IconButton(icon: Icon(Icons.navigate_next, color: Colors.blue[800]), onPressed: () {}),
                     ],
                   ),
                 ),
@@ -293,16 +287,20 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(padding: EdgeInsets.only(left: 20)),
-                CupertinoButton(
-                  color: Colors.blue,
-                  child: Text('试用'),
-                  onPressed: () {},
+                Expanded(
+                  child: CupertinoButton(
+                    color: Colors.blue,
+                    child: Text('试用'),
+                    onPressed: () {},
+                  ),
                 ),
                 Padding(padding: EdgeInsets.only(right: 10)),
-                CupertinoButton(
-                  color: Colors.blue,
-                  child: Text('购买'),
-                  onPressed: () {},
+                Expanded(
+                  child: CupertinoButton(
+                    color: Colors.blue,
+                    child: Text('购买'),
+                    onPressed: () {},
+                  ),
                 ),
                 Padding(padding: EdgeInsets.only(right: 20)),
               ],
@@ -323,7 +321,7 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
         title: Text(data[_index].title, style: TextStyle(color: Color.fromRGBO(0, 0, 0, _opacity))),
         actions: [
           IconButton(
-            icon: Icon(Icons.share),
+            icon: Icon(Icons.share_outlined),
             onPressed: () {},
           ),
         ],

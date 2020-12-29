@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './views/home/shop_home.dart';
+import 'views/home/shop_home.dart';
+import 'views/my/shop_my.dart';
 
 class ThemeShopHome extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
     ShopHome(),
     Text('Page2'),
     Text('Page3'),
-    Text('Page4'),
+    ShopMy(),
   ];
 
   _ThemeShopHomeState() {
@@ -44,9 +45,9 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
           },
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
-            BottomNavigationBarItem(icon: Icon(Icons.class__sharp), label: '分类'),
-            BottomNavigationBarItem(icon: Icon(Icons.sanitizer), label: '精选'),
-            BottomNavigationBarItem(icon: Icon(Icons.my_location), label: '我的'),
+            BottomNavigationBarItem(icon: Icon(Icons.widgets), label: '分类'),
+            BottomNavigationBarItem(icon: Icon(Icons.whatshot), label: '精选'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: '我的'),
           ],
         ),
       ),
