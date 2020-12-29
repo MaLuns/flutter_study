@@ -2,7 +2,7 @@
  * @Author: ml
  * @Date: 2020-12-21 09:26:24
  * @LastEditors: ml
- * @LastEditTime: 2020-12-23 13:19:36
+ * @LastEditTime: 2020-12-29 13:53:38
  * @Description: 
  */
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_study/components/list_title.dart';
 import 'package:flutter_study/demo_app/theme_shop/index.dart';
 import 'package:flutter_study/models/list_model.dart';
+import 'package:flutter_study/views/animations/animation_demo.dart';
 import 'package:flutter_study/views/basic_widgets/basic_widgets_demo.dart';
 import 'package:flutter_study/views/pointer_event/pointer_event_demo.dart';
 import 'package:flutter_study/views/scroll_widgets/scroll_demo.dart';
@@ -93,6 +94,12 @@ final List<ListModel> listModel = [
     subtitle: '指针和手势',
     icon: Icons.touch_app,
     route: PointerEventDemo(),
+  ),
+  ListModel(
+    title: '动画',
+    subtitle: '动画示例',
+    icon: Icons.animation,
+    route: AnimationDemo(),
   ),
   ListModel(
     title: '主题商店',

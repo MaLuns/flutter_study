@@ -28,7 +28,8 @@ class ThemeFlow extends StatelessWidget {
   // 渲染列表项
   Widget renderItem(context, index) {
     ThemeFlowModel item = this.data[index];
-    return GestureDetector(
+    return RenderThemeFlowItem(data: item);
+    /* return GestureDetector(
       child: Stack(
         children: [
           Container(
@@ -49,7 +50,7 @@ class ThemeFlow extends StatelessWidget {
         debugPrint(index.toString());
         Navigator.push(context, MaterialPageRoute(builder: (context) => ThemeDetailPage()));
       },
-    );
+    ); */
   }
 
 // 渲染广告位
@@ -88,6 +89,75 @@ class ThemeFlow extends StatelessWidget {
       },
       mainAxisSpacing: 8.0,
       crossAxisSpacing: 8.0,
+    );
+  }
+}
+
+class RenderThemeFlowItem extends StatefulWidget {
+  final ThemeFlowModel data;
+  RenderThemeFlowItem({Key key, @required this.data}) : super(key: key);
+
+  @override
+  _RenderThemeFlowItemState createState() => _RenderThemeFlowItemState();
+}
+
+class _RenderThemeFlowItemState extends State<RenderThemeFlowItem> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(duration: Duration(milliseconds: 100), vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    animation = Tween<double>(begin: 1.0, end: 0.96).animate(animation)..addListener(() => setState(() {}));
+  }
+
+  // tag
+  Widget renderTag(txt) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(3),
+        color: Color.fromRGBO(0, 0, 0, 0.6),
+      ),
+      child: Center(
+        child: Text(txt, style: TextStyle(color: Colors.white, fontSize: 10)),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Transform.scale(
+        scale: animation.value,
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: Colors.black12, width: 0.2),
+                image: DecorationImage(
+                  image: NetworkImage(widget.data.url),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            Positioned(left: 5, top: 5, child: renderTag(widget.data.typeName)),
+            Positioned(left: 5, bottom: 5, child: renderTag(widget.data.tag)),
+          ],
+        ),
+      ),
+      onTap: () {
+        controller.reverse();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ThemeDetailPage()));
+      },
+      /* onLongPress: () => controller.forward(), */
+      onTapCancel: () => controller.reverse(),
+      onLongPressEnd: (e) => controller.reverse(),
+      onTapUp: (e) => controller.reverse(),
+      onTapDown: (e) => controller.forward(),
     );
   }
 }
