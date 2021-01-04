@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class LoadingAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(4, (index) => Ball(index)),
+    return Container(
+      height: 40,
+      alignment: Alignment.center,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(4, (index) => Ball(index)),
+      ),
     );
   }
 }
@@ -26,15 +30,15 @@ class _BallState extends State<Ball> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 250), vsync: this);
-    color = ColorTween(begin: Colors.red, end: Colors.yellow).animate(controller);
-    width = Tween<double>(begin: 0, end: 20).animate(controller);
+    controller = AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    color = ColorTween(begin: Colors.red[50], end: Colors.yellow[900]).animate(controller);
+    width = Tween<double>(begin: 5, end: 20).animate(controller);
 
     controller.addStatusListener((status) {
       if (status == AnimationStatus.dismissed) {
-        /*  Future.delayed(Duration(milliseconds: widget.index * 100)).then((value) { */
-        controller.forward();
-        /*  }); */
+        Future.delayed(Duration(milliseconds: 1200)).then((value) {
+          controller.forward();
+        });
       }
       if (status == AnimationStatus.completed) {
         //反向执行动画
@@ -42,7 +46,7 @@ class _BallState extends State<Ball> with SingleTickerProviderStateMixin {
       }
     });
 
-    Future.delayed(Duration(milliseconds: widget.index * 450)).then((value) {
+    Future.delayed(Duration(milliseconds: 150 * widget.index)).then((value) {
       controller.forward();
     });
   }
@@ -59,12 +63,17 @@ class _BallState extends State<Ball> with SingleTickerProviderStateMixin {
       animation: controller,
       builder: (BuildContext context, Widget child) {
         return Container(
-          height: width.value,
-          width: width.value,
-          margin: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            color: color.value,
-            borderRadius: BorderRadius.circular(20),
+          height: 20,
+          width: 20,
+          margin: EdgeInsets.symmetric(horizontal: 5),
+          alignment: Alignment.center,
+          child: Container(
+            height: width.value,
+            width: width.value,
+            decoration: BoxDecoration(
+              color: color.value,
+              borderRadius: BorderRadius.circular(20),
+            ),
           ),
         );
       },
