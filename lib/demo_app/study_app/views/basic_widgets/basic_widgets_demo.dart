@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/tab_controller.dart';
-import 'package:flutter_study/models/tab_model.dart';
-import 'package:flutter_study/views/basic_widgets/basic_appbar_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_button_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_container_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_form_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_icon_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_image_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_layout_demo.dart';
-import 'package:flutter_study/views/basic_widgets/basic_text_demo.dart';
+import '../../components/tab_controller.dart';
+import '../../models/tab_model.dart';
+import '../../views/basic_widgets/basic_appbar_demo.dart';
+import '../../views/basic_widgets/basic_button_demo.dart';
+import '../../views/basic_widgets/basic_container_demo.dart';
+import '../../views/basic_widgets/basic_form_demo.dart';
+import '../../views/basic_widgets/basic_icon_demo.dart';
+import '../../views/basic_widgets/basic_image_demo.dart';
+import '../../views/basic_widgets/basic_layout_demo.dart';
+import '../../views/basic_widgets/basic_text_demo.dart';
 
 class BasicWidgetsDemo extends StatelessWidget {
   @override

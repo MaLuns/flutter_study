@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/h2_title.dart';
+import '../../components/h2_title.dart';
 
 class BasicContainerDemo extends StatelessWidget {
   @override
@@ -57,10 +57,7 @@ class BasicContainerDemo extends StatelessWidget {
                 borderRadius: BorderRadius.circular(3.0), //3像素圆角
                 boxShadow: [
                   //阴影
-                  BoxShadow(
-                      color: Colors.black54,
-                      offset: Offset(2.0, 2.0),
-                      blurRadius: 4.0)
+                  BoxShadow(color: Colors.black54, offset: Offset(2.0, 2.0), blurRadius: 4.0)
                 ]),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 18.0),

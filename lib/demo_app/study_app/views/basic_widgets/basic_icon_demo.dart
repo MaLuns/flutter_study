@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/h2_title.dart';
+import '../../components/h2_title.dart';
 
 class BasicIconDemo extends StatelessWidget {
   final List iconList = [
@@ -65,8 +65,7 @@ class BasicIconDemo extends StatelessWidget {
               Text('2.加入在项目中'),
               Text('3.在pubspec.yaml中引入字体文件ttf(不同版本的flutter可能有差异)'),
               Text('4.编写自定义 IconData 类型'),
-              Text(
-                  '5.IconData(0xe611, fontFamily: \'IconFont\')  IconFont:是引入时候设置字体名称,0xe611 为对应图标的Unicode'),
+              Text('5.IconData(0xe611, fontFamily: \'IconFont\')  IconFont:是引入时候设置字体名称,0xe611 为对应图标的Unicode'),
             ],
           ),
         ),

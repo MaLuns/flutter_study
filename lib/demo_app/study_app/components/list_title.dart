@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/models/list_model.dart';
+import '../models/list_model.dart';
 
 // 菜单列表
 class ListTitleComponent extends StatelessWidget {
@@ -58,7 +58,9 @@ class ListTitleComponent extends StatelessWidget {
         ),
       ),
       onTap: () {
-        if (item.route != null) {
+        if (item.route.runtimeType == String) {
+          Navigator.pushNamed(context, item.route);
+        } else {
           Navigator.push(context, MaterialPageRoute(builder: (context) => item.route));
         }
       },

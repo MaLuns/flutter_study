@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/tab_controller.dart';
-import 'package:flutter_study/models/tab_model.dart';
+import '../../components/tab_controller.dart';
+import '../../models/tab_model.dart';
 
 class BasicScrollDemo extends StatelessWidget {
   @override
@@ -10,11 +10,8 @@ class BasicScrollDemo extends StatelessWidget {
       isScrollable: true,
       tabModels: [
         TabModel(tab: Tab(text: 'Scrollbar'), page: ScrollbarDemo()),
-        TabModel(
-            tab: Tab(text: 'ScrollControllerDemo'),
-            page: SingleChildScrollViewDemo()),
-        TabModel(
-            tab: Tab(text: 'ScrollController'), page: ScrollControllerDemo()),
+        TabModel(tab: Tab(text: 'ScrollControllerDemo'), page: SingleChildScrollViewDemo()),
+        TabModel(tab: Tab(text: 'ScrollController'), page: ScrollControllerDemo()),
       ],
     );
   }

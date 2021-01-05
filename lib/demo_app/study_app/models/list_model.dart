@@ -9,7 +9,7 @@ class ListModel {
   // 副标题
   String subtitle;
   // 跳转页面
-  Widget route;
+  dynamic route;
   ListModel({this.title, this.icon, this.subtitle, this.route});
 }
 

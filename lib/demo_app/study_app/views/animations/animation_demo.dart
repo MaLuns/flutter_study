@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/basice_app_layout.dart';
-import 'package:flutter_study/components/h2_title.dart';
+import '../../components/basice_app_layout.dart';
+import '../../components/h2_title.dart';
 import 'loading_animation.dart';
 
 /* 

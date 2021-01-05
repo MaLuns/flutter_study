@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/h2_title.dart';
+import '../../components/h2_title.dart';
 
 class BasicImageDemo extends StatelessWidget {
   final AssetImage img = AssetImage('asset/images/demo.png');

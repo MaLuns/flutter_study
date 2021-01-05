@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/models/tab_model.dart';
+import '../models/tab_model.dart';
 
 // tabs
 class TabCoontrollerComponent extends StatefulWidget {

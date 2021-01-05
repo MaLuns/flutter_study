@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/models/list_model.dart';
+import '../models/list_model.dart';
 
 // 用户列表项
 class UserListItem extends StatelessWidget {

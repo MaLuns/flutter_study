@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/models/list_model.dart';
+import '../models/list_model.dart';
 
 class ZhiHuBillboard extends StatelessWidget {
   final ZhiHuBillboardModel data;
@@ -67,9 +67,7 @@ class ZhiHuBillboard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                    padding:
-                        EdgeInsets.only(left: data.imgUrl != null ? 10 : 0)),
+                Padding(padding: EdgeInsets.only(left: data.imgUrl != null ? 10 : 0)),
                 /* Offstage(
                   offstage: false,
                   child: ClipRRect(

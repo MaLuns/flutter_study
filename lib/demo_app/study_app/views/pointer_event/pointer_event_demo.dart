@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/basice_app_layout.dart';
+import '../../components/basice_app_layout.dart';
 
 class PointerEventDemo extends StatefulWidget {
   @override

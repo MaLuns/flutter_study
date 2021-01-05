@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_study/models/list_model.dart';
+import '../models/list_model.dart';
 
 // 宠物卡片
 class PetCard extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/h2_title.dart';
-import 'package:flutter_study/components/tab_controller.dart';
-import 'package:flutter_study/mock/mock_data.dart';
-import 'package:flutter_study/models/list_model.dart';
-import 'package:flutter_study/models/tab_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import '../../components/h2_title.dart';
+import '../../components/tab_controller.dart';
+import '../../mock/mock_data.dart';
+import '../../models/list_model.dart';
+import '../../models/tab_model.dart';
 
 class GridViewDemo extends StatelessWidget {
   @override
@@ -14,14 +14,9 @@ class GridViewDemo extends StatelessWidget {
       isScrollable: true,
       tabModels: <TabModel>[
         TabModel(tab: Tab(text: 'GridView'), page: GridViewDemoOne()),
-        TabModel(
-            tab: Tab(text: 'GridView.builder'),
-            page: GridViewDemoTwo(data: hotMovieModelData)),
-        TabModel(
-            tab: Tab(text: 'GridView.count'),
-            page: GirdViewDemoThreex(data: navItemViewModelData)),
-        TabModel(
-            tab: Tab(text: 'StaggeredGridView'), page: StaggeredGridViewDemo()),
+        TabModel(tab: Tab(text: 'GridView.builder'), page: GridViewDemoTwo(data: hotMovieModelData)),
+        TabModel(tab: Tab(text: 'GridView.count'), page: GirdViewDemoThreex(data: navItemViewModelData)),
+        TabModel(tab: Tab(text: 'StaggeredGridView'), page: StaggeredGridViewDemo()),
       ],
     );
   }
@@ -44,9 +39,7 @@ class GridViewDemoOne extends StatelessWidget {
             crossAxisSpacing: 10,
             childAspectRatio: 8 / 11,
           ),
-          children: [1, 2, 3, 1, 2, 3]
-              .map((e) => Container(color: Colors.black12))
-              .toList(),
+          children: [1, 2, 3, 1, 2, 3].map((e) => Container(color: Colors.black12)).toList(),
         ),
         H2Title(title: 'SliverGridDelegateWithMaxCrossAxisExtent'),
         GridView(
@@ -57,9 +50,7 @@ class GridViewDemoOne extends StatelessWidget {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
           ),
-          children: [1, 2, 3, 1, 2, 3]
-              .map((e) => Container(color: Colors.black12))
-              .toList(),
+          children: [1, 2, 3, 1, 2, 3].map((e) => Container(color: Colors.black12)).toList(),
         ),
       ],
     );

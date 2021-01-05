@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/basice_app_layout.dart';
-import 'package:flutter_study/components/list_title.dart';
-import 'package:flutter_study/models/list_model.dart';
+import '../../components/basice_app_layout.dart';
+import '../../components/list_title.dart';
+import '../../models/list_model.dart';
 import './basci_scroll_demo.dart';
 import './custom_scrollview_demo.dart';
 import './grid_view_demo.dart';

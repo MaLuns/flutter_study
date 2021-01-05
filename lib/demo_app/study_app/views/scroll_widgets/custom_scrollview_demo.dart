@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_study/components/tab_controller.dart';
-import 'package:flutter_study/models/tab_model.dart';
+import '../../components/tab_controller.dart';
+import '../../models/tab_model.dart';
 
 class CustomScrollViewDemo extends StatelessWidget {
   @override

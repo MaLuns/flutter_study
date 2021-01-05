@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/pet_card.dart';
-import 'package:flutter_study/components/tab_controller.dart';
-import 'package:flutter_study/components/talk_card.dart';
-import 'package:flutter_study/components/user_list_item.dart';
-import 'package:flutter_study/components/zhi_hu_billboard.dart';
-import 'package:flutter_study/mock/mock_data.dart';
-import 'package:flutter_study/models/list_model.dart';
-import 'package:flutter_study/models/tab_model.dart';
 import 'package:toast/toast.dart';
+import '../../components/pet_card.dart';
+import '../../components/tab_controller.dart';
+import '../../components/talk_card.dart';
+import '../../components/user_list_item.dart';
+import '../../components/zhi_hu_billboard.dart';
+import '../../mock/mock_data.dart';
+import '../../models/list_model.dart';
+import '../../models/tab_model.dart';
 
 class ListViewDemo extends StatelessWidget {
   Future _onRefresh(context) {
@@ -26,9 +26,7 @@ class ListViewDemo extends StatelessWidget {
           tab: Tab(text: '普通用法'),
           page: ListView(
             physics: BouncingScrollPhysics(),
-            children: petCardViewModelData
-                .map((PetCardViewModel e) => PetCard(data: e))
-                .toList(),
+            children: petCardViewModelData.map((PetCardViewModel e) => PetCard(data: e)).toList(),
           ),
         ),
         TabModel(
@@ -36,8 +34,7 @@ class ListViewDemo extends StatelessWidget {
           page: ListView.builder(
             physics: BouncingScrollPhysics(),
             itemCount: talkCardViewModelData.length,
-            itemBuilder: (context, index) =>
-                TalkCard(data: talkCardViewModelData[index]),
+            itemBuilder: (context, index) => TalkCard(data: talkCardViewModelData[index]),
           ),
         ),
         TabModel(
@@ -45,8 +42,7 @@ class ListViewDemo extends StatelessWidget {
           page: ListView.separated(
             physics: BouncingScrollPhysics(),
             itemCount: userItemData.length,
-            itemBuilder: (context, index) =>
-                UserListItem(data: userItemData[index]),
+            itemBuilder: (context, index) => UserListItem(data: userItemData[index]),
             separatorBuilder: (context, index) {
               return Divider(
                 height: .5,
@@ -99,9 +95,7 @@ class _ListViewLoadMoreState extends State<ListViewLoadMore> {
   void initState() {
     super.initState();
     this.scrollController.addListener(() {
-      if (!this.isLoading &&
-          this.scrollController.position.pixels >=
-              this.scrollController.position.maxScrollExtent) {
+      if (!this.isLoading && this.scrollController.position.pixels >= this.scrollController.position.maxScrollExtent) {
         setState(() {
           this.isLoading = true;
           this.loadMoreData();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/h2_title.dart';
+import '../../components/h2_title.dart';
 
 class BasicLayoutDemo extends StatelessWidget {
   @override
@@ -97,8 +97,7 @@ class BasicLayoutDemo extends StatelessWidget {
           direction: Axis.horizontal,
           children: [1, 2, 3, 4, 5].map((e) {
             Widget w = Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: 8, horizontal: e == 2 || e == 4 ? 8 : 0),
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: e == 2 || e == 4 ? 8 : 0),
               width: 40,
               height: 50,
               color: Colors.black12,
@@ -128,8 +127,7 @@ class BasicLayoutDemo extends StatelessWidget {
           alignment: WrapAlignment.center, //沿主轴方向居中
           children: [1, 2, 3, 4].map((e) {
             return Chip(
-              avatar:
-                  CircleAvatar(backgroundColor: Colors.blue, child: Text('A')),
+              avatar: CircleAvatar(backgroundColor: Colors.blue, child: Text('A')),
               label: Text('Hamilton'),
             );
           }).toList(),
