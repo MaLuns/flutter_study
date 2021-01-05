@@ -37,7 +37,7 @@ class _BallState extends State<Ball> with SingleTickerProviderStateMixin {
     controller.addStatusListener((status) {
       if (status == AnimationStatus.dismissed) {
         Future.delayed(Duration(milliseconds: 1200)).then((value) {
-          if (controller.isAnimating) controller.forward();
+          if (controller != null) controller.forward();
         });
       }
       if (status == AnimationStatus.completed) {
@@ -47,13 +47,14 @@ class _BallState extends State<Ball> with SingleTickerProviderStateMixin {
     });
 
     Future.delayed(Duration(milliseconds: 150 * widget.index)).then((value) {
-      if (controller.isAnimating) controller.forward();
+      controller.forward();
     });
   }
 
   @override
   void dispose() {
     controller.dispose();
+    controller = null;
     super.dispose();
   }
 
