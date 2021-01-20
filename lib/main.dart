@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue[600],
         highlightColor: Color.fromRGBO(0, 0, 0, 0),
-        splashColor: Color.fromRGBO(0, 0, 0, .1),
+        splashColor: Color.fromRGBO(0, 0, 0, 0),
       ),
       routes: routes,
       initialRoute: '/',

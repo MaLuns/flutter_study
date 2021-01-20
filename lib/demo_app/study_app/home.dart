@@ -41,9 +41,11 @@ class WidgetStudy extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFf7f7f7),
       appBar: AppBar(
-        centerTitle: true,
+        /*  centerTitle: true, */
         title: Text('Flutter'),
         elevation: 0.0,
+        brightness: Brightness.dark,
+        leadingWidth: 215,
       ),
       body: ListTitleComponent(listModel),
       bottomNavigationBar: BottomAppBar(

@@ -23,6 +23,7 @@ class BasiceAppLayout extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
         centerTitle: true,
+        elevation: 0,
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(pl, pt, pr, pb),

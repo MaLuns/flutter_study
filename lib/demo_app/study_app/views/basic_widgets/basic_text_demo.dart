@@ -55,12 +55,7 @@ class BasicTextDemo extends StatelessWidget {
               )),
           TextSpan(text: ' ，'),
           TextSpan(text: ' 十二楼五城。'),
-          TextSpan(
-              text: '仙人 ',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                  fontSize: 20)),
+          TextSpan(text: '仙人 ', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red, fontSize: 20)),
           TextSpan(text: '抚我顶，结发受长生。'),
         ],
       ),
@@ -70,6 +65,26 @@ class BasicTextDemo extends StatelessWidget {
       style: TextStyle(fontFamily: 'Mango', color: Colors.white),
       textAlign: TextAlign.center,
     ),
+    Text.rich(
+      TextSpan(
+        style: TextStyle(fontSize: 18, color: Colors.white),
+        children: <TextSpan>[
+          TextSpan(text: ' 天上'),
+          TextSpan(
+              text: ' 白玉京',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+                fontSize: 20,
+              )),
+          TextSpan(text: ' ，'),
+          TextSpan(text: ' 十二楼五城。'),
+          TextSpan(text: '仙人 ', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red, fontSize: 20)),
+          TextSpan(text: '抚我顶，结发受长生。'),
+        ],
+      ),
+      textAlign: TextAlign.justify,
+    )
   ];
 
   Widget _itemBuilder(context, index) {

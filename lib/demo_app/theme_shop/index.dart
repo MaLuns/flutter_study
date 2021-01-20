@@ -27,7 +27,7 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
       title: 'Flutter Study',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.red[600],
+        primaryColor: Colors.red[400],
         highlightColor: Color.fromRGBO(0, 0, 0, 0),
         splashColor: Color.fromRGBO(0, 0, 0, 0),
       ),

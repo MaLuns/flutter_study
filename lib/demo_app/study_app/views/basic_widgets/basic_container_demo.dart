@@ -101,6 +101,7 @@ class BasicContainerDemo extends StatelessWidget {
         H2Title(title: 'Container 综合'),
         UnconstrainedBox(
           child: Container(
+            clipBehavior: Clip.antiAlias,
             margin: EdgeInsets.only(bottom: 40),
             constraints: BoxConstraints.expand(height: 150, width: 145),
             decoration: BoxDecoration(
@@ -128,6 +129,7 @@ class BasicContainerDemo extends StatelessWidget {
             ),
           ),
         ),
+        Align()
       ],
     );
   }

@@ -120,32 +120,50 @@ class BasicLayoutDemo extends StatelessWidget {
             return w;
           }).toList(),
         ),
+        Flex(
+          direction: Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: List.generate(3, (e) {
+            return Container(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              height: 50,
+              color: Colors.black12,
+              child: Center(
+                child: Text('vertical'),
+              ),
+            );
+          }).toList(),
+        ),
         H2Title(title: '流式布局 Wrap、Flow'),
         Wrap(
           spacing: 8.0, // 主轴(水平)方向间距
           runSpacing: 4.0, // 纵轴（垂直）方向间距
           alignment: WrapAlignment.center, //沿主轴方向居中
-          children: [1, 2, 3, 4].map((e) {
-            return Chip(
-              avatar: CircleAvatar(backgroundColor: Colors.blue, child: Text('A')),
-              label: Text('Hamilton'),
+          children: List.generate(12, (e) {
+            return Container(
+              decoration: BoxDecoration(
+                color: Color(0xff38acfa),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: Text('tag$e', style: TextStyle(color: Colors.white)),
             );
           }).toList(),
         ),
-        UnconstrainedBox(
-          child: Container(
-            width: 200,
-            child: Flow(
-              delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),
-              children: <Widget>[
-                new Container(width: 80.0, height: 80.0, color: Colors.red),
-                new Container(width: 80.0, height: 80.0, color: Colors.green),
-                new Container(width: 80.0, height: 80.0, color: Colors.blue),
-                new Container(width: 80.0, height: 80.0, color: Colors.yellow),
-                new Container(width: 80.0, height: 80.0, color: Colors.brown),
-                new Container(width: 80.0, height: 80.0, color: Colors.purple),
-              ],
-            ),
+        Container(
+          height: 260,
+          child: Flow(
+            delegate: TestFlowDelegate(),
+            children: List.generate(9, (index) {
+              return UnconstrainedBox(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  color: Colors.red[index * 100],
+                ),
+              );
+            }).toList(),
           ),
         ),
         H2Title(title: '层叠布局 Stack、Positioned'),
@@ -182,38 +200,37 @@ class BasicLayoutDemo extends StatelessWidget {
             child: FlutterLogo(size: 60),
           ),
         ),
+        Padding(padding: EdgeInsets.all(8)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              color: Colors.black,
+              height: 120.0,
+              width: 120.0,
+              child: Align(
+                alignment: Alignment(2, 0.0),
+                child: Container(
+                  color: Colors.red,
+                  height: 20,
+                  width: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
 }
 
 class TestFlowDelegate extends FlowDelegate {
-  EdgeInsets margin = EdgeInsets.zero;
-  TestFlowDelegate({this.margin});
   @override
   void paintChildren(FlowPaintingContext context) {
-    var x = margin.left;
-    var y = margin.top;
     //计算每一个子widget的位置
     for (int i = 0; i < context.childCount; i++) {
-      var w = context.getChildSize(i).width + x + margin.right;
-      if (w < context.size.width) {
-        context.paintChild(i, transform: Matrix4.translationValues(x, y, 0.0));
-        x = w + margin.left;
-      } else {
-        x = margin.left;
-        y += context.getChildSize(i).height + margin.top + margin.bottom;
-        //绘制子widget(有优化)
-        context.paintChild(i, transform: Matrix4.translationValues(x, y, 0.0));
-        x += context.getChildSize(i).width + margin.left + margin.right;
-      }
+      context.paintChild(i, transform: Matrix4.translationValues(i * 20.0, i * 20.0, 0.0));
     }
-  }
-
-  @override
-  getSize(BoxConstraints constraints) {
-    //指定Flow的大小
-    return Size(double.infinity, 200.0);
   }
 
   @override
