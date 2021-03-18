@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/study_app/models/list_model.dart';
+import 'package:flutter_study/demo_app/theme_shop/views/my/widget/jf_page.dart';
 import 'widget/discounts_page.dart';
 
 final List<ListModel> listModel = [
@@ -11,7 +12,7 @@ final List<ListModel> listModel = [
   ListModel(
     title: '积分',
     icon: Icons.grid_off,
-    route: 'BasicWidgetsDemo',
+    route: JFPage(),
   ),
   ListModel(
     title: '可币',
