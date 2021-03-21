@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/study_app/components/basice_app_layout.dart';
 import 'package:flutter_study/demo_app/study_app/components/list_title.dart';
 import 'package:flutter_study/demo_app/study_app/models/list_model.dart';
-import 'package:flutter_study/demo_app/study_app/views/animations/basic_animations_demo.dart';
-import 'package:flutter_study/demo_app/study_app/views/animations/waves_animations_demo.dart';
+import 'package:flutter_study/demo_app/study_app/views/custom_widget/canvas_clip_demo.dart';
+import 'package:flutter_study/demo_app/study_app/views/custom_widget/canvas_darw_demo.dart';
 
-class AnimationDemo extends StatelessWidget {
+class CustomWidgetDemo extends StatelessWidget {
   final List<ListModel> listModel = [
     ListModel(
-      title: '动画基础',
-      subtitle: '动画实现几种方式',
+      title: '绘制',
+      subtitle: '画布的绘制方式',
       icon: Icons.scatter_plot_outlined,
-      route: BasicAnimationDemo(),
+      route: CanvasDarwDemo(),
     ),
     ListModel(
-      title: '自定义动画',
-      subtitle: '结合自定义绘制和动画',
+      title: '裁剪',
+      subtitle: '裁剪画布形状',
       icon: Icons.scatter_plot_outlined,
-      route: WavesAnimations(),
+      route: CanvasClipDemo(),
     ),
   ];
 
   Widget build(BuildContext context) {
     return BasiceAppLayout(
-      title: '动画',
+      title: '画布',
       body: ListTitleComponent(listModel),
       pl: 0,
       pr: 0,

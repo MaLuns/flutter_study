@@ -22,6 +22,12 @@ final List<ListModel> listModel = [
     route: 'PointerEventDemo',
   ),
   ListModel(
+    title: '自绘组件',
+    subtitle: 'CustomPaint和Canvas',
+    icon: Icons.broken_image,
+    route: 'CustomWidgetDemo',
+  ),
+  ListModel(
     title: '动画',
     subtitle: '动画示例',
     icon: Icons.animation,
