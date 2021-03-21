@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,16 +11,21 @@ class CanvasClipDemo extends StatelessWidget {
       pb: 0,
       pr: 0,
       title: '裁剪',
-      body: ListView(
-        physics: BouncingScrollPhysics(),
+      body: Column(
         children: [
           CustomPaint(
-            size: Size(MediaQuery.of(context).size.width, 200),
+            size: Size(200, 200),
             painter: MyPainter(),
           ),
-          CustomPaint(
-            size: Size(200, 200),
-            painter: MyPainter2(),
+          Container(
+            child: CustomPaint(
+              size: Size(100, 100),
+              painter: MyPainter2(),
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xffeeeeee),
+              borderRadius: BorderRadius.circular(50),
+            ),
           ),
         ],
       ),
@@ -32,14 +36,21 @@ class CanvasClipDemo extends StatelessWidget {
 class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    canvas.clipRRect(
+    /* canvas.clipRRect(
       RRect.fromRectXY(
         Rect.fromLTWH(size.width / 2 - 50, 50, 100, 100),
         20,
         20,
       ),
       doAntiAlias: false,
-    );
+    ); */
+
+    canvas.clipPath(Path()
+      ..moveTo(10, 0)
+      ..lineTo(20, 20)
+      ..lineTo(10, 15)
+      ..lineTo(0, 20)
+      ..lineTo(10, 0));
 
     canvas.drawColor(Colors.blue, BlendMode.src);
   }
@@ -61,13 +72,13 @@ class MyPainter2 extends CustomPainter {
     canvas.clipPath(
       Path()
         ..addOval(
-          Rect.fromLTWH(0, 0, 100.0, 100.0),
+          Rect.fromLTWH(0, 0, size.width, size.height),
         ),
       doAntiAlias: false,
     );
 
     canvas.translate(-0, 0);
-    canvas.drawColor(Color(0xffeeeeee), BlendMode.src);
+    /*  canvas.drawColor(Color(0xffeeeeee), BlendMode.src); */
 
     Path _mainPath = Path();
     _mainPath.relativeMoveTo(0, 60);

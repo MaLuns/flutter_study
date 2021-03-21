@@ -117,12 +117,19 @@ class MyPainter extends CustomPainter {
     double waveHeight = 8;
     Path _mainPath = Path();
 
-    canvas.clipRect((Rect.fromCenter(center: Offset(waveWidth, 0), width: waveWidth * 2, height: 200.0)));
-    canvas.save();
     canvas.translate(-2 * waveWidth + 2 * waveWidth * progress, 0);
 
     _mainPath.moveTo(0, 0);
-
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
@@ -130,10 +137,12 @@ class MyPainter extends CustomPainter {
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
     _mainPath.relativeLineTo(0, wrapHeight);
-    _mainPath.relativeLineTo(-waveWidth * 3 * 2.0, 0);
-
-    canvas.drawPath(_mainPath, _mainPaint..style = PaintingStyle.fill);
-    canvas.restore();
+    _mainPath.relativeLineTo(-waveWidth * 8 * 2.0, 0);
+    canvas.drawPath(
+        _mainPath,
+        _mainPaint
+          ..style = PaintingStyle.fill
+          ..color = Colors.yellow);
   }
 
   //在实际场景中正确利用此回调可以避免重绘开销，本示例我们简单的返回true
