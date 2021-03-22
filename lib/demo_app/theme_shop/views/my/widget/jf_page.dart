@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +13,13 @@ class JFPage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            height: 200,
-            decoration: BoxDecoration(
+            /* height: 150, */
+            /* decoration: BoxDecoration(
               color: Color(0xff38acfa),
+            ), */
+            child: CustomPaint(
+              size: Size(double.infinity, 200),
+              painter: BgView(),
             ),
           ),
           Container(
@@ -159,4 +165,25 @@ class JFPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class BgView extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Color(0xff38acfa)
+      ..isAntiAlias = true;
+
+    canvas.drawPath(
+      Path()
+        ..lineTo(0, 0)
+        ..lineTo(0, size.height - 30)
+        ..cubicTo(0, size.height - 30, size.width / 2, size.height, size.width, size.height - 30)
+        ..lineTo(size.width, 0),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
