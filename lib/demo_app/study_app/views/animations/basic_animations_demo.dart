@@ -58,7 +58,7 @@ class _AnimationDemoOneState extends State<AnimationDemoOne> with SingleTickerPr
     super.initState();
 
     // 创建动画控制器
-    controller = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+    controller = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
 
     //通过 animate 绑定到动画控制器  返回的是一个Animation，而不是一个Animatable
     widthAnimation = Tween<double>(begin: 100, end: 400).animate(controller)
@@ -93,6 +93,7 @@ class _AnimationDemoOneState extends State<AnimationDemoOne> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
+    //debugPrint('AnimationDemoOne.build');
     return Center(
       child: Container(
         height: 50,
@@ -116,10 +117,11 @@ class _AnimationDemoTwoState extends State<AnimationDemoTwo> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    // 不需要添加 addListener
+    controller = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
+    // 不需要添加 addListener 然后 setState
     widthAnimation = Tween<double>(begin: 0, end: 200).animate(controller);
-    controller.forward();
+
+    controller.repeat();
   }
 
   @override
@@ -130,6 +132,7 @@ class _AnimationDemoTwoState extends State<AnimationDemoTwo> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("AnimatedWidget.parent.build");
     return Row(
       children: [
         AnimationWigeDemo(animation: widthAnimation),
@@ -143,6 +146,7 @@ class AnimationWigeDemo extends AnimatedWidget {
   // 只能接收 一个 listenable, 也就只能设置一个动画属性
 
   Widget build(BuildContext context) {
+    debugPrint("AnimatedWidget.build");
     final Animation<double> widthAnimation = listenable;
     return Container(
       height: 50,
@@ -152,7 +156,7 @@ class AnimationWigeDemo extends AnimatedWidget {
   }
 }
 
-// 动画示例3 使用 AnimatedBuilder
+// 动画示例3 使用 AnimatedBuilder  官方得一个 AnimatedWidget 实现
 class AnimatedBuilderDemo extends StatefulWidget {
   @override
   _AnimatedBuilderDemoState createState() => _AnimatedBuilderDemoState();
@@ -163,14 +167,16 @@ class _AnimatedBuilderDemoState extends State<AnimatedBuilderDemo> with SingleTi
   AnimationController controller;
   Animation<double> widthAnimation;
   Animation<double> heightAnimation;
+  Widget _chilid;
   @override
   void initState() {
     super.initState();
+    _chilid = getChild();
 
     // 创建动画控制器
     controller = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
-    widthAnimation = Tween<double>(begin: 0, end: 200).animate(controller);
-    heightAnimation = Tween<double>(begin: 0, end: 200).animate(controller);
+    widthAnimation = Tween<double>(begin: 100, end: 200).animate(controller);
+    heightAnimation = Tween<double>(begin: 100, end: 200).animate(controller);
 
     // AnimationController 也有继承 Animation 也能进行监听等操作
     controller.addStatusListener((status) {
@@ -191,30 +197,36 @@ class _AnimatedBuilderDemoState extends State<AnimatedBuilderDemo> with SingleTi
     super.dispose();
   }
 
+  Widget getChild() {
+    debugPrint('AnimatedBuilder.child.func');
+    return ClipRRect(
+      child: Image.asset("asset/images/demo.png"),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    debugPrint('AnimatedBuilder.parent.build');
     return AnimatedBuilder(
       /* 
       child参数将会传递给builder方法，如果builder返回一个不依赖于animation的组件，那么这个子控件不会每次都重建，
       child参数可以不设置，但官方建议设置，它在某些情况下可以优化其体验。
+      可以看到动画 只有执行 AnimatedBuilder.builder 不会去重置绘制 父的 build
 
       child: Container(
         height: heightAnimation.value,
         width: widthAnimation.value,
         color: Colors.red[50],
       ), */
+      child: _chilid, // 可以将动画的子组件 提取出去
       animation: controller,
       // 动画值改变时 重新调用builder 构成新组件
-      builder: (BuildContext context, Widget child) {
-        return Container(
-          height: 200,
-          child: Center(
-            child: Container(
-              height: heightAnimation.value,
-              width: widthAnimation.value,
-              color: Colors.red[50],
-            ),
-          ),
+      builder: (BuildContext context, Widget child /* 这里参数是上面的引用*/) {
+        debugPrint('AnimatedBuilder.build');
+        return SizedBox(
+          height: heightAnimation.value,
+          width: widthAnimation.value,
+          child: child,
         );
       },
     );

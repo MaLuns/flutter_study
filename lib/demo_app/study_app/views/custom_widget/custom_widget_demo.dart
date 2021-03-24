@@ -19,6 +19,12 @@ class CustomWidgetDemo extends StatelessWidget {
       icon: Icons.scatter_plot_outlined,
       route: CanvasClipDemo(),
     ),
+    ListModel(
+      title: 'RenderObject',
+      subtitle: '实现RenderObject',
+      icon: Icons.scatter_plot_outlined,
+      route: CanvasClipDemo(),
+    ),
   ];
 
   Widget build(BuildContext context) {

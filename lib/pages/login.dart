@@ -12,8 +12,8 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
 
-    _controller = AnimationController(duration: Duration(milliseconds: 1000), value: 0, vsync: this);
-    _controller
+    _controller = AnimationController(duration: Duration(milliseconds: 300), value: 0, upperBound: 2, vsync: this);
+    CurvedAnimation(parent: _controller, curve: Curves.easeInOutQuart)
       ..addListener(() {
         setState(() {});
       });
@@ -244,43 +244,74 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 }
 
 class BgView extends CustomPainter {
-  double _jd;
-  BgView(this._jd) : super();
+  double progress;
+  BgView(this.progress) : super();
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = Color(0xffffffff)
       ..isAntiAlias = true;
-    double _height = 150;
+    double minHeight = 150; // 最低高度
+    double radianHeight = 100; // 弧度高度
 
-    /*  double maxheight = size.height * _jd;
-    double minheight = size.height * _jd - _height + 100;
-    double centerheight = size.height * _jd - _height; */
-
-    /* canvas.drawPath(
-      Path()
-        ..lineTo(0, 0)
-        ..lineTo(0, size.height - _height - 100)
-        ..cubicTo(0, size.height - _height - 100, size.width / 2, size.height - _height, size.width, size.height - _height - 100)
-        ..lineTo(size.width, 0),
-      paint,
-    ); */
-
-    double maxheight = size.height * _jd;
-    double minheight = size.height - (_height * _jd) - 250;
-    double centerheight = size.height * _jd - _height;
-
-    print(minheight);
-
-    canvas.drawPath(
-      Path()
-        ..moveTo(0, maxheight)
-        ..lineTo(0, minheight)
-        ..cubicTo(0, size.height - _height - 100, size.width / 2, size.height - _height, size.width, size.height - _height - 100)
-        ..lineTo(size.width, maxheight),
-      paint,
-    );
+    if (progress < 1) {
+      /* canvas.drawPath(
+        Path()
+          ..moveTo(0, (size.height - minHeight) * progress)
+          ..lineTo(0, size.height - (minHeight + radianHeight) * (1 - progress))
+          ..cubicTo(
+            0,
+            size.height - (minHeight + radianHeight) * (1 - progress),
+            size.width / 2,
+            size.height - minHeight * (1 - progress),
+            size.width,
+            size.height - (minHeight + radianHeight) * (1 - progress),
+          )
+          ..lineTo(size.width, (size.height - minHeight) * progress)
+          ..cubicTo(
+            size.width,
+            (size.height - minHeight) * progress,
+            size.width / 2,
+            (size.height - minHeight - radianHeight) * progress,
+            0,
+            (size.height - minHeight) * progress,
+          ),
+        paint,
+      ); */
+      canvas.drawPath(
+        Path()
+          ..moveTo(0, 0)
+          ..lineTo(0, size.height - (minHeight + radianHeight) * (1 - progress))
+          ..cubicTo(
+            0,
+            size.height - (minHeight + radianHeight) * (1 - progress),
+            size.width / 2,
+            size.height - minHeight * (1 - progress),
+            size.width,
+            size.height - (minHeight + radianHeight) * (1 - progress),
+          )
+          ..lineTo(size.width, 0),
+        paint,
+      );
+    } else {
+      print((size.height - minHeight) * (progress - 1));
+      canvas.drawPath(
+        Path()
+          ..moveTo(0, size.height)
+          ..lineTo(0, (size.height - minHeight) * (progress - 1))
+          ..cubicTo(
+            0,
+            (size.height - minHeight) * (progress - 1),
+            size.width / 2,
+            (size.height - minHeight - radianHeight) * (progress - 1),
+            size.width,
+            (size.height - minHeight) * (progress - 1),
+          )
+          ..lineTo(size.width, size.height),
+        paint,
+      );
+    }
   }
 
   @override
