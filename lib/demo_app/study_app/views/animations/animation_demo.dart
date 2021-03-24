@@ -4,13 +4,14 @@ import 'package:flutter_study/demo_app/study_app/components/list_title.dart';
 import 'package:flutter_study/demo_app/study_app/models/list_model.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/animated_switcher_demo.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/basic_animations_demo.dart';
+import 'package:flutter_study/demo_app/study_app/views/animations/transition_demo.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/waves_animations_demo.dart';
 
 class AnimationDemo extends StatelessWidget {
   final List<ListModel> listModel = [
     ListModel(
       title: '动画基础',
-      subtitle: '动画实现几种方式',
+      subtitle: '动画基础和动画组件使用',
       icon: Icons.scatter_plot_outlined,
       route: BasicAnimationDemo(),
     ),
@@ -25,6 +26,12 @@ class AnimationDemo extends StatelessWidget {
       subtitle: '通过动画切换组件',
       icon: Icons.scatter_plot_outlined,
       route: AnimatedSwitcherDemo(),
+    ),
+    ListModel(
+      title: '隐式动画',
+      subtitle: '在内部实现动画控制,不需要自己声明动画的控制器',
+      icon: Icons.scatter_plot_outlined,
+      route: TransitionDemo(),
     ),
   ];
 

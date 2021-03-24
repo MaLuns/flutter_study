@@ -7,7 +7,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
   AnimationController _controller;
-
+  int type = 0;
   @override
   void initState() {
     super.initState();
@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     return OutlineInputBorder(
       borderSide: BorderSide(color: Color(0x00000000)),
       borderRadius: BorderRadius.all(
-        Radius.circular(100),
+        Radius.circular(3),
       ),
     );
   }
@@ -33,6 +33,96 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  Widget renderPwaLogin() {
+    return Container(
+      key: ValueKey('renderPwaLogin'),
+      padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "Welcome Back!",
+              style: TextStyle(
+                color: Color(0xff5d916d),
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(top: 16)),
+          Center(
+            child: Text(
+              "You need to identify to sign back in ",
+              style: TextStyle(
+                fontSize: 16,
+                color: Color(0xffaaaaaa),
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(top: 150)),
+          TextField(
+            maxLines: 1,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: "E - M A I l",
+              contentPadding: EdgeInsets.symmetric(vertical: 5),
+              fillColor: Color(0xffeeeeee),
+              filled: true,
+              enabledBorder: _getOutlineInputBorder(),
+              focusedBorder: _getOutlineInputBorder(),
+            ),
+          ),
+          Padding(padding: EdgeInsets.all(10)),
+          TextField(
+            maxLines: 1,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: "E - M A I l",
+              contentPadding: EdgeInsets.symmetric(vertical: 5),
+              fillColor: Color(0xffeeeeee),
+              filled: true,
+              enabledBorder: _getOutlineInputBorder(),
+              focusedBorder: _getOutlineInputBorder(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget renderZwLogin() {
+    return Container(
+      key: ValueKey('renderZwLogin'),
+      padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "Welcome Back!",
+              style: TextStyle(
+                color: Color(0xffffffff),
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.all(8)),
+          Center(
+            child: Text(
+              "You need to identify to sign back in ",
+              style: TextStyle(
+                fontSize: 16,
+                color: Color(0xffaaaaaa),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 
   @override
@@ -58,184 +148,65 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 painter: BgView(_controller.value),
               ),
             ),
+            AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              transitionBuilder: (Widget child, Animation<double> animation) => FadeTransition(child: child, opacity: animation),
+              child: type == 0 ? renderPwaLogin() : renderZwLogin(),
+            ),
             Positioned(
               bottom: 75,
               left: 0,
               right: 0,
-              child: Center(
-                child: GestureDetector(
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Color(0xff007b45),
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onTap: () {
-                    if (this._controller.status == AnimationStatus.dismissed) {
-                      this._controller.forward();
-                    }
-                    if (this._controller.status == AnimationStatus.completed) {
-                      //反向执行动画
-                      this._controller.reverse();
-                    }
-                  },
-                ),
-              ),
-            )
-            /*  Container(
-            height: 500,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 120, bottom: 20),
-            padding: EdgeInsets.only(left: 20, right: 20, top: 100),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              children: [
-                TextField(
-                  maxLines: 1,
-                  maxLength: 11,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.phone_iphone),
-                    hintText: "请输入手机号",
-                    contentPadding: EdgeInsets.symmetric(vertical: 5),
-                    fillColor: Color(0xffeeeeee),
-                    filled: true,
-                    enabledBorder: _getOutlineInputBorder(),
-                    focusedBorder: _getOutlineInputBorder(),
-                  ),
-                ),
-                TextField(
-                  maxLines: 1,
-                  maxLength: 30,
-                  obscureText: true,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.lock),
-                    hintText: "请输入密码",
-                    contentPadding: EdgeInsets.symmetric(vertical: 5),
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye,
-                    ),
-                    fillColor: Color(0xffeeeeee),
-                    filled: true,
-                    enabledBorder: _getOutlineInputBorder(),
-                    focusedBorder: _getOutlineInputBorder(),
-                  ),
-                ),
-                Padding(padding: EdgeInsets.only(top: 10)),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    '忘记密码?',
-                    style: TextStyle(color: Color(0xffaaaaaa)),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 20),
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                      "登录",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xff38acfa),
-                        Color(0xff88acfa),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '验证码登录',
-                      style: TextStyle(color: Color(0xffaaaaaa)),
-                    ),
-                    Container(
-                      height: 12,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: VerticalDivider(
-                        color: Colors.black26,
-                        width: 0,
-                        thickness: 1,
-                      ),
-                    ),
-                    Text(
-                      '新用户注册',
-                      style: TextStyle(color: Color(0xff38acfa)),
-                    ),
-                  ],
-                ),
-                Padding(padding: EdgeInsets.only(top: 20)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Checkbox(value: true, onChanged: null),
-                    Text.rich(
-                      TextSpan(
-                        text: '我已阅读并同意遵守',
-                        style: TextStyle(
-                          color: Color(0xff999999),
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "<服务协议>",
-                            style: TextStyle(
-                              color: Color(0xff333333),
-                              decoration: TextDecoration.underline,
+              child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 300),
+                transitionBuilder: (Widget child, Animation<double> animation) => FadeTransition(child: child, opacity: animation),
+                child: type == 0
+                    ? Center(
+                        key: ValueKey(type),
+                        child: GestureDetector(
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Color(0xff5d916d),
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                              size: 30,
                             ),
                           ),
-                        ],
+                          onTap: () {
+                            this._controller.forward();
+                            setState(() {
+                              type = type == 0 ? 1 : 0;
+                            });
+                          },
+                        ),
+                      )
+                    : Center(
+                        key: ValueKey(type),
+                        child: GestureDetector(
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            child: Icon(
+                              Icons.track_changes,
+                              color: Color(0xff5d916d),
+                              size: 50,
+                            ),
+                          ),
+                          onTap: () {
+                            this._controller.reverse();
+                            setState(() {
+                              type = type == 0 ? 1 : 0;
+                            });
+                          },
+                        ),
                       ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.only(top: 90),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: 80,
-              height: 80,
-              margin: EdgeInsets.only(top: 100),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage('asset/images/logo.png'),
-                ),
-              ),
-            ),
-          ),
-         */
           ],
         ),
       ),
@@ -299,14 +270,14 @@ class BgView extends CustomPainter {
       canvas.drawPath(
         Path()
           ..moveTo(0, size.height)
-          ..lineTo(0, (size.height - minHeight) * (progress - 1))
+          ..lineTo(0, (size.height - minHeight - radianHeight) * (progress - 1))
           ..cubicTo(
             0,
-            (size.height - minHeight) * (progress - 1),
-            size.width / 2,
             (size.height - minHeight - radianHeight) * (progress - 1),
+            size.width / 2,
+            (size.height - minHeight - radianHeight * 2) * (progress - 1),
             size.width,
-            (size.height - minHeight) * (progress - 1),
+            (size.height - minHeight - radianHeight) * (progress - 1),
           )
           ..lineTo(size.width, size.height),
         paint,

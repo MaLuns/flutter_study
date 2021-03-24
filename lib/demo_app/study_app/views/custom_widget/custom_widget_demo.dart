@@ -9,7 +9,7 @@ class CustomWidgetDemo extends StatelessWidget {
   final List<ListModel> listModel = [
     ListModel(
       title: '绘制',
-      subtitle: '画布的绘制方式',
+      subtitle: '画笔画布',
       icon: Icons.scatter_plot_outlined,
       route: CanvasDarwDemo(),
     ),
