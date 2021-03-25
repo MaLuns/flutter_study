@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/icon/iconfont.dart';
 import '../../components/h2_title.dart';
 
 class BasicIconDemo extends StatelessWidget {
   final List iconList = [
-    ListIcons.li,
-    ListIcons.boluo,
-    ListIcons.shanzu,
-    ListIcons.putao,
-    ListIcons.xihongshi,
-    ListIcons.juzhi,
-    ListIcons.lanmei,
-    ListIcons.nimeng,
-    ListIcons.pinguo,
-    ListIcons.xigua,
+    IconList.android_fill,
+    IconList.attachment,
+    IconList.backspace_fill,
+    IconList.penRuler_fill,
+    IconList.audio,
+    IconList.zhiwen,
+    IconList.orderx_fill,
+    IconList.toLeft_fill,
+    IconList.basket,
+    IconList.orderx_fill,
   ];
   final List nzIconList = [
     Icons.ten_k,
@@ -94,21 +95,4 @@ class BasicIconDemo extends StatelessWidget {
       ],
     );
   }
-}
-
-// 自定义图标
-class ListIcons {
-  static const IconData li = IconData(0xe611, fontFamily: 'IconFont');
-  static const IconData boluo = IconData(0xe613, fontFamily: 'IconFont');
-  static const IconData shanzu = IconData(0xe614, fontFamily: 'IconFont');
-  static const IconData putao = IconData(0xe615, fontFamily: 'IconFont');
-  static const IconData xihongshi = IconData(0xe617, fontFamily: 'IconFont');
-  static const IconData juzhi = IconData(0xe618, fontFamily: 'IconFont');
-  static const IconData liulian = IconData(0xe619, fontFamily: 'IconFont');
-  static const IconData lanmei = IconData(0xe61a, fontFamily: 'IconFont');
-  static const IconData caomei = IconData(0xe61b, fontFamily: 'IconFont');
-  static const IconData mugua = IconData(0xe61c, fontFamily: 'IconFont');
-  static const IconData nimeng = IconData(0xe61e, fontFamily: 'IconFont');
-  static const IconData pinguo = IconData(0xe61f, fontFamily: 'IconFont');
-  static const IconData xigua = IconData(0xe620, fontFamily: 'IconFont');
 }
