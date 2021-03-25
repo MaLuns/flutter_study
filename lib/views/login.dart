@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
 
-    _controller = AnimationController(duration: Duration(milliseconds: 300), value: 0, upperBound: 2, vsync: this);
+    _controller = AnimationController(duration: Duration(milliseconds: 500), value: 0, upperBound: 2, vsync: this);
     CurvedAnimation(parent: _controller, curve: Curves.easeInOutQuart)
       ..addListener(() {
         setState(() {});
@@ -42,53 +42,58 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      primary: false,
-      resizeToAvoidBottomPadding: false,
-      body: GestureDetector(
-        onTap: () {
-          // 点击其他区域 去除焦点
-          FocusScope.of(context).unfocus();
-        },
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('asset/images/login.jpg'),
+    return Theme(
+      data: ThemeData(
+        primaryColor: Color(0xff5d916d),
+        cursorColor: Color(0xff5d916d),
+      ),
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        body: GestureDetector(
+          onTap: () {
+            // 点击其他区域 去除焦点
+            FocusScope.of(context).unfocus();
+          },
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('asset/images/login.jpg'),
+              ),
             ),
-          ),
-          child: Stack(
-            children: [
-              Container(
-                child: CustomPaint(
-                  size: MediaQuery.of(context).size,
-                  painter: BgView(
-                    progress: _controller.value,
-                    minHeight: minHeight,
-                    radianHeight: radianHeight,
+            child: Stack(
+              children: [
+                Container(
+                  child: CustomPaint(
+                    size: MediaQuery.of(context).size,
+                    painter: BgView(
+                      progress: _controller.value,
+                      minHeight: minHeight,
+                      radianHeight: radianHeight,
+                    ),
                   ),
                 ),
-              ),
-              AnimatedSwitcher(
-                duration: Duration(milliseconds: 300),
-                transitionBuilder: (Widget child, Animation<double> animation) => FadeTransition(child: child, opacity: animation),
-                child: type == 0
-                    ? PasswordLogin(
-                        key: ValueKey('renderPasswordLogin'),
-                        typeChange: this.change,
-                        minHeight: minHeight,
-                        radianHeight: radianHeight,
-                      )
-                    : FingerprintLogin(
-                        key: ValueKey('renderFingerprintLogin'),
-                        typeChange: this.change,
-                        minHeight: minHeight,
-                        radianHeight: radianHeight,
-                      ),
-              ),
-            ],
+                AnimatedSwitcher(
+                  duration: Duration(milliseconds: 300),
+                  transitionBuilder: (Widget child, Animation<double> animation) => FadeTransition(child: child, opacity: animation),
+                  child: type == 0
+                      ? PasswordLogin(
+                          key: ValueKey('renderPasswordLogin'),
+                          typeChange: this.change,
+                          minHeight: minHeight,
+                          radianHeight: radianHeight,
+                        )
+                      : FingerprintLogin(
+                          key: ValueKey('renderFingerprintLogin'),
+                          typeChange: this.change,
+                          minHeight: minHeight,
+                          radianHeight: radianHeight,
+                        ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -109,11 +114,11 @@ class PasswordLogin extends StatefulWidget {
 }
 
 class _PasswordLoginState extends State<PasswordLogin> {
-  FocusNode focusNode = FocusNode(
+  /* FocusNode focusNode = FocusNode(
     descendantsAreFocusable: false,
     canRequestFocus: false,
     skipTraversal: true,
-  );
+  ); */
 
   OutlineInputBorder _getOutlineInputBorder() {
     return OutlineInputBorder(
@@ -140,7 +145,7 @@ class _PasswordLoginState extends State<PasswordLogin> {
                   style: TextStyle(
                     color: Color(0xff5d916d),
                     fontWeight: FontWeight.w700,
-                    fontSize: 24,
+                    fontSize: 26,
                   ),
                 ),
               ),
@@ -149,19 +154,19 @@ class _PasswordLoginState extends State<PasswordLogin> {
                 child: Text(
                   "You need to identify to sign back in ",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     color: Color(0xffaaaaaa),
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 150)),
+              Padding(padding: EdgeInsets.only(top: 120)),
               TextField(
                 maxLines: 1,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: "please input email",
                   contentPadding: EdgeInsets.symmetric(vertical: 5),
-                  fillColor: Color(0xfff3f3f3),
+                  fillColor: Color(0xfff3f4f6),
                   filled: true,
                   enabledBorder: _getOutlineInputBorder(),
                   focusedBorder: _getOutlineInputBorder(),
@@ -173,35 +178,42 @@ class _PasswordLoginState extends State<PasswordLogin> {
               TextField(
                 maxLines: 1,
                 keyboardType: TextInputType.visiblePassword,
-                focusNode: focusNode,
+                /* focusNode: focusNode, */
                 decoration: InputDecoration(
                   hintText: "please input password",
                   contentPadding: EdgeInsets.symmetric(vertical: 5),
-                  fillColor: Color(0xfff3f3f3),
+                  fillColor: Color(0xfff3f4f6),
                   filled: true,
                   enabledBorder: _getOutlineInputBorder(),
                   focusedBorder: _getOutlineInputBorder(),
                   prefixIcon: Icon(Icons.lock_outline_rounded),
-                  suffixIcon: IconButton(
+                  /* suffixIcon: IconButton(
                     icon: Icon(Icons.fingerprint, color: Color(0xffaaaaaa)),
                     onPressed: () {
-                      focusNode.unfocus();
+                      //focusNode.unfocus();
+                      FocusScope.of(context).requestFocus(focusNode);
                       widget.typeChange();
+                      return false;
                     },
-                  ),
+                  ), */
                 ),
+                /* readOnly: true, */
+                /* showCursor: true, */
               ),
               Padding(padding: EdgeInsets.only(top: 32)),
-              Center(
+              Container(
+                padding: EdgeInsets.only(bottom: 5),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: Color(0xff5d916d), width: 2),
+                  ),
+                ),
                 child: Text(
-                  "Forgot ?",
+                  'Forgot?',
                   style: TextStyle(
                     color: Color(0xffaaaaaa),
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Color(0xff5d916d),
-                    decorationStyle: TextDecorationStyle.solid,
                   ),
                 ),
               ),
@@ -231,6 +243,20 @@ class _PasswordLoginState extends State<PasswordLogin> {
               onTap: () {},
             ),
           ),
+        ),
+        Positioned(
+          child: Listener(
+            child: IconButton(
+              icon: Icon(Icons.fingerprint, color: Color(0xffaaaaaa)),
+              onPressed: () {
+                widget.typeChange();
+                return false;
+              },
+            ),
+            behavior: HitTestBehavior.opaque, // 将组件当成不透明 防止事件穿透到下层
+          ),
+          top: 350,
+          right: 20,
         ),
       ],
     );
@@ -266,7 +292,7 @@ class _FingerprintLoginState extends State<FingerprintLogin> {
                   style: TextStyle(
                     color: Color(0xffffffff),
                     fontWeight: FontWeight.w700,
-                    fontSize: 24,
+                    fontSize: 26,
                   ),
                 ),
               ),
@@ -275,7 +301,7 @@ class _FingerprintLoginState extends State<FingerprintLogin> {
                 child: Text(
                   "You need to identify to sign back in ",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     color: Color(0xffaaaaaa),
                   ),
                 ),
@@ -302,14 +328,19 @@ class _FingerprintLoginState extends State<FingerprintLogin> {
               ),
               GestureDetector(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 80),
-                  child: Text(
-                    'Use password',
-                    style: TextStyle(
-                      color: Color(0xffaaaaaa),
-                      decoration: TextDecoration.underline,
-                      decorationColor: Color(0xff5d916d),
-                      decorationStyle: TextDecorationStyle.solid,
+                  padding: EdgeInsets.only(top: 60),
+                  child: Container(
+                    padding: EdgeInsets.only(bottom: 5),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: Color(0xff5d916d), width: 1),
+                      ),
+                    ),
+                    child: Text(
+                      'Use password',
+                      style: TextStyle(
+                        color: Color(0xffaaaaaa),
+                      ),
                     ),
                   ),
                 ),

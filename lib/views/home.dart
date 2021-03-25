@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/study_app/components/list_title.dart';
 import 'package:flutter_study/demo_app/study_app/models/list_model.dart';
+import 'package:flutter_study/icon/iconfont.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
         ListModel(
           title: 'Widget',
           subtitle: '基础Widget演示',
-          icon: Icons.tag_faces,
+          icon: IconList.android_fill,
           route: 'StudyAppHome',
         ),
         ListModel(
@@ -27,8 +28,8 @@ class HomePage extends StatelessWidget {
         ),
         ListModel(
           title: '登录',
-          subtitle: '登录页面',
-          icon: Icons.login,
+          subtitle: '一个登录页面交互效果',
+          icon: IconList.zhiwen,
           route: 'Login',
         ),
       ]),
