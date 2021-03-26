@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'views/state/state_demo.dart';
 import 'views/animations/animation_demo.dart';
 import 'views/basic_widgets/basic_widgets_demo.dart';
 import 'views/custom_widget/custom_widget_demo.dart';
@@ -11,4 +12,5 @@ Map<String, WidgetBuilder> routes = {
   'PointerEventDemo': (context) => PointerEventDemo(),
   'CustomWidgetDemo': (context) => CustomWidgetDemo(),
   'AnimationDemo': (context) => AnimationDemo(),
+  'StateDemo': (context) => StateDemo(),
 };

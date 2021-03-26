@@ -34,6 +34,12 @@ final List<ListModel> listModel = [
     icon: Icons.animation,
     route: 'AnimationDemo',
   ),
+  ListModel(
+    title: 'State',
+    subtitle: '状态管理',
+    icon: Icons.data_usage,
+    route: 'StateDemo',
+  ),
 ];
 
 class WidgetStudy extends StatelessWidget {
