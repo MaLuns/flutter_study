@@ -15,11 +15,8 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
 
-    _controller = AnimationController(duration: Duration(milliseconds: 500), value: 0, upperBound: 2, vsync: this);
-    CurvedAnimation(parent: _controller, curve: Curves.easeInOutQuart)
-      ..addListener(() {
-        setState(() {});
-      });
+    _controller = AnimationController(duration: Duration(milliseconds: 380), value: 0, upperBound: 2, vsync: this);
+    CurvedAnimation(parent: _controller, curve: Curves.ease);
   }
 
   @override
@@ -65,16 +62,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
             ),
             child: Stack(
               children: [
-                Container(
-                  child: CustomPaint(
-                    size: MediaQuery.of(context).size,
-                    painter: BgView(
-                      progress: _controller.value,
-                      minHeight: minHeight,
-                      radianHeight: radianHeight,
-                    ),
-                  ),
-                ),
+                BgVieAnimatedWidget(minHeight: minHeight, radianHeight: radianHeight, animation: _controller),
                 AnimatedSwitcher(
                   duration: Duration(milliseconds: 300),
                   transitionBuilder: (Widget child, Animation<double> animation) => FadeTransition(child: child, opacity: animation),
@@ -357,6 +345,27 @@ class _FingerprintLoginState extends State<FingerprintLogin> {
 }
 
 // 背景动画
+class BgVieAnimatedWidget extends AnimatedWidget {
+  final double minHeight;
+  final double radianHeight;
+  final Animation<double> animation;
+
+  BgVieAnimatedWidget({Key key, this.minHeight = 150, this.radianHeight = 100, @required this.animation}) : super(key: key, listenable: animation);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: CustomPaint(
+        size: MediaQuery.of(context).size,
+        painter: BgView(
+          progress: animation.value,
+          minHeight: minHeight,
+          radianHeight: radianHeight,
+        ),
+      ),
+    );
+  }
+}
+
 class BgView extends CustomPainter {
   double progress;
   double minHeight;

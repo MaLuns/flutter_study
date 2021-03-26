@@ -12,6 +12,7 @@ class _TransitionDemoState extends State<TransitionDemo> {
   Color color = Colors.yellow[800];
   @override
   Widget build(BuildContext context) {
+    debugPrint('执行父build');
     return BasiceAppLayout(
       title: '隐式动画',
       pl: 0,
@@ -92,6 +93,7 @@ class _DemoImplicitlyAnimatedWidget extends AnimatedWidgetBaseState<DemoImplicit
   Tween<double> _height;
   @override
   Widget build(BuildContext context) {
+    debugPrint('执行动画build');
     return Container(
       color: _color.evaluate(animation),
       height: _height.evaluate(animation),
