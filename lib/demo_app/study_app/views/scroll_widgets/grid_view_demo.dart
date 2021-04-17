@@ -39,7 +39,7 @@ class GridViewDemoOne extends StatelessWidget {
             crossAxisSpacing: 10,
             childAspectRatio: 8 / 11,
           ),
-          children: [1, 2, 3, 1, 2, 3].map((e) => Container(color: Colors.black12)).toList(),
+          children: List.generate(6, (e) => Container(color: Colors.black12)).toList(),
         ),
         H2Title(title: 'SliverGridDelegateWithMaxCrossAxisExtent'),
         GridView(
@@ -50,7 +50,7 @@ class GridViewDemoOne extends StatelessWidget {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
           ),
-          children: [1, 2, 3, 1, 2, 3].map((e) => Container(color: Colors.black12)).toList(),
+          children: List.generate(6, (e) => Container(color: Colors.black12)).toList(),
         ),
       ],
     );

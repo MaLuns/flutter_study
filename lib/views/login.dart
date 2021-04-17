@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,7 +15,6 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(duration: Duration(milliseconds: 380), value: 0, upperBound: 2, vsync: this);
     CurvedAnimation(parent: _controller, curve: Curves.ease);
   }
@@ -39,13 +39,14 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
+    print('222');
     return Theme(
       data: ThemeData(
         primaryColor: Color(0xff5d916d),
         cursorColor: Color(0xff5d916d),
       ),
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
         body: GestureDetector(
           onTap: () {
             // 点击其他区域 去除焦点
@@ -119,6 +120,11 @@ class _PasswordLoginState extends State<PasswordLogin> {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(milliseconds: 300), () {
+      // 首次进来未生效，具体原因没找到   可能Scaffold还渲染完成？？？
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    });
+
     return Stack(
       key: ValueKey('renderPasswordLogin'),
       children: [
@@ -266,6 +272,7 @@ class FingerprintLogin extends StatefulWidget {
 class _FingerprintLoginState extends State<FingerprintLogin> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Stack(
       key: ValueKey('renderFingerprintLogin'),
       children: [

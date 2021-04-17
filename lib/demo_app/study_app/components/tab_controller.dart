@@ -33,6 +33,7 @@ class _TabCoontrollerComponent extends State<TabCoontrollerComponent> with Singl
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        brightness: Brightness.dark,
         elevation: 0,
         bottom: TabBar(
           unselectedLabelColor: Colors.white54,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_study/demo_app/theme_shop/views/classify/shop_classify.dart';
 import 'views/home/shop_home.dart';
 import 'views/my/shop_my.dart';
 
@@ -12,7 +14,7 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
   Widget _curWidget;
   final List<Widget> _list = [
     ShopHome(),
-    Text('Page2'),
+    ShopClassify(),
     Text('Page3'),
     ShopMy(),
   ];
@@ -32,9 +34,16 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
         splashColor: Color.fromRGBO(0, 0, 0, 0),
       ),
       home: Scaffold(
+        appBar: AppBar(
+          brightness: Brightness.light,
+          toolbarHeight: 0,
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
         backgroundColor: Colors.white,
         body: SafeArea(child: _curWidget),
         bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.red,
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
           onTap: (index) {

@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Color(0xFFf7f7f7),
       appBar: AppBar(
         title: Text("Flutter"),
+        brightness: Brightness.dark,
         centerTitle: true, // 居中
         elevation: 0.0, // 阴影高度
       ),

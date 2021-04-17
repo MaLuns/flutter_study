@@ -117,3 +117,16 @@ class ThemeWallhavenDetail {
     @required this.tuJian,
   });
 }
+
+class ShopClassifyModel {
+  // 标题
+  String title;
+  List<ShopClassifyDetail> children;
+  ShopClassifyModel({@required this.title, @required this.children});
+}
+
+class ShopClassifyDetail {
+  String url;
+  String title;
+  ShopClassifyDetail({@required this.url, @required this.title});
+}

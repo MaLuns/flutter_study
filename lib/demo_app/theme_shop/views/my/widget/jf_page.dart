@@ -7,7 +7,7 @@ class JFPage extends StatelessWidget {
     return Scaffold(
       primary: false,
       backgroundColor: Color(0xfff3f3f3),
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Container(

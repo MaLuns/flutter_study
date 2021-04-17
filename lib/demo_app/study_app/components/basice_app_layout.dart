@@ -23,6 +23,7 @@ class BasiceAppLayout extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
         centerTitle: true,
+        brightness: Brightness.dark,
         elevation: 0,
       ),
       body: Container(
