@@ -39,7 +39,6 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    print('222');
     return Theme(
       data: ThemeData(
         primaryColor: Color(0xff5d916d),

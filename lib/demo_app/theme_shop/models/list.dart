@@ -122,7 +122,8 @@ class ShopClassifyModel {
   // 标题
   String title;
   List<ShopClassifyDetail> children;
-  ShopClassifyModel({@required this.title, @required this.children});
+  double top;
+  ShopClassifyModel({@required this.title, @required this.children, this.top = 0});
 }
 
 class ShopClassifyDetail {
