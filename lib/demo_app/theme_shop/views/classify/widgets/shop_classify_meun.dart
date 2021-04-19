@@ -28,22 +28,32 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
       });
       _maxScroll = occupyHeight;
     });
-    _controller.addListener(() {
+  }
+
+  void setindex({int index}) {
+    if (index != null) {
+      Future.delayed(Duration(milliseconds: 250), () {
+        setState(() {
+          _index = index;
+        });
+      });
+    } else {
+      index = 0;
       double _top = _controller.offset;
-      int index = 0;
       double lastheight = 0;
       int _idx = 0;
       widget.data.forEach((element) {
-        if (_top > lastheight && _top < element.top) {
+        if (_top >= lastheight && _top < element.top) {
           index = _idx - 1;
         }
         lastheight = element.top;
         _idx++;
       });
+
       setState(() {
         _index = index;
       });
-    });
+    }
   }
 
   void scrollTo(int index) {
@@ -66,6 +76,7 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
     super.dispose();
   }
 
+  // todo 左右拆分成独立的
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -91,9 +102,7 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
                 ),
                 onTap: () {
                   scrollTo(index);
-                  setState(() {
-                    _index = index;
-                  });
+                  setindex(index: index);
                 },
               );
             },
@@ -104,62 +113,70 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
             color: Colors.white,
             alignment: Alignment.topCenter,
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: ListView(
-              controller: _controller,
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              children: widget.data.asMap().keys.map((index) {
-                ShopClassifyModel e = widget.data[index];
-
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 50,
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        e.title,
-                        style: TextStyle(
-                          fontWeight: _index == index ? FontWeight.w600 : FontWeight.w500,
+            child: NotificationListener(
+              onNotification: (notification) {
+                // print(notification.runtimeType ==ScrollStartNotification) //开始滚动
+                // print(notification.runtimeType == ScrollUpdateNotification); //滚动中
+                // print(notification.runtimeType == ScrollEndNotification); //滚动结束
+                setindex();
+                return false;
+              },
+              child: ListView(
+                controller: _controller,
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                children: widget.data.asMap().keys.map((index) {
+                  ShopClassifyModel e = widget.data[index];
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 50,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          e.title,
+                          style: TextStyle(
+                            fontWeight: _index == index ? FontWeight.w600 : FontWeight.w500,
+                          ),
                         ),
                       ),
-                    ),
-                    GridView(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        childAspectRatio: 6 / 5,
-                      ),
-                      children: e.children
-                          .map((e) => Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(e.url),
-                                          fit: BoxFit.cover,
+                      GridView(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          childAspectRatio: 6 / 5,
+                        ),
+                        children: e.children
+                            .map((e) => Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: NetworkImage(e.url),
+                                            fit: BoxFit.cover,
+                                          ),
+                                          borderRadius: BorderRadius.circular(5),
                                         ),
-                                        borderRadius: BorderRadius.circular(5),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: Text(e.title),
-                                    height: 30,
-                                    alignment: Alignment.centerLeft,
-                                  ),
-                                ],
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                );
-              }).toList(),
+                                    Container(
+                                      child: Text(e.title),
+                                      height: 30,
+                                      alignment: Alignment.centerLeft,
+                                    ),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
+                    ],
+                  );
+                }).toList(),
+              ),
             ),
           ),
         ),

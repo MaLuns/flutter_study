@@ -17,12 +17,12 @@ class _ShopSelectState extends State<ShopSelect> {
     print(users);
 
     return Container(
-      height: 300,
+      height: 600,
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return new Image.network(
-            "http://via.placeholder.com/350x150",
-            fit: BoxFit.fill,
+          return Image.network(
+            "https://imgpub.chuangkit.com/banner_img_da/321_2?v=1608904322816&x-oss-process=image/format,webp",
+            fit: BoxFit.contain,
           );
         },
         itemCount: 3,

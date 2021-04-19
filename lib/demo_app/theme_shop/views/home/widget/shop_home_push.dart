@@ -6,6 +6,7 @@ import '../../../models/list.dart';
 import '../../../components/carousel_card.dart';
 import '../../../components/theme_flow.dart';
 import '../../../mock/mock.dart';
+import 'small_swiper_pagination.dart';
 
 class ShopHomePush extends StatefulWidget {
   @override
@@ -103,7 +104,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
             autoplay: true,
             pagination: SwiperPagination(
               margin: EdgeInsets.all(10.0),
-              builder: SwiperPaginationTop(),
+              builder: SmallSwiperPagination(),
             ),
             viewportFraction: 1,
           ),
@@ -247,27 +248,6 @@ class ImgSliver extends StatelessWidget {
       },
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
-    );
-  }
-}
-
-class SwiperPaginationTop extends SwiperPlugin {
-  @override
-  Widget build(BuildContext context, SwiperPluginConfig config) {
-    print(config);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(config.itemCount, (index) {
-        return Container(
-          height: 6,
-          width: 6,
-          margin: EdgeInsets.symmetric(horizontal: 5),
-          decoration: BoxDecoration(
-            color: index == config.activeIndex ? Colors.red : Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
-        );
-      }),
     );
   }
 }

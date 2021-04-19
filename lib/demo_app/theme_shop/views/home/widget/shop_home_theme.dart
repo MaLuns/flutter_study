@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../../models/list.dart';
 import '../../../mock/mock.dart';
 import '../../../components/theme_flow.dart';
-import '../../../components/carousel_card.dart';
+import 'small_swiper_pagination.dart';
 
 class ShopHomeTheme extends StatefulWidget {
   @override
@@ -13,6 +14,11 @@ class _ShopHomeThemeState extends State<ShopHomeTheme> {
   List<ThemeFlowModel> data = List.from(themeFlowModelData);
   bool isLoading = false;
   ScrollController scrollController = ScrollController();
+  final List urls = [
+    'https://imgpub.chuangkit.com/designTemplate/2020/12/08/4b51534b-a8d0-4a2b-a0b6-55a36650c7c8_thumb_gif?v=1607409721000&x-oss-process=image/resize,w_600/format,webp',
+    'https://imgpub.chuangkit.com/banner_img_da/321_2?v=1608904322816&x-oss-process=image/format,webp',
+    'https://imgpub.chuangkit.com/banner_img_da/315_2?v=1608904322816&x-oss-process=image/format,webp',
+  ];
 
   @override
   void initState() {
@@ -73,12 +79,32 @@ class _ShopHomeThemeState extends State<ShopHomeTheme> {
       padding: EdgeInsets.symmetric(vertical: 16),
       controller: scrollController,
       children: [
-        CarouselCard(
-          urls: [
-            'https://imgpub.chuangkit.com/designTemplate/2020/12/08/4b51534b-a8d0-4a2b-a0b6-55a36650c7c8_thumb_gif?v=1607409721000&x-oss-process=image/resize,w_600/format,webp',
-            'https://imgpub.chuangkit.com/banner_img_da/321_2?v=1608904322816&x-oss-process=image/format,webp',
-            'https://imgpub.chuangkit.com/banner_img_da/315_2?v=1608904322816&x-oss-process=image/format,webp',
-          ],
+        AspectRatio(
+          aspectRatio: 3 / 1,
+          child: Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                      image: NetworkImage(urls[index]),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
+            },
+            itemCount: urls.length,
+            scale: 0.8,
+            autoplay: true,
+            pagination: SwiperPagination(
+              margin: EdgeInsets.all(10.0),
+              builder: SmallSwiperPagination(),
+            ),
+            viewportFraction: 1,
+          ),
         ),
         Container(
           padding: EdgeInsets.all(16),

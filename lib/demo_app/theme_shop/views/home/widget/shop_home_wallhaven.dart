@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'small_swiper_pagination.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../../models/list.dart';
 import '../../../mock/mock.dart';
 import '../../../components/theme_flow.dart';
-import '../../../components/carousel_card.dart';
 
 class ShopHomeWallhaven extends StatefulWidget {
   @override
@@ -13,6 +14,11 @@ class _ShopHomeWallhavenState extends State<ShopHomeWallhaven> {
   List<ThemeFlowModel> data = List.from(wallhavenFlowModelData);
   bool isLoading = false;
   ScrollController scrollController = ScrollController();
+  final List urls = [
+    'https://imgpub.chuangkit.com/designTemplate/2020/12/27/cf36e968-1d8f-484c-b353-407c8a8f336e_thumb?v=1609071600000&x-oss-process=image/resize,w_600/format,webp',
+    'https://imgpub.chuangkit.com/designTemplate/2020/12/10/a87cd366-1db7-4825-8583-9bd51ae2acfa_thumb?v=1607592240000&x-oss-process=image/resize,w_600/format,webp',
+    'https://imgpub.chuangkit.com/designTemplate/2020/11/26/27ab77d8-a202-4cde-bc27-2577a1d3bc29_thumb?v=1606375440000&x-oss-process=image/resize,w_600/format,webp',
+  ];
 
   @override
   void initState() {
@@ -73,12 +79,32 @@ class _ShopHomeWallhavenState extends State<ShopHomeWallhaven> {
       padding: EdgeInsets.symmetric(vertical: 16),
       controller: scrollController,
       children: [
-        CarouselCard(
-          urls: [
-            'https://imgpub.chuangkit.com/designTemplate/2020/12/27/cf36e968-1d8f-484c-b353-407c8a8f336e_thumb?v=1609071600000&x-oss-process=image/resize,w_600/format,webp',
-            'https://imgpub.chuangkit.com/designTemplate/2020/12/10/a87cd366-1db7-4825-8583-9bd51ae2acfa_thumb?v=1607592240000&x-oss-process=image/resize,w_600/format,webp',
-            'https://imgpub.chuangkit.com/designTemplate/2020/11/26/27ab77d8-a202-4cde-bc27-2577a1d3bc29_thumb?v=1606375440000&x-oss-process=image/resize,w_600/format,webp',
-          ],
+        AspectRatio(
+          aspectRatio: 3 / 1,
+          child: Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                      image: NetworkImage(urls[index]),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
+            },
+            itemCount: urls.length,
+            scale: 0.8,
+            autoplay: true,
+            pagination: SwiperPagination(
+              margin: EdgeInsets.all(10.0),
+              builder: SmallSwiperPagination(),
+            ),
+            viewportFraction: 1,
+          ),
         ),
         Container(
           padding: EdgeInsets.all(16),
