@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_study/demo_app/theme_shop/views/classify/shop_classify.dart';
+import 'package:flutter_study/demo_app/theme_shop/views/selected/shop_select.dart';
 import 'views/home/shop_home.dart';
 import 'views/my/shop_my.dart';
 
@@ -15,7 +16,7 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
   final List<Widget> _list = [
     ShopHome(),
     ShopClassify(),
-    Text('Page3'),
+    ShopSelect(),
     ShopMy(),
   ];
 

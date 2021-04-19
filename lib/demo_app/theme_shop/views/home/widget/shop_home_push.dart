@@ -1,6 +1,7 @@
 // 推荐
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../../models/list.dart';
 import '../../../components/carousel_card.dart';
 import '../../../components/theme_flow.dart';
@@ -14,6 +15,11 @@ class ShopHomePush extends StatefulWidget {
 class _ShopHomePushState extends State<ShopHomePush> {
   bool isLoading = false;
   List<ThemeFlowModel> data = List.from(tuijianFlowModelData);
+  List<String> urls = [
+    'https://imgpub.chuangkit.com/banner_img_da/320_2?v=1608904322816&x-oss-process=image/format,webp',
+    'https://imgpub.chuangkit.com/banner_img_da/321_2?v=1608904322816&x-oss-process=image/format,webp',
+    'https://imgpub.chuangkit.com/banner_img_da/315_2?v=1608904322816&x-oss-process=image/format,webp',
+  ];
   ScrollController scrollController = ScrollController();
 
   @override
@@ -75,12 +81,32 @@ class _ShopHomePushState extends State<ShopHomePush> {
       padding: EdgeInsets.symmetric(vertical: 16),
       controller: scrollController,
       children: [
-        CarouselCard(
-          urls: [
-            'https://imgpub.chuangkit.com/banner_img_da/320_2?v=1608904322816&x-oss-process=image/format,webp',
-            'https://imgpub.chuangkit.com/banner_img_da/321_2?v=1608904322816&x-oss-process=image/format,webp',
-            'https://imgpub.chuangkit.com/banner_img_da/315_2?v=1608904322816&x-oss-process=image/format,webp',
-          ],
+        AspectRatio(
+          aspectRatio: 3 / 1,
+          child: Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                      image: NetworkImage(urls[index]),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
+            },
+            itemCount: urls.length,
+            scale: 0.8,
+            autoplay: true,
+            pagination: SwiperPagination(
+              margin: EdgeInsets.all(10.0),
+              builder: SwiperPaginationTop(),
+            ),
+            viewportFraction: 1,
+          ),
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -221,6 +247,27 @@ class ImgSliver extends StatelessWidget {
       },
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
+    );
+  }
+}
+
+class SwiperPaginationTop extends SwiperPlugin {
+  @override
+  Widget build(BuildContext context, SwiperPluginConfig config) {
+    print(config);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(config.itemCount, (index) {
+        return Container(
+          height: 6,
+          width: 6,
+          margin: EdgeInsets.symmetric(horizontal: 5),
+          decoration: BoxDecoration(
+            color: index == config.activeIndex ? Colors.red : Colors.white,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        );
+      }),
     );
   }
 }
