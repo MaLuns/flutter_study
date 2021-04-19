@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/theme_shop/models/list.dart';
-import 'dart:math';
 
 class ShopClassifyMenu extends StatefulWidget {
   final List<ShopClassifyModel> data;
@@ -12,8 +11,8 @@ class ShopClassifyMenu extends StatefulWidget {
 }
 
 class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
-  int _index = 0;
-  double _maxScroll = 0;
+  int _index = 0; // 索引
+  double _maxScroll = 0; // 滚动区域内容高度
   ScrollController _controller = ScrollController();
 
   @override
@@ -21,28 +20,44 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
     super.initState();
     Future.delayed(Duration.zero, () {
       double top = (MediaQuery.of(context).size.width - 150) / 12 * 5;
-      double zyheight = 0.0;
+      double occupyHeight = 0.0;
       widget.data.forEach((element) {
-        element.top = zyheight;
+        element.top = occupyHeight;
         int count = (element.children.length / 2).ceil();
-        zyheight += 40 + count * (top + 10);
+        occupyHeight += 40 + count * (top + 10);
       });
-      _maxScroll = zyheight;
+      _maxScroll = occupyHeight;
     });
     _controller.addListener(() {
-      //print(_controller.offset);
-      // print(_controller.position.maxScrollExtent); //竟然是变动的这个值
+      double _top = _controller.offset;
+      int index = 0;
+      double lastheight = 0;
+      int _idx = 0;
+      widget.data.forEach((element) {
+        if (_top > lastheight && _top < element.top) {
+          index = _idx - 1;
+        }
+        lastheight = element.top;
+        _idx++;
+      });
+      setState(() {
+        _index = index;
+      });
     });
   }
 
   void scrollTo(int index) {
     //_controller.jumpTo(widget.data[index].top);
-    print(_controller.position.maxScrollExtent);
-    print(widget.data[index].top);
-    print(_controller.position.viewportDimension);
-    double top = widget.data[index].top + _controller.position.viewportDimension > _controller.position.maxScrollExtent ? (_controller.position.maxScrollExtent - _controller.position.viewportDimension) : widget.data[index].top;
-    //double top = widget.data[index].top + _controller.position.viewportDimension > _maxScroll ? _maxScroll : widget.data[index].top;
-    _controller.animateTo(top, duration: const Duration(microseconds: 5000), curve: Curves.easeIn);
+    //print(_controller.position.maxScrollExtent); //竟然是变动的这个值
+    //print(widget.data[index].top);
+    //print(_controller.position.viewportDimension);
+    //double top = widget.data[index].top + _controller.position.viewportDimension > _controller.position.maxScrollExtent ? (_controller.position.maxScrollExtent - _controller.position.viewportDimension) : widget.data[index].top;
+    double top = widget.data[index].top + _controller.position.viewportDimension > _maxScroll ? (_maxScroll - _controller.position.viewportDimension) : widget.data[index].top;
+    _controller.animateTo(
+      top,
+      duration: Duration(milliseconds: 200),
+      curve: Curves.ease,
+    );
   }
 
   @override
@@ -53,7 +68,6 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.data[0].top);
     return Row(
       children: [
         Container(
@@ -89,11 +103,14 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
           child: Container(
             color: Colors.white,
             alignment: Alignment.topCenter,
-            padding: EdgeInsets.all(10),
-            child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: ListView(
               controller: _controller,
-              itemCount: widget.data.length,
-              itemBuilder: (context, index) {
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              children: widget.data.asMap().keys.map((index) {
+                ShopClassifyModel e = widget.data[index];
+
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -101,9 +118,9 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
                       height: 50,
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        widget.data[index].title,
+                        e.title,
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: _index == index ? FontWeight.w600 : FontWeight.w500,
                         ),
                       ),
                     ),
@@ -116,7 +133,7 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
                         crossAxisSpacing: 10,
                         childAspectRatio: 6 / 5,
                       ),
-                      children: widget.data[index].children
+                      children: e.children
                           .map((e) => Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -142,7 +159,7 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
                     ),
                   ],
                 );
-              },
+              }).toList(),
             ),
           ),
         ),
