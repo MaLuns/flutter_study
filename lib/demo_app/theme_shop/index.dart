@@ -38,7 +38,7 @@ class _ThemeShopHomeState extends State<ThemeShopHome> {
         appBar: AppBar(
           brightness: Brightness.light,
           toolbarHeight: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           elevation: 0,
         ),
         backgroundColor: Colors.white,
