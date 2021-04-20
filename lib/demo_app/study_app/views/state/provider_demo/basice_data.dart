@@ -3,7 +3,7 @@ import './data_inherited_widget.dart';
 import './publish_subscribe.dart';
 export './publish_subscribe.dart';
 
-class BasiceData<T> extends StatefulWidget {
+class BasiceData<T extends PublishSubscribe> extends StatefulWidget {
   final Widget child;
   final T data;
 
@@ -13,17 +13,18 @@ class BasiceData<T> extends StatefulWidget {
     this.child,
   });
 
-  static T of<T>(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<DataInheritedWidget<T>>().data;
+  static T of<T>(BuildContext context, {bool listenable = true}) {
+    final provider = listenable ? context.dependOnInheritedWidgetOfExactType<DataInheritedWidget<T>>() : context.getElementForInheritedWidgetOfExactType<DataInheritedWidget<T>>()?.widget as DataInheritedWidget<T>;
+    return provider.data;
   }
 
   @override
-  _BasiceDataState createState() => _BasiceDataState();
+  _BasiceDataState<T> createState() => _BasiceDataState<T>();
 }
 
-class _BasiceDataState<T extends PublishSubscribe> extends State<BasiceData> {
+class _BasiceDataState<T extends PublishSubscribe> extends State<BasiceData<T>> {
   void update() {
-    //如果数据发生变化（model类调用了notifyListeners），重新构建InheritedProvider
+    //如果数据发生变化（model类调用了notifyListeners），重新构建DataInheritedWidget
     setState(() => {});
   }
 
@@ -53,8 +54,10 @@ class _BasiceDataState<T extends PublishSubscribe> extends State<BasiceData> {
 
   @override
   Widget build(BuildContext context) {
+    // 每次setDate后 重写构建 DataInheritedWidget
+
     return DataInheritedWidget<T>(
-      child: widget.child,
+      child: widget.child, // 因为只是BasiceData 构建了,所以这个传进来child 还是原本来的引用
       data: widget.data,
     );
   }

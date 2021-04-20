@@ -1,11 +1,10 @@
 // 推荐
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_study/demo_app/theme_shop/components/theme_flow.dart';
+import 'package:flutter_study/demo_app/theme_shop/mock/mock.dart';
+import 'package:flutter_study/demo_app/theme_shop/models/list.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import '../../../models/list.dart';
-import '../../../components/carousel_card.dart';
-import '../../../components/theme_flow.dart';
-import '../../../mock/mock.dart';
 import 'small_swiper_pagination.dart';
 
 class ShopHomePush extends StatefulWidget {

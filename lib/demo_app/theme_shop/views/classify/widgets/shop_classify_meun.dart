@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/theme_shop/models/list.dart';
+import 'package:provider/provider.dart';
 
 class ShopClassifyMenu extends StatefulWidget {
   final List<ShopClassifyModel> data;
@@ -181,6 +182,33 @@ class _ShopClassifyMenuState extends State<ShopClassifyMenu> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ShopClassifyList with ChangeNotifier {
+  final List<ShopClassifyModel> data;
+  int index = 0;
+
+  ShopClassifyList({@required this.data});
+
+  void setIndex(int idx) {
+    index = idx;
+    notifyListeners();
+  }
+
+  get shopClassify => data[index];
+}
+
+class Chdddd extends StatelessWidget {
+  final List<ShopClassifyModel> data;
+  Chdddd(this.data) : super();
+  //List<ShopClassifyModel> _init(list) {}
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => ShopClassifyList(data: data),
+      child: Row(),
     );
   }
 }
