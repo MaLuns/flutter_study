@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/* class ShopSelect extends StatefulWidget {
+class ShopSelect extends StatefulWidget {
   @override
   _ShopSelectState createState() => _ShopSelectState();
 }
@@ -10,31 +10,38 @@ class _ShopSelectState extends State<ShopSelect> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverPersistentHeader(
+            pinned: true,
             delegate: DemoDelegate(
-              child: Container(
-                height: 200,
-                color: Colors.black12,
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '小时候',
-                      style: TextStyle(
-                        fontSize: 36,
-                      ),
-                    ),
-                    Text(
-                      '岁月留下的童话',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black38,
-                      ),
-                    ),
-                  ],
+              maxHeight: 180,
+              minHeight: 50,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.all(20),
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Image(
+                image: NetworkImage('https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7'),
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              height: 30,
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20),
+              child: Text(
+                '编辑精选',
+                style: TextStyle(
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -44,23 +51,86 @@ class _ShopSelectState extends State<ShopSelect> {
     );
   }
 }
- */
-class DemoDelegate extends SliverPersistentHeaderDelegate {
-  final Widget child;
 
-  DemoDelegate({@required this.child});
+class DemoDelegate extends SliverPersistentHeaderDelegate {
+  final double maxHeight;
+  final double minHeight;
+
+  DemoDelegate({@required this.maxHeight, @required this.minHeight});
+
+  int makeProgress(shrinkOffset, progress, {start = 0, qf = false}) {
+    int alpha = (shrinkOffset / (this.maxExtent - this.minExtent) * progress).clamp(start, progress).toInt();
+    if (qf) alpha = progress - alpha;
+    return alpha;
+  }
+
+  Color makeStickyHeaderBgColor(shrinkOffset) {
+    final int alpha = makeProgress(shrinkOffset, 255);
+    return Color.fromARGB(alpha, 255, 255, 255);
+  }
+
+  Color makeStickyHeaderTextColor(shrinkOffset, {qf = false, r: 0, g: 0, b: 0}) {
+    int alpha = makeProgress(shrinkOffset, 255);
+    if (qf) alpha = 255 - alpha;
+    return Color.fromARGB(alpha, r, g, b);
+  }
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     print(shrinkOffset);
-    return this.child;
+    return Container(
+      height: maxHeight,
+      color: Colors.white,
+      child: Stack(
+        children: [
+          Positioned(
+            child: Text(
+              '小时候',
+              style: TextStyle(
+                fontSize: 36,
+                color: makeStickyHeaderTextColor(shrinkOffset, qf: true),
+              ),
+            ),
+            top: makeProgress(shrinkOffset, 60, qf: true).toDouble(),
+            left: 20,
+          ),
+          Positioned(
+            child: Text(
+              '岁月留下的童话',
+              style: TextStyle(
+                fontSize: 14,
+                color: makeStickyHeaderTextColor(shrinkOffset, qf: true, r: 150, g: 150, b: 150),
+              ),
+            ),
+            top: makeProgress(shrinkOffset, 60, qf: true).toDouble() + 50,
+            left: 20,
+          ),
+          Positioned(
+            child: Container(
+              height: minHeight,
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20),
+              child: Text(
+                '精选',
+                style: TextStyle(
+                  fontSize: minHeight / 2,
+                  color: makeStickyHeaderTextColor(shrinkOffset),
+                ),
+              ),
+              color: makeStickyHeaderBgColor(shrinkOffset),
+            ),
+          )
+        ],
+      ),
+    );
   }
 
   @override
-  double get maxExtent => 200.0;
+  double get maxExtent => maxHeight;
 
   @override
-  double get minExtent => 50;
+  double get minExtent => minHeight;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
@@ -68,7 +138,7 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
   }
 }
 
-class ShopSelect extends StatelessWidget {
+class ShopSelect1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
