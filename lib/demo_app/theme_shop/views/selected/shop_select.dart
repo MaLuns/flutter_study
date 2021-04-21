@@ -73,6 +73,7 @@ class ShopSelect extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverPersistentHeader(
             pinned: true,
@@ -84,9 +85,25 @@ class ShopSelect extends StatelessWidget {
               coverImgUrl: 'https://img.zcool.cn/community/01c6615d3ae047a8012187f447cfef.jpg@1280w_1l_2o_100sh.jpg',
             ),
           ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                FilmContent(),
+              ],
+            ),
+          ),
           SliverFillRemaining(
-            child: FilmContent(),
-          )
+            hasScrollBody: false,
+            fillOverscroll: true,
+            child: Container(
+              color: Colors.red,
+              child: Icon(
+                Icons.sentiment_very_satisfied,
+                size: 100,
+                color: Colors.blue[900],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -159,7 +176,7 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          /* Container(child: Image.network(this.coverImgUrl, fit: BoxFit.cover)), */
+          Container(child: Image.network(this.coverImgUrl, fit: BoxFit.cover)),
           Positioned(
             left: 0,
             top: this.maxExtent / 2,
@@ -183,7 +200,7 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
             right: 0,
             top: 0,
             child: Container(
-              color: Colors.red, // this.makeStickyHeaderBgColor(shrinkOffset),
+              color: this.makeStickyHeaderBgColor(shrinkOffset),
               child: SafeArea(
                 bottom: false,
                 child: Container(
@@ -194,7 +211,7 @@ class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
                       IconButton(
                         icon: Icon(
                           Icons.arrow_back_ios,
-                          color: Colors.white, //this.makeStickyHeaderTextColor(shrinkOffset, true),
+                          color: this.makeStickyHeaderTextColor(shrinkOffset, true),
                         ),
                         onPressed: () {}, // => Navigator.pop(context),
                       ),

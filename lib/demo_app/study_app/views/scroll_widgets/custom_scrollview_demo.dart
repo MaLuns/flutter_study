@@ -153,82 +153,74 @@ class SliverAppBarDemo extends StatelessWidget {
 
 // 示例四
 class StickyDemo extends StatefulWidget {
-  final String title;
-
-  StickyDemo({Key key, this.title = 'xxxxx'}) : super(key: key);
+  StickyDemo({Key key}) : super(key: key);
 
   @override
   _StickyDemoState createState() => _StickyDemoState();
 }
 
 class _StickyDemoState extends State<StickyDemo> with SingleTickerProviderStateMixin {
+  int index = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: List.generate(50, (index) {
-        if (index % 11 == 0) {
-          return SliverPersistentHeader(
-            pinned: true,
-            delegate: StickyTabBarDelegate(
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: Text(' $index 2020-12-20'),
-                height: 30,
-                color: Colors.red,
-              ),
-            ),
-          );
-        } else {
-          return SliverToBoxAdapter(
-            child: Container(
-              height: 50,
-              child: Text(' $index 列'),
-            ),
-          );
-        }
-      }),
-      /*  slivers: <Widget>[
+    return NotificationListener(
+      // ignore: missing_return
+      onNotification: (ScrollUpdateNotification notification) {
+        setState(() {
+          index = notification.metrics.pixels ~/ (50 * 10);
+        });
+      },
+      child: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
           SliverPersistentHeader(
-          pinned: true,
-          delegate: StickyTabBarDelegate(
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: Text('data'),
-              height: 30,
-              color: Colors.white,
+            pinned: true,
+            delegate: StickyTabBarDelegate(index: index),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              List.generate(
+                  100,
+                  (index) => Container(
+                        height: 50,
+                        padding: EdgeInsets.only(left: 20),
+                        alignment: Alignment.centerLeft,
+                        child: Text('$index 列'),
+                      )).toList(),
             ),
           ),
-        ),
-        SliverFillRemaining(
-          hasScrollBody: true,
-          child: TabBarView(
-            controller: this.tabController,
-            children: <Widget>[
-              Center(child: Text('Content of Home')),
-              Center(child: Text('Content of Profile')),
-            ],
-          ),
-        ),
-      ], */
+        ],
+      ),
     );
   }
 }
 
 class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
-  final Container child;
+  final int index;
 
-  StickyTabBarDelegate({@required this.child});
+  StickyTabBarDelegate({@required this.index});
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return this.child;
+    return Container(
+      padding: EdgeInsets.only(left: 20),
+      alignment: Alignment.centerLeft,
+      child: Text('${index * 10} + 列'),
+      height: 50,
+      color: Colors.white,
+    );
   }
 
   @override
-  double get maxExtent => 30;
+  double get maxExtent => 50;
 
   @override
-  double get minExtent => 30;
+  double get minExtent => 50;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

@@ -21,14 +21,14 @@ class _ThemeDetailPageState extends State<ThemeDetailPage> {
     return Container(
       child: Stack(
         children: [
-          NotificationListener<ScrollUpdateNotification>(
+          NotificationListener(
             onNotification: (notification) {
               switch (notification.runtimeType) {
                 case ScrollStartNotification:
                   print("开始滚动");
                   break;
                 case ScrollUpdateNotification:
-                  print('notification');
+                  print('滚动中');
                   break;
                 case ScrollEndNotification:
                   print("滚动停止");
