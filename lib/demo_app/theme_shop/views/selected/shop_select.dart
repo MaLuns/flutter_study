@@ -12,11 +12,12 @@ class _ShopSelectState extends State<ShopSelect> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverPersistentHeader(
             pinned: true,
             delegate: DemoDelegate(
-              maxHeight: 180,
+              maxHeight: 150,
               minHeight: 50,
             ),
           ),
@@ -27,10 +28,10 @@ class _ShopSelectState extends State<ShopSelect> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Image(
+              /*   child: Image(
                 image: NetworkImage('https://tse2-mm.cn.bing.net/th/id/OIP.UlirBMdQ5ftADpWyOJLqvAHaNK?w=187&h=333&c=7&o=5&pid=1.7'),
                 fit: BoxFit.fitWidth,
-              ),
+              ), */
             ),
           ),
           SliverToBoxAdapter(
@@ -46,6 +47,7 @@ class _ShopSelectState extends State<ShopSelect> {
               ),
             ),
           ),
+          SliverFillRemaining(),
         ],
       ),
     );
@@ -60,16 +62,12 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
 
   int makeProgress(shrinkOffset, progress, {start = 0, qf = false}) {
     int alpha = (shrinkOffset / (this.maxExtent - this.minExtent) * progress).clamp(start, progress).toInt();
-    if (qf) alpha = progress - alpha;
+    if (start == 20) print(shrinkOffset / (this.maxExtent - this.minExtent) * progress);
+    if (qf) alpha = progress - alpha + start;
     return alpha;
   }
 
-  Color makeStickyHeaderBgColor(shrinkOffset) {
-    final int alpha = makeProgress(shrinkOffset, 255);
-    return Color.fromARGB(alpha, 255, 255, 255);
-  }
-
-  Color makeStickyHeaderTextColor(shrinkOffset, {qf = false, r: 0, g: 0, b: 0}) {
+  Color makeStickyHeaderColor(shrinkOffset, {qf = false, r: 0, g: 0, b: 0}) {
     int alpha = makeProgress(shrinkOffset, 255);
     if (qf) alpha = 255 - alpha;
     return Color.fromARGB(alpha, r, g, b);
@@ -77,7 +75,7 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    print(shrinkOffset);
+    //print(shrinkOffset);
     return Container(
       height: maxHeight,
       color: Colors.white,
@@ -87,8 +85,8 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
             child: Text(
               '小时候',
               style: TextStyle(
-                fontSize: 36,
-                color: makeStickyHeaderTextColor(shrinkOffset, qf: true),
+                fontSize: makeProgress(shrinkOffset, 36, qf: true).toDouble(),
+                color: makeStickyHeaderColor(shrinkOffset * 1.2, qf: true),
               ),
             ),
             top: makeProgress(shrinkOffset, 60, qf: true).toDouble(),
@@ -98,11 +96,11 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
             child: Text(
               '岁月留下的童话',
               style: TextStyle(
-                fontSize: 14,
-                color: makeStickyHeaderTextColor(shrinkOffset, qf: true, r: 150, g: 150, b: 150),
+                fontSize: makeProgress(shrinkOffset, 14, qf: true).toDouble(),
+                color: makeStickyHeaderColor(shrinkOffset, qf: true, r: 150, g: 150, b: 150),
               ),
             ),
-            top: makeProgress(shrinkOffset, 60, qf: true).toDouble() + 50,
+            top: makeProgress(shrinkOffset, 110, qf: true).toDouble(),
             left: 20,
           ),
           Positioned(
@@ -115,10 +113,10 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
                 '精选',
                 style: TextStyle(
                   fontSize: minHeight / 2,
-                  color: makeStickyHeaderTextColor(shrinkOffset),
+                  color: makeStickyHeaderColor(shrinkOffset),
                 ),
               ),
-              color: makeStickyHeaderBgColor(shrinkOffset),
+              color: makeStickyHeaderColor(shrinkOffset, r: 255, g: 255, b: 255),
             ),
           )
         ],
