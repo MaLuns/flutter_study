@@ -119,68 +119,65 @@ class _PasswordLoginState extends State<PasswordLogin> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 300), () {
-      // 首次进来未生效，具体原因没找到   可能Scaffold还渲染完成？？？
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    });
-
-    return Stack(
-      key: ValueKey('renderPasswordLogin'),
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  "Welcome Back!",
-                  style: TextStyle(
-                    color: Color(0xff5d916d),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 26,
+    return AnnotatedRegion(
+      value: SystemUiOverlayStyle.dark,
+      child: Stack(
+        key: ValueKey('renderPasswordLogin'),
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    "Welcome Back!",
+                    style: TextStyle(
+                      color: Color(0xff5d916d),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 26,
+                    ),
                   ),
                 ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 16)),
-              Center(
-                child: Text(
-                  "You need to identify to sign back in ",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xffaaaaaa),
+                Padding(padding: EdgeInsets.only(top: 16)),
+                Center(
+                  child: Text(
+                    "You need to identify to sign back in ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xffaaaaaa),
+                    ),
                   ),
                 ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 120)),
-              TextField(
-                maxLines: 1,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: "please input email",
-                  contentPadding: EdgeInsets.symmetric(vertical: 5),
-                  fillColor: Color(0xfff3f4f6),
-                  filled: true,
-                  enabledBorder: _getOutlineInputBorder(),
-                  focusedBorder: _getOutlineInputBorder(),
-                  prefixIcon: Icon(Icons.mail_outline_rounded),
+                Padding(padding: EdgeInsets.only(top: 120)),
+                TextField(
+                  maxLines: 1,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    hintText: "please input email",
+                    contentPadding: EdgeInsets.symmetric(vertical: 5),
+                    fillColor: Color(0xfff3f4f6),
+                    filled: true,
+                    enabledBorder: _getOutlineInputBorder(),
+                    focusedBorder: _getOutlineInputBorder(),
+                    prefixIcon: Icon(Icons.mail_outline_rounded),
+                  ),
+                  //textAlign: TextAlign.center,
                 ),
-                //textAlign: TextAlign.center,
-              ),
-              Padding(padding: EdgeInsets.only(top: 16)),
-              TextField(
-                maxLines: 1,
-                keyboardType: TextInputType.visiblePassword,
-                /* focusNode: focusNode, */
-                decoration: InputDecoration(
-                  hintText: "please input password",
-                  contentPadding: EdgeInsets.symmetric(vertical: 5),
-                  fillColor: Color(0xfff3f4f6),
-                  filled: true,
-                  enabledBorder: _getOutlineInputBorder(),
-                  focusedBorder: _getOutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock_outline_rounded),
-                  /* suffixIcon: IconButton(
+                Padding(padding: EdgeInsets.only(top: 16)),
+                TextField(
+                  maxLines: 1,
+                  keyboardType: TextInputType.visiblePassword,
+                  /* focusNode: focusNode, */
+                  decoration: InputDecoration(
+                    hintText: "please input password",
+                    contentPadding: EdgeInsets.symmetric(vertical: 5),
+                    fillColor: Color(0xfff3f4f6),
+                    filled: true,
+                    enabledBorder: _getOutlineInputBorder(),
+                    focusedBorder: _getOutlineInputBorder(),
+                    prefixIcon: Icon(Icons.lock_outline_rounded),
+                    /* suffixIcon: IconButton(
                     icon: Icon(Icons.fingerprint, color: Color(0xffaaaaaa)),
                     onPressed: () {
                       //focusNode.unfocus();
@@ -189,69 +186,70 @@ class _PasswordLoginState extends State<PasswordLogin> {
                       return false;
                     },
                   ), */
+                  ),
+                  /* readOnly: true, */
+                  /* showCursor: true, */
                 ),
-                /* readOnly: true, */
-                /* showCursor: true, */
-              ),
-              Padding(padding: EdgeInsets.only(top: 32)),
-              Container(
-                padding: EdgeInsets.only(bottom: 5),
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(color: Color(0xff5d916d), width: 2),
+                Padding(padding: EdgeInsets.only(top: 32)),
+                Container(
+                  padding: EdgeInsets.only(bottom: 5),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: Color(0xff5d916d), width: 2),
+                    ),
+                  ),
+                  child: Text(
+                    'Forgot?',
+                    style: TextStyle(
+                      color: Color(0xffaaaaaa),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-                child: Text(
-                  'Forgot?',
-                  style: TextStyle(
-                    color: Color(0xffaaaaaa),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: widget.minHeight + widget.radianHeight / 2,
+            child: Center(
+              child: GestureDetector(
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Color(0xff5d916d),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 30,
                   ),
                 ),
+                onTap: () {},
               ),
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: widget.minHeight + widget.radianHeight / 2,
-          child: Center(
-            child: GestureDetector(
-              child: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Color(0xff5d916d),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ),
-              onTap: () {},
             ),
           ),
-        ),
-        Positioned(
-          child: Listener(
-            child: IconButton(
-              icon: Icon(Icons.fingerprint, color: Color(0xffaaaaaa)),
-              onPressed: () {
-                widget.typeChange();
-                return false;
-              },
+          Positioned(
+            child: Listener(
+              child: IconButton(
+                icon: Icon(Icons.fingerprint, color: Color(0xffaaaaaa)),
+                onPressed: () {
+                  widget.typeChange();
+                  return false;
+                },
+              ),
+              behavior: HitTestBehavior.opaque, // 将组件当成不透明 防止事件穿透到下层
             ),
-            behavior: HitTestBehavior.opaque, // 将组件当成不透明 防止事件穿透到下层
+            top: 350,
+            right: 20,
           ),
-          top: 350,
-          right: 20,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -271,81 +269,83 @@ class FingerprintLogin extends StatefulWidget {
 class _FingerprintLoginState extends State<FingerprintLogin> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    return Stack(
-      key: ValueKey('renderFingerprintLogin'),
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  "Welcome Back!",
-                  style: TextStyle(
-                    color: Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 26,
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(8)),
-              Center(
-                child: Text(
-                  "You need to identify to sign back in ",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xffaaaaaa),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: widget.minHeight + widget.radianHeight * 1.5,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 70,
-                height: 70,
-                child: Icon(
-                  Icons.fingerprint,
-                  color: Color(0xff5d916d),
-                  size: 70,
-                ),
-              ),
-              GestureDetector(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 60),
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 5),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(color: Color(0xff5d916d), width: 1),
-                      ),
-                    ),
-                    child: Text(
-                      'Use password',
-                      style: TextStyle(
-                        color: Color(0xffaaaaaa),
-                      ),
+    return AnnotatedRegion(
+      value: SystemUiOverlayStyle.light,
+      child: Stack(
+        key: ValueKey('renderFingerprintLogin'),
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 100, 20, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    "Welcome Back!",
+                    style: TextStyle(
+                      color: Color(0xffffffff),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 26,
                     ),
                   ),
                 ),
-                onTap: () {
-                  widget.typeChange();
-                },
-              ),
-            ],
+                Padding(padding: EdgeInsets.all(8)),
+                Center(
+                  child: Text(
+                    "You need to identify to sign back in ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xffaaaaaa),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: widget.minHeight + widget.radianHeight * 1.5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 70,
+                  height: 70,
+                  child: Icon(
+                    Icons.fingerprint,
+                    color: Color(0xff5d916d),
+                    size: 70,
+                  ),
+                ),
+                GestureDetector(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 60),
+                    child: Container(
+                      padding: EdgeInsets.only(bottom: 5),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Color(0xff5d916d), width: 1),
+                        ),
+                      ),
+                      child: Text(
+                        'Use password',
+                        style: TextStyle(
+                          color: Color(0xffaaaaaa),
+                        ),
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    widget.typeChange();
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
