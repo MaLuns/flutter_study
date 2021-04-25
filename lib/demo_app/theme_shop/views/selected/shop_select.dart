@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_study/demo_app/theme_shop/views/selected/views/acg_characters.dart';
 import 'package:flutter_study/demo_app/theme_shop/views/selected/views/select_wallpaper.dart';
 
 class ShopSelect extends StatefulWidget {
@@ -15,12 +16,12 @@ class _ShopSelectState extends State<ShopSelect> {
   ];
 
   List rmxx = [
-    {'Color': Colors.green[100], 'url': 'https://th.bing.com/th/id/Rae555689b9bf27f3276b4eb7ceb2da2e?rik=2vz6fci0lHxLXg&riu=http%3a%2f%2fi1.sinaimg.cn%2fgm%2fcr%2f2015%2f0214%2f1293245599.png&ehk=5gCTYhqr1oPyAT9pg0%2bN0scn%2f57J%2bhmUbIfJBFovZ2M%3d&risl=&pid=ImgRaw'},
-    {'Color': Colors.yellow[100], 'url': 'https://th.bing.com/th/id/R6b5a5adaa74abe7bb481613b77cbd07b?rik=DfhxRPk5XEh7qA&riu=http%3a%2f%2fi2.sinaimg.cn%2fgm%2fcr%2f2015%2f0214%2f2988459889.png&ehk=Guo%2fejPbHQ9sBGWfW5SdbcdByn8DQ2zRgxuxkcm24TU%3d&risl=&pid=ImgRaw'},
-    {'Color': Colors.black12, 'url': 'https://th.bing.com/th/id/R0bc1824383284a9c674ab1f2322ba042?rik=jd11J8FASUK%2blg&riu=http%3a%2f%2fgame.gtimg.cn%2fimages%2fty%2fcp%2fa20200929scmy%2fgirlimg-r.png&ehk=KhCUWlpRUg7ka7IoobU0V74fqJ64kBHR6HGP3%2bWlWGE%3d&risl=&pid=ImgRaw'},
-    {'Color': Colors.pink[50], 'url': 'https://th.bing.com/th/id/R3dc7bf58d5337249ceecba0e598546d2?rik=6fPrWJHtxkiqew&riu=http%3a%2f%2fpic4.178.com%2f1096%2f10960334%2fmonth_1503%2f4a47a0db285fd.png&ehk=KQzLwmR56%2bKNMbHZ4yd4syUFwrb71igxAV%2b%2fVIXvfYA%3d&risl=&pid=ImgRaw'},
-    {'Color': Colors.blue[100], 'url': 'https://th.bing.com/th/id/Rcc603705a49895a40429ecdfeb2dd301?rik=nxHMxAD54SK4pA&riu=http%3a%2f%2fimage.hnol.net%2fc%2f2016-03%2f01%2f20%2f201603012019388561-2282561.png&ehk=43ZvXIa4qyJuUPC6GLQYCd6cefwrjBkaII9xb8E6Oro%3d&risl=&pid=ImgRaw'},
-    {'Color': Colors.blueGrey[100], 'url': 'https://th.bing.com/th/id/R9af3c8024dcabd2402b40760ad126482?rik=oQg3cNqcqqNY7g&riu=http%3a%2f%2fwww.acgtubao.com%2fwp-content%2fuploads%2f2019%2f05%2fe9d50bbea723556f1b0c49be139ba5cc08a9f9c4146f09-iXLTXD_fw658.png&ehk=A1IPVMLW8IRZAFzARxwHPRczXYZJkyZPGH%2bxUKMaBTM%3d&risl=&pid=ImgRaw'},
+    {'title': '丐帮', 'Color': Colors.green[100], 'url': 'https://th.bing.com/th/id/Rae555689b9bf27f3276b4eb7ceb2da2e?rik=2vz6fci0lHxLXg&riu=http%3a%2f%2fi1.sinaimg.cn%2fgm%2fcr%2f2015%2f0214%2f1293245599.png&ehk=5gCTYhqr1oPyAT9pg0%2bN0scn%2f57J%2bhmUbIfJBFovZ2M%3d&risl=&pid=ImgRaw'},
+    {'title': '真武', 'Color': Colors.yellow[100], 'url': 'https://th.bing.com/th/id/R6b5a5adaa74abe7bb481613b77cbd07b?rik=DfhxRPk5XEh7qA&riu=http%3a%2f%2fi2.sinaimg.cn%2fgm%2fcr%2f2015%2f0214%2f2988459889.png&ehk=Guo%2fejPbHQ9sBGWfW5SdbcdByn8DQ2zRgxuxkcm24TU%3d&risl=&pid=ImgRaw'},
+    {'title': '天香', 'Color': Colors.black12, 'url': 'https://th.bing.com/th/id/R0bc1824383284a9c674ab1f2322ba042?rik=jd11J8FASUK%2blg&riu=http%3a%2f%2fgame.gtimg.cn%2fimages%2fty%2fcp%2fa20200929scmy%2fgirlimg-r.png&ehk=KhCUWlpRUg7ka7IoobU0V74fqJ64kBHR6HGP3%2bWlWGE%3d&risl=&pid=ImgRaw'},
+    {'title': '曲无忆', 'Color': Colors.pink[50], 'url': 'https://th.bing.com/th/id/R3dc7bf58d5337249ceecba0e598546d2?rik=6fPrWJHtxkiqew&riu=http%3a%2f%2fpic4.178.com%2f1096%2f10960334%2fmonth_1503%2f4a47a0db285fd.png&ehk=KQzLwmR56%2bKNMbHZ4yd4syUFwrb71igxAV%2b%2fVIXvfYA%3d&risl=&pid=ImgRaw'},
+    {'title': '奶妈', 'Color': Colors.blue[100], 'url': 'https://th.bing.com/th/id/Rcc603705a49895a40429ecdfeb2dd301?rik=nxHMxAD54SK4pA&riu=http%3a%2f%2fimage.hnol.net%2fc%2f2016-03%2f01%2f20%2f201603012019388561-2282561.png&ehk=43ZvXIa4qyJuUPC6GLQYCd6cefwrjBkaII9xb8E6Oro%3d&risl=&pid=ImgRaw'},
+    {'title': '太白', 'Color': Colors.blueGrey[100], 'url': 'https://th.bing.com/th/id/R9af3c8024dcabd2402b40760ad126482?rik=oQg3cNqcqqNY7g&riu=http%3a%2f%2fwww.acgtubao.com%2fwp-content%2fuploads%2f2019%2f05%2fe9d50bbea723556f1b0c49be139ba5cc08a9f9c4146f09-iXLTXD_fw658.png&ehk=A1IPVMLW8IRZAFzARxwHPRczXYZJkyZPGH%2bxUKMaBTM%3d&risl=&pid=ImgRaw'},
   ];
 
   @override
@@ -207,7 +208,12 @@ class _ShopSelectState extends State<ShopSelect> {
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
                 children: rmxx
-                    .map((e) => Stack(
+                    .map(
+                      (e) => GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AcgCharacters(data: e)));
+                        },
+                        child: Stack(
                           children: [
                             Positioned(
                               top: 20,
@@ -222,12 +228,17 @@ class _ShopSelectState extends State<ShopSelect> {
                                 ),
                               ),
                             ),
-                            Image(
-                              image: NetworkImage(e['url']),
-                              width: 200,
+                            Hero(
+                              tag: e['url'], //唯一标记，前后两个路由页Hero的tag必须相同
+                              child: Image(
+                                image: NetworkImage(e['url']),
+                                width: 200,
+                              ),
                             ),
                           ],
-                        ))
+                        ),
+                      ),
+                    )
                     .toList(),
               ),
             ),

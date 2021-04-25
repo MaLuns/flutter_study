@@ -37,25 +37,12 @@ class SelectWallpaper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    /* Future.delayed(const Duration(milliseconds: 300), () {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    }); */
     return AnnotatedRegion(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        /* backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        brightness: Brightness.dark,
-      ), */
         body: Stack(
           children: [
-            /* PageView(
-              physics: PageScrollPhysics(),
-              children: data.map((e) => PageImageView(data: e)).toList(),
-            ), */
             PageImageView(data: data),
             Positioned(
               left: 20,
@@ -124,7 +111,7 @@ class SelectWallpaper extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.ac_unit, color: Colors.white),
+                          Icon(Icons.chrome_reader_mode, color: Colors.white),
                           Padding(padding: EdgeInsets.only(top: 8)),
                           Text('简介', style: TextStyle(color: Colors.white)),
                         ],
@@ -149,7 +136,7 @@ class PageImageView extends StatefulWidget {
   _PageImageViewState createState() => _PageImageViewState();
 }
 
-class _PageImageViewState extends State<PageImageView> with SingleTickerProviderStateMixin {
+class _PageImageViewState extends State<PageImageView> {
   PageController _outPageController;
 
   @override
@@ -191,7 +178,7 @@ class InnerPageView extends StatefulWidget {
   _InnerPageViewState createState() => _InnerPageViewState();
 }
 
-class _InnerPageViewState extends State<InnerPageView> {
+class _InnerPageViewState extends State<InnerPageView> with AutomaticKeepAliveClientMixin {
   int innerIndex = 0;
   int len = 0;
   bool flag = false;
@@ -204,25 +191,6 @@ class _InnerPageViewState extends State<InnerPageView> {
     innerPageController = PageController();
   }
 
-  /// 函数节流
-  ///
-  /// [func]: 要执行的方法
-  Function throttle(Future Function() func) {
-    if (func == null) {
-      return func;
-    }
-    bool enable = true;
-    Function target = () {
-      if (enable == true) {
-        enable = false;
-        func().then((_) {
-          enable = true;
-        });
-      }
-    };
-    return target;
-  }
-
   @override
   void dispose() {
     innerPageController.dispose();
@@ -231,6 +199,7 @@ class _InnerPageViewState extends State<InnerPageView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Stack(
       children: [
         Hero(
@@ -350,6 +319,9 @@ class _InnerPageViewState extends State<InnerPageView> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class OverScrollBehavior extends ScrollBehavior {
