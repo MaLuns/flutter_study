@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,6 +34,7 @@ class SelectWallpaper extends StatelessWidget {
       ]
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     //SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
@@ -49,10 +52,11 @@ class SelectWallpaper extends StatelessWidget {
       ), */
         body: Stack(
           children: [
-            PageView(
-              physics: ClampingScrollPhysics(),
+            /* PageView(
+              physics: PageScrollPhysics(),
               children: data.map((e) => PageImageView(data: e)).toList(),
-            ),
+            ), */
+            PageImageView(data: data),
             Positioned(
               left: 20,
               top: 60,
@@ -138,15 +142,92 @@ class SelectWallpaper extends StatelessWidget {
 }
 
 class PageImageView extends StatefulWidget {
-  final data;
+  final List data;
   PageImageView({this.data}) : super();
 
   @override
   _PageImageViewState createState() => _PageImageViewState();
 }
 
-class _PageImageViewState extends State<PageImageView> {
-  int index = 0;
+class _PageImageViewState extends State<PageImageView> with SingleTickerProviderStateMixin {
+  PageController _outPageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _outPageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _outPageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScrollConfiguration(
+      behavior: OverScrollBehavior(),
+      child: PageView.builder(
+        physics: ClampingScrollPhysics(),
+        controller: _outPageController,
+        itemCount: widget.data.length,
+        itemBuilder: (context, index) => InnerPageView(
+          data: widget.data[index],
+          index: index,
+          outPageController: _outPageController,
+        ),
+      ),
+    );
+  }
+}
+
+class InnerPageView extends StatefulWidget {
+  final PageController outPageController;
+  final data;
+  final int index;
+  InnerPageView({@required this.data, @required this.outPageController, @required this.index}) : super();
+  @override
+  _InnerPageViewState createState() => _InnerPageViewState();
+}
+
+class _InnerPageViewState extends State<InnerPageView> {
+  int innerIndex = 0;
+  int len = 0;
+  bool flag = false;
+  PageController innerPageController;
+
+  @override
+  void initState() {
+    super.initState();
+    len = (widget.data['urls'] as List).length;
+    innerPageController = PageController();
+  }
+
+  /// 函数节流
+  ///
+  /// [func]: 要执行的方法
+  Function throttle(Future Function() func) {
+    if (func == null) {
+      return func;
+    }
+    bool enable = true;
+    Function target = () {
+      if (enable == true) {
+        enable = false;
+        func().then((_) {
+          enable = true;
+        });
+      }
+    };
+    return target;
+  }
+
+  @override
+  void dispose() {
+    innerPageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -154,24 +235,39 @@ class _PageImageViewState extends State<PageImageView> {
       children: [
         Hero(
           tag: "select_wallpaper",
-          /* child: PageView.builder(
-            physics: ClampingScrollPhysics(),
-            itemCount: (widget.data['urls'] as List).length,
-            itemBuilder: (context, index) {
-              return ConstrainedBox(
-                constraints: BoxConstraints.expand(),
-                child: Image(
-                  image: NetworkImage(widget.data['urls'][index]),
-                  fit: BoxFit.cover,
-                ),
-              );
+          child: NotificationListener<OverscrollNotification>(
+            onNotification: (OverscrollNotification notification) {
+              if (!flag) {
+                if (len == innerIndex + 1) {
+                  widget.outPageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+                } else {
+                  widget.outPageController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+                }
+              }
+              return true;
             },
-          ), */
-          child: ConstrainedBox(
-            constraints: BoxConstraints.expand(),
-            child: Image(
-              image: NetworkImage(widget.data['urls'][index]),
-              fit: BoxFit.cover,
+            child: PageView.builder(
+              physics: ClampingScrollPhysics(),
+              controller: innerPageController,
+              itemCount: (widget.data['urls'] as List).length,
+              onPageChanged: (value) {
+                flag = true;
+                setState(() {
+                  innerIndex = value;
+                });
+                Future.delayed(Duration(milliseconds: 500), () {
+                  flag = false;
+                });
+              },
+              itemBuilder: (context, index) {
+                return ConstrainedBox(
+                  constraints: BoxConstraints.expand(),
+                  child: Image(
+                    image: NetworkImage(widget.data['urls'][index]),
+                    fit: BoxFit.cover,
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -179,7 +275,7 @@ class _PageImageViewState extends State<PageImageView> {
           left: 20,
           top: 100,
           child: Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.circular(5),
@@ -189,13 +285,13 @@ class _PageImageViewState extends State<PageImageView> {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
-                fontSize: 26,
+                fontSize: 24,
               ),
             ),
           ),
         ),
         Positioned(
-          top: 160,
+          top: 150,
           left: 20,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
@@ -211,9 +307,7 @@ class _PageImageViewState extends State<PageImageView> {
                   TextSpan(text: '壁纸'),
                 ],
               ),
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -234,11 +328,7 @@ class _PageImageViewState extends State<PageImageView> {
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: index == idx
-                              ? [
-                                  BoxShadow(color: Colors.white, spreadRadius: 2),
-                                ]
-                              : [],
+                          boxShadow: innerIndex == idx ? [BoxShadow(color: Colors.white, spreadRadius: 2)] : [],
                         ),
                         child: Image(
                           image: NetworkImage(widget.data['urls'][idx]),
@@ -246,8 +336,9 @@ class _PageImageViewState extends State<PageImageView> {
                         ),
                       ),
                       onTap: () {
+                        innerPageController.animateToPage(idx, duration: Duration(milliseconds: 300), curve: Curves.ease);
                         setState(() {
-                          index = idx;
+                          innerIndex = idx;
                         });
                       },
                     ),
@@ -258,5 +349,28 @@ class _PageImageViewState extends State<PageImageView> {
         ),
       ],
     );
+  }
+}
+
+class OverScrollBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
+    switch (getPlatform(context)) {
+      case TargetPlatform.iOS:
+      case TargetPlatform.linux:
+      case TargetPlatform.macOS:
+      case TargetPlatform.windows:
+        return child;
+      case TargetPlatform.android:
+      case TargetPlatform.fuchsia:
+        return GlowingOverscrollIndicator(
+          child: child,
+          showLeading: false,
+          showTrailing: false,
+          axisDirection: axisDirection,
+          color: Colors.red,
+        );
+    }
+    return null;
   }
 }
