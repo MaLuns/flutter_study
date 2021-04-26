@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_study/demo_app/theme_shop/views/selected/views/acg_characters.dart';
 import 'package:flutter_study/demo_app/theme_shop/views/selected/views/select_wallpaper.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class ShopSelect extends StatefulWidget {
   @override
@@ -22,6 +23,12 @@ class _ShopSelectState extends State<ShopSelect> {
     {'title': '曲无忆', 'Color': Colors.pink[50], 'url': 'https://th.bing.com/th/id/R3dc7bf58d5337249ceecba0e598546d2?rik=6fPrWJHtxkiqew&riu=http%3a%2f%2fpic4.178.com%2f1096%2f10960334%2fmonth_1503%2f4a47a0db285fd.png&ehk=KQzLwmR56%2bKNMbHZ4yd4syUFwrb71igxAV%2b%2fVIXvfYA%3d&risl=&pid=ImgRaw'},
     {'title': '奶妈', 'Color': Colors.blue[100], 'url': 'https://th.bing.com/th/id/Rcc603705a49895a40429ecdfeb2dd301?rik=nxHMxAD54SK4pA&riu=http%3a%2f%2fimage.hnol.net%2fc%2f2016-03%2f01%2f20%2f201603012019388561-2282561.png&ehk=43ZvXIa4qyJuUPC6GLQYCd6cefwrjBkaII9xb8E6Oro%3d&risl=&pid=ImgRaw'},
     {'title': '太白', 'Color': Colors.blueGrey[100], 'url': 'https://th.bing.com/th/id/R9af3c8024dcabd2402b40760ad126482?rik=oQg3cNqcqqNY7g&riu=http%3a%2f%2fwww.acgtubao.com%2fwp-content%2fuploads%2f2019%2f05%2fe9d50bbea723556f1b0c49be139ba5cc08a9f9c4146f09-iXLTXD_fw658.png&ehk=A1IPVMLW8IRZAFzARxwHPRczXYZJkyZPGH%2bxUKMaBTM%3d&risl=&pid=ImgRaw'},
+  ];
+
+  List<String> urls = [
+    'https://tse1-mm.cn.bing.net/th/id/OIP.nF5TEORYFqDHLe6enlgBDQHaFB?w=262&h=180&c=7&o=5&dpr=2&pid=1.7',
+    'https://tse3-mm.cn.bing.net/th/id/OIP.NJW43R8iNiD7HZvd90HgLwHaED?w=296&h=180&c=7&o=5&dpr=2&pid=1.7',
+    'https://tse3-mm.cn.bing.net/th/id/OIP.tr6humwC2iBc1HTT1KIhxAHaD8?w=334&h=180&c=7&o=5&dpr=2&pid=1.7',
   ];
 
   @override
@@ -245,7 +252,7 @@ class _ShopSelectState extends State<ShopSelect> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: 30,
+              height: 50,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 20, top: 10),
               child: Text(
@@ -253,6 +260,31 @@ class _ShopSelectState extends State<ShopSelect> {
                 style: TextStyle(
                   fontSize: 20,
                 ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        image: DecorationImage(
+                          image: NetworkImage(urls[index]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                loop: false,
+                itemCount: urls.length,
+                autoplay: false,
+                viewportFraction: 1,
               ),
             ),
           ),

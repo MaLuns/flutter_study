@@ -123,7 +123,8 @@ class ShopClassifyModel {
   String title;
   List<ShopClassifyDetail> children;
   double top;
-  ShopClassifyModel({@required this.title, @required this.children, this.top = 0});
+  bool isAd;
+  ShopClassifyModel({@required this.title, @required this.children, this.top = 0, this.isAd = false});
 }
 
 class ShopClassifyDetail {

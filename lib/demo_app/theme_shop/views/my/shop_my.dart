@@ -191,7 +191,7 @@ class ShopMy extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-          IconButton(icon: Icon(Icons.settings_backup_restore, color: Colors.black), onPressed: null),
+          IconButton(icon: Icon(Icons.settings, color: Colors.black), onPressed: null),
         ],
       ),
       body: ListView(

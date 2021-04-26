@@ -124,6 +124,9 @@ List<ThemeWallhavenDetail> themeWallhavenDetailData = [
 
 List<List<ShopClassifyModel>> shopClassifyModelData = [
   [
+    ShopClassifyModel(title: '排行榜', isAd: true, children: [
+      ShopClassifyDetail(url: 'https://tse3-mm.cn.bing.net/th/id/OIP.QVnUw1jCOBwHzV09i2jTcAHaEo?w=255&h=180&c=7&o=5&dpr=2&pid=1.7', title: '畅销榜、新品榜、免费榜'),
+    ]),
     ShopClassifyModel(title: '为你推荐', children: [
       ShopClassifyDetail(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.0o5YMzeogFbrHIUMvYw5ZAAAAA?w=291&h=141&c=7&o=5&dpr=2&pid=1.7', title: '小清新'),
       ShopClassifyDetail(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.ObUjK6D9yMb71jJ6ctiaVwAAAA?w=260&h=176&c=7&o=5&dpr=2&pid=1.7', title: '动漫'),
@@ -171,6 +174,9 @@ List<List<ShopClassifyModel>> shopClassifyModelData = [
     ])
   ],
   [
+    ShopClassifyModel(title: '排行榜', isAd: true, children: [
+      ShopClassifyDetail(url: 'https://tse4-mm.cn.bing.net/th/id/OIP.ID58gGVDK4V-E_3YQp2EeAHaEK?w=329&h=185&c=7&o=5&dpr=2&pid=1.7', title: '畅销榜、新品榜、免费榜'),
+    ]),
     ShopClassifyModel(title: '为你推荐', children: [
       ShopClassifyDetail(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.0o5YMzeogFbrHIUMvYw5ZAAAAA?w=291&h=141&c=7&o=5&dpr=2&pid=1.7', title: '古风'),
       ShopClassifyDetail(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.ObUjK6D9yMb71jJ6ctiaVwAAAA?w=260&h=176&c=7&o=5&dpr=2&pid=1.7', title: '植物花卉'),
@@ -221,6 +227,9 @@ List<List<ShopClassifyModel>> shopClassifyModelData = [
     ]),
   ],
   [
+    ShopClassifyModel(title: '排行榜', isAd: true, children: [
+      ShopClassifyDetail(url: 'https://tse2-mm.cn.bing.net/th/id/OIP.03Ep6m5A1ifnLWxUyad1KQHaEK?w=329&h=185&c=7&o=5&dpr=2&pid=1.7', title: '畅销榜、新品榜、免费榜'),
+    ]),
     ShopClassifyModel(title: '为你推荐', children: [
       ShopClassifyDetail(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.0o5YMzeogFbrHIUMvYw5ZAAAAA?w=291&h=141&c=7&o=5&dpr=2&pid=1.7', title: '常规'),
       ShopClassifyDetail(url: 'https://tse1-mm.cn.bing.net/th/id/OIP.ObUjK6D9yMb71jJ6ctiaVwAAAA?w=260&h=176&c=7&o=5&dpr=2&pid=1.7', title: '中国风'),
