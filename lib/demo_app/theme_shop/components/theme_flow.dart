@@ -27,30 +27,7 @@ class ThemeFlow extends StatelessWidget {
 
   // 渲染列表项
   Widget renderItem(context, index) {
-    ThemeFlowModel item = this.data[index];
-    return RenderThemeFlowItem(data: item);
-    /* return GestureDetector(
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              image: DecorationImage(
-                image: NetworkImage(item.url),
-                fit: BoxFit.fill,
-              ),
-              border: Border.all(color: Colors.black12, width: 0.2),
-            ),
-          ),
-          Positioned(left: 5, top: 5, child: renderTag(item.typeName)),
-          Positioned(left: 5, bottom: 5, child: renderTag(item.tag)),
-        ],
-      ),
-      onTap: () {
-        debugPrint(index.toString());
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ThemeDetailPage()));
-      },
-    ); */
+    return RenderThemeFlowItem(data: this.data[index]);
   }
 
 // 渲染广告位
