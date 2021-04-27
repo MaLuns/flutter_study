@@ -16,10 +16,10 @@ class AnimationDemo extends StatelessWidget {
       route: BasicAnimationDemo(),
     ),
     ListModel(
-      title: '自定义动画',
-      subtitle: '结合自定义绘制和动画',
+      title: '隐式动画',
+      subtitle: '在内部实现动画控制,不需要自己声明动画的控制器',
       icon: Icons.scatter_plot_outlined,
-      route: WavesAnimations(),
+      route: TransitionDemo(),
     ),
     ListModel(
       title: 'AnimatedSwitcher',
@@ -28,10 +28,10 @@ class AnimationDemo extends StatelessWidget {
       route: AnimatedSwitcherDemo(),
     ),
     ListModel(
-      title: '隐式动画',
-      subtitle: '在内部实现动画控制,不需要自己声明动画的控制器',
+      title: '自定义动画',
+      subtitle: '结合自定义绘制和动画',
       icon: Icons.scatter_plot_outlined,
-      route: TransitionDemo(),
+      route: WavesAnimations(),
     ),
   ];
 
