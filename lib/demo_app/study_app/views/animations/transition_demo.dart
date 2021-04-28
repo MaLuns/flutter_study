@@ -11,7 +11,7 @@ class TransitionDemo extends StatefulWidget {
 class _TransitionDemoState extends State<TransitionDemo> {
   double heihgt = 100;
   Color color = Colors.yellow[800];
-  int _count = 0;
+  double _count = 0;
   @override
   Widget build(BuildContext context) {
     debugPrint('执行父build');
@@ -56,10 +56,10 @@ class _TransitionDemoState extends State<TransitionDemo> {
                 setState(() {
                   if (heihgt == 100) {
                     heihgt = 200;
-                    color = Colors.blue;
+                    color = Color(0xff3acafa);
                   } else {
                     heihgt = 100;
-                    color = Colors.yellow[800];
+                    color = Color(0xff000000);
                   }
                 });
               },
@@ -136,19 +136,26 @@ class DemoImplicitlyAnimatedWidget extends ImplicitlyAnimatedWidget {
 class _DemoImplicitlyAnimatedWidget extends AnimatedWidgetBaseState<DemoImplicitlyAnimatedWidget> {
   ColorTween _color;
   Tween<double> _height;
+
+  // 在动画执行时候会每一帧都调用 build
   @override
   Widget build(BuildContext context) {
     debugPrint('执行动画build');
     return Container(
-      color: _color.evaluate(animation),
+      color: _color.evaluate(animation), //使用evaluate可以获取Tween当前帧的状态值
       height: _height.evaluate(animation),
       child: widget.child,
     );
   }
 
+  //首次build和更新时候会调用，在这里设置动画需要的Tween的开始值和结束值
   @override
   void forEachTween(visitor) {
-    _color = visitor(_color, widget.color, (value) => ColorTween(begin: value));
+    //visitor 有三个参数（当前的tween，动画终止状态，一个回调函数（设置下一次的开始值））
+    _color = visitor(_color, widget.color, (value) {
+      print(value == widget.color);
+      return ColorTween(begin: Color(0xffffffff));
+    });
     _height = visitor(_height, widget.height, (value) => Tween<double>(begin: value));
   }
 }
