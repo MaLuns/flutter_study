@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/study_app/components/basice_app_layout.dart';
+import 'package:flutter_study/demo_app/study_app/components/h2_title.dart';
 
 class TransitionDemo extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class TransitionDemo extends StatefulWidget {
 class _TransitionDemoState extends State<TransitionDemo> {
   double heihgt = 100;
   Color color = Colors.yellow[800];
+  int _count = 0;
   @override
   Widget build(BuildContext context) {
     debugPrint('执行父build');
@@ -62,6 +64,49 @@ class _TransitionDemoState extends State<TransitionDemo> {
                 });
               },
             ),
+          ),
+          H2Title(title: 'TweenAnimationBuilder'),
+          TweenAnimationBuilder(
+            tween: Tween(end: _count),
+            duration: Duration(milliseconds: 300),
+            builder: (context, value, child) {
+              int count = value ~/ 1;
+              double pr = value - count;
+              return Container(
+                height: 120,
+                color: Colors.blue[100],
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: -100 * pr,
+                      child: Text(
+                        count.toString(),
+                        style: TextStyle(fontSize: 100),
+                      ),
+                    ),
+                    Positioned(
+                      top: 100 - 100 * pr,
+                      child: Text(
+                        (count + 1).toString(),
+                        style: TextStyle(fontSize: 100),
+                      ),
+                    ),
+                    Positioned(
+                      right: 20,
+                      child: IconButton(
+                        icon: Icon(Icons.add),
+                        iconSize: 100,
+                        onPressed: () {
+                          setState(() {
+                            _count += 1;
+                          });
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
           ),
         ],
       ),

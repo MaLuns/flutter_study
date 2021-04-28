@@ -31,49 +31,6 @@ class _BasicAnimationDemoState extends State<BasicAnimationDemo> with SingleTick
           AnimationDemoOne(),
           H2Title(title: 'AnimatedWidget'),
           AnimationDemoTwo(),
-          H2Title(title: 'TweenAnimationBuilder'),
-          TweenAnimationBuilder(
-            tween: Tween(end: _count),
-            duration: Duration(milliseconds: 300),
-            builder: (context, value, child) {
-              int count = value ~/ 1;
-              double pr = value - count;
-              return Container(
-                height: 120,
-                color: Colors.blue[100],
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: -100 * pr,
-                      child: Text(
-                        count.toString(),
-                        style: TextStyle(fontSize: 100),
-                      ),
-                    ),
-                    Positioned(
-                      top: 100 - 100 * pr,
-                      child: Text(
-                        (count + 1).toString(),
-                        style: TextStyle(fontSize: 100),
-                      ),
-                    ),
-                    Positioned(
-                      right: 20,
-                      child: IconButton(
-                        icon: Icon(Icons.add),
-                        iconSize: 100,
-                        onPressed: () {
-                          setState(() {
-                            _count += 1;
-                          });
-                        },
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
           H2Title(title: 'AnimatedBuilder'),
           AnimatedBuilderDemo(),
           H2Title(title: '加载动画'),

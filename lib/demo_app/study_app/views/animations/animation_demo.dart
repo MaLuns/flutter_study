@@ -10,12 +10,6 @@ import 'package:flutter_study/demo_app/study_app/views/animations/waves_animatio
 class AnimationDemo extends StatelessWidget {
   final List<ListModel> listModel = [
     ListModel(
-      title: '动画基础',
-      subtitle: '动画基础和动画组件使用',
-      icon: Icons.scatter_plot_outlined,
-      route: BasicAnimationDemo(),
-    ),
-    ListModel(
       title: '隐式动画',
       subtitle: '在内部实现动画控制,不需要自己声明动画的控制器',
       icon: Icons.scatter_plot_outlined,
@@ -26,6 +20,12 @@ class AnimationDemo extends StatelessWidget {
       subtitle: '通过动画切换组件',
       icon: Icons.scatter_plot_outlined,
       route: AnimatedSwitcherDemo(),
+    ),
+    ListModel(
+      title: '动画基础',
+      subtitle: '动画基础和动画组件使用',
+      icon: Icons.scatter_plot_outlined,
+      route: BasicAnimationDemo(),
     ),
     ListModel(
       title: '自定义动画',
