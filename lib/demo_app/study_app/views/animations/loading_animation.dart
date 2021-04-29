@@ -54,7 +54,6 @@ class _BallState extends State<Ball> with SingleTickerProviderStateMixin {
   @override
   void dispose() {
     controller.dispose();
-    controller = null;
     super.dispose();
   }
 
