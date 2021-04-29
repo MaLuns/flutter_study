@@ -16,27 +16,49 @@ class BasicAnimationDemo extends StatefulWidget {
 }
 
 class _BasicAnimationDemoState extends State<BasicAnimationDemo> with SingleTickerProviderStateMixin {
-  double _count = 10;
+  AnimationController _container;
+  @override
+  void initState() {
+    _container = AnimationController(duration: Duration(milliseconds: 10000), vsync: this);
+    _container.repeat();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _container.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BasiceAppLayout(
       pl: 0,
       pt: 0,
       pr: 0,
-      title: '基础动画',
+      title: '显示动画',
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
+          H2Title(title: '内置显示动画'),
+          RotationTransition(
+            turns: _container,
+            child: Center(
+              child: Container(
+                height: 200,
+                width: 200,
+                color: Colors.blue,
+              ),
+            ),
+          ),
           H2Title(title: '基础示例'),
           AnimationDemoOne(),
           H2Title(title: 'AnimatedWidget'),
           AnimationDemoTwo(),
           H2Title(title: 'AnimatedBuilder'),
           AnimatedBuilderDemo(),
-          H2Title(title: '加载动画'),
-          LoadingAnimation(),
-          H2Title(title: 'Hero'),
-          HeroAnimationRoute(),
+          /* H2Title(title: '加载动画'),
+          LoadingAnimation(), */
         ],
       ),
     );
@@ -230,50 +252,6 @@ class _AnimatedBuilderDemoState extends State<AnimatedBuilderDemo> with SingleTi
           child: child,
         );
       },
-    );
-  }
-}
-
-// Hero动画
-class HeroAnimationRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topCenter,
-      child: InkWell(
-        child: Hero(
-          tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
-          child: ClipRRect(
-            child: Image.asset("asset/images/demo.png", width: 50.0),
-          ),
-        ),
-        onTap: () {
-          //打开B路由
-          Navigator.push(context, PageRouteBuilder(pageBuilder: (BuildContext context, Animation animation, Animation secondaryAnimation) {
-            return new FadeTransition(
-              opacity: animation,
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text("原图"),
-                ),
-                body: HeroAnimationRouteB(),
-              ),
-            );
-          }));
-        },
-      ),
-    );
-  }
-}
-
-class HeroAnimationRouteB extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Hero(
-        tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
-        child: Image.asset("asset/images/demo.png"),
-      ),
     );
   }
 }

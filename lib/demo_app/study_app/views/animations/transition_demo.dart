@@ -159,3 +159,60 @@ class _DemoImplicitlyAnimatedWidget extends AnimatedWidgetBaseState<DemoImplicit
     _height = visitor(_height, widget.height, (value) => Tween<double>(begin: value));
   }
 }
+
+class RotationTransitionDemo extends StatefulWidget {
+  @override
+  _RotationTransitionDemoState createState() => _RotationTransitionDemoState();
+}
+
+class _RotationTransitionDemoState extends State<RotationTransitionDemo> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 1000),
+      vsync: this,
+    )
+      ..drive(Tween(begin: 1, end: 4))
+      ..addListener(() {
+        print(_controller.value);
+      })
+      ..addStatusListener((status) {
+        // dismissed 动画在起始点停止
+        // forward 动画正在正向执行
+        // reverse 动画正在反向执行
+        // completed 动画在终点停止
+        print(status);
+      });
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('RotationTransition'),
+      ),
+      body: Center(
+        child: RotationTransition(
+          turns: _controller,
+          child: Container(
+            height: 300,
+            width: 300,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
