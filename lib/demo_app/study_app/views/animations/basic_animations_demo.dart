@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../components/basice_app_layout.dart';
 import '../../components/h2_title.dart';
-import 'loading_animation.dart';
 
 /* 
 * Animation 一个抽象类,它主要的功能是保存动画的插值和状态
@@ -21,6 +20,11 @@ class _BasicAnimationDemoState extends State<BasicAnimationDemo> with SingleTick
   void initState() {
     _container = AnimationController(duration: Duration(milliseconds: 10000), vsync: this);
     _container.repeat();
+
+    /* Ticker ticker = Ticker((elapsed) {
+      print(elapsed);
+    });
+    ticker.start(); */
     super.initState();
   }
 
@@ -54,6 +58,14 @@ class _BasicAnimationDemoState extends State<BasicAnimationDemo> with SingleTick
           H2Title(title: '基础示例'),
           AnimationDemoOne(),
           H2Title(title: 'AnimatedWidget'),
+          OpacityAnimatedWidget(
+            Tween(begin: 1.0, end: .8).animate(_container),
+            colorAnimation: ColorTween(begin: Colors.red, end: Colors.blue).animate(_container),
+            child: Container(
+              height: 300,
+              width: 300,
+            ),
+          ),
           AnimationDemoTwo(),
           H2Title(title: 'AnimatedBuilder'),
           AnimatedBuilderDemo(),
@@ -252,6 +264,26 @@ class _AnimatedBuilderDemoState extends State<AnimatedBuilderDemo> with SingleTi
           child: child,
         );
       },
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class OpacityAnimatedWidget extends AnimatedWidget {
+  final Widget child;
+  Animation<Color> colorAnimation;
+  OpacityAnimatedWidget(listenable, {this.colorAnimation, this.child}) : super(listenable: listenable);
+
+  @override
+  Widget build(BuildContext context) {
+    Animation<double> animation = listenable;
+
+    return Opacity(
+      opacity: animation.value,
+      child: Container(
+        color: colorAnimation.value,
+        child: child,
+      ),
     );
   }
 }

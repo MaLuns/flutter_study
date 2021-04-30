@@ -4,6 +4,7 @@ import 'package:flutter_study/demo_app/study_app/components/list_title.dart';
 import 'package:flutter_study/demo_app/study_app/models/list_model.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/animated_switcher_demo.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/basic_animations_demo.dart';
+import 'package:flutter_study/demo_app/study_app/views/animations/code_animation.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/hero_animation.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/staggered_animation.dart';
 import 'package:flutter_study/demo_app/study_app/views/animations/transition_demo.dart';
@@ -46,6 +47,12 @@ class AnimationDemo extends StatelessWidget {
       subtitle: '结合自定义绘制和动画',
       icon: Icons.scatter_plot_outlined,
       route: WavesAnimations(),
+    ),
+    ListModel(
+      title: '自定义动画二',
+      subtitle: '结合自定义绘制和动画',
+      icon: Icons.scatter_plot_outlined,
+      route: CodeAnimationDemo(),
     ),
   ];
 
