@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_study/demo_app/study_app/views/animations/animated_switcher_demo.dart';
 import 'package:flutter_study/demo_app/theme_shop/views/selected/views/acg_characters.dart';
 import 'package:flutter_study/demo_app/theme_shop/views/selected/views/select_wallpaper.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -29,6 +32,14 @@ class _ShopSelectState extends State<ShopSelect> {
     'https://tse1-mm.cn.bing.net/th/id/OIP.nF5TEORYFqDHLe6enlgBDQHaFB?w=262&h=180&c=7&o=5&dpr=2&pid=1.7',
     'https://tse3-mm.cn.bing.net/th/id/OIP.NJW43R8iNiD7HZvd90HgLwHaED?w=296&h=180&c=7&o=5&dpr=2&pid=1.7',
     'https://tse3-mm.cn.bing.net/th/id/OIP.tr6humwC2iBc1HTT1KIhxAHaD8?w=334&h=180&c=7&o=5&dpr=2&pid=1.7',
+  ];
+
+  List comments = [
+    {'id': '1', 'comment': '你无法比此刻更年轻', 'icon': Icons.access_alarm},
+    {'id': '2', 'comment': '敦煌壮士抱戈泣，四面胡笳声转急。', 'icon': Icons.av_timer},
+    {'id': '3', 'comment': '找不到路，就自己走一条出来。', 'icon': Icons.camera},
+    {'id': '4', 'comment': '不畏浮云遮望眼，只缘身在最高层。', 'icon': Icons.copyright},
+    {'id': '5', 'comment': '居高声自远，非是藉秋风。', 'icon': Icons.disc_full},
   ];
 
   @override
@@ -264,17 +275,20 @@ class _ShopSelectState extends State<ShopSelect> {
             ),
           ),
           SliverToBoxAdapter(
-            child: AspectRatio(
-              aspectRatio: 2 / 1,
+            child: SizedBox(
+              height: 200,
               child: Swiper(
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    clipBehavior: Clip.antiAlias,
                     child: Stack(
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
                             image: DecorationImage(
                               image: NetworkImage(urls[index]),
                               fit: BoxFit.cover,
@@ -285,20 +299,41 @@ class _ShopSelectState extends State<ShopSelect> {
                           bottom: 0,
                           left: 0,
                           right: 0,
+                          height: 80,
                           child: Container(
-                            height: 80,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [
                                   Color(0x00000000),
-                                  Color(0x55000000),
+                                  Color(0xaa000000),
                                 ],
                               ),
                             ),
                           ),
                         ),
+                        Positioned(
+                          left: 20,
+                          right: 0,
+                          bottom: 0,
+                          height: 80,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('#话题：敦煌', style: TextStyle(fontSize: 20, color: Colors.white)),
+                              Text('让我们穿越历史，感受1600年前的中华文化', style: TextStyle(fontSize: 14, color: Colors.white)),
+                            ],
+                          ),
+                        ),
+                        Positioned(
+                          left: 15,
+                          top: 10,
+                          bottom: 80,
+                          right: 20,
+                          child: CommentAnimation(comments: comments),
+                        )
                       ],
                     ),
                   );
@@ -404,5 +439,86 @@ class DemoDelegate extends SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return true;
+  }
+}
+
+class CommentAnimation extends StatefulWidget {
+  final List comments;
+  CommentAnimation({this.comments}) : super();
+  @override
+  _CommentAnimationState createState() => _CommentAnimationState();
+}
+
+class _CommentAnimationState extends State<CommentAnimation> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this);
+
+    _timer = Timer.periodic(Duration(milliseconds: 3000), (timer) {
+      setState(() {
+        var item = widget.comments[0];
+        widget.comments.removeAt(0);
+        widget.comments.add(item);
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: List.generate(3, (index) {
+        var obj = widget.comments[index];
+        return AnimatedSwitcher(
+          key: ValueKey(index),
+          transitionBuilder: (child, animation) => SlideTransitionX(child: child, direction: AxisDirection.up, position: animation),
+          duration: Duration(milliseconds: 300),
+          child: Container(
+            key: ValueKey(obj['id']),
+            alignment: Alignment.centerLeft,
+            child: Container(
+              height: 30,
+              padding: EdgeInsets.only(top: 5, bottom: 5, right: 10),
+              margin: EdgeInsets.only(top: 5),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    child: Icon(
+                      obj['icon'],
+                      size: 14,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.transparent,
+                  ),
+                  Text(
+                    obj['comment'],
+                    style: TextStyle(color: Colors.white),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      }).toList(),
+    );
   }
 }
