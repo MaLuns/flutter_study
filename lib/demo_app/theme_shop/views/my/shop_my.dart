@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/demo_app/study_app/models/list_model.dart';
-import 'package:flutter_study/demo_app/theme_shop/views/my/widget/jf_page.dart';
 import 'widget/discounts_page.dart';
 
 final List<ListModel> listModel = [
   ListModel(
     title: '优惠券',
-    icon: Icons.youtube_searched_for,
+    icon: Icons.thumb_up,
     route: DiscountsPage(),
   ),
   ListModel(
-    title: '积分',
-    icon: Icons.grid_off,
-    route: JFPage(),
-  ),
-  ListModel(
-    title: '可币',
-    icon: Icons.ac_unit,
+    title: '会玩人类中心',
+    icon: Icons.thumb_up,
     route: 'BasicWidgetsDemo',
   ),
   ListModel(
-    title: '会玩人类中心',
-    icon: Icons.g_translate_rounded,
+    title: '会员精选',
+    icon: Icons.thumb_up,
     route: 'BasicWidgetsDemo',
   ),
   ListModel(
@@ -31,22 +25,7 @@ final List<ListModel> listModel = [
   ),
   ListModel(
     title: '积分商城',
-    icon: Icons.sick,
-    route: 'BasicWidgetsDemo',
-  ),
-  ListModel(
-    title: '会玩人类中心',
-    icon: Icons.g_translate_rounded,
-    route: 'BasicWidgetsDemo',
-  ),
-  ListModel(
-    title: '会员精选',
     icon: Icons.thumb_up,
-    route: 'BasicWidgetsDemo',
-  ),
-  ListModel(
-    title: '积分商城',
-    icon: Icons.sick,
     route: 'BasicWidgetsDemo',
   ),
 ];

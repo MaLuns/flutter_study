@@ -169,7 +169,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
 // 分片
 class ImgSliver extends StatelessWidget {
   final List<String> str = ['活动', '主题', '字体', '视频铃声', '动态壁纸'];
-  final String _url = 'https://tse3-mm.cn.bing.net/th/id/OIP.H3sZxL6gbG19WwnLKqXpwgHaEL?w=308&h=180&c=7&o=5&pid=1.7';
+  final String _url = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2775951257,2771208657&fm=26&gp=0.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -181,20 +181,28 @@ class ImgSliver extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(), // 禁用滚动
       itemBuilder: (BuildContext context, int index) {
         BorderRadius br;
+        Alignment al;
         switch (index) {
           case 0:
             br = BorderRadius.only(
               topLeft: Radius.circular(5),
               bottomLeft: Radius.circular(5),
             );
+            al = Alignment(-1, -1);
+            break;
+          case 1:
+            al = Alignment(-.4, -1);
             break;
           case 2:
             br = BorderRadius.only(topRight: Radius.circular(5));
+            al = Alignment(.3, -1);
+            break;
+          case 3:
+            al = Alignment(-.29, .3);
             break;
           case 4:
             br = BorderRadius.only(bottomRight: Radius.circular(5));
-            break;
-          default:
+            al = Alignment(.4, .3);
             break;
         }
         return Stack(
@@ -205,7 +213,8 @@ class ImgSliver extends StatelessWidget {
                 borderRadius: br,
                 image: DecorationImage(
                   image: NetworkImage(_url),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.none,
+                  alignment: al,
                 ),
               ),
             ),
