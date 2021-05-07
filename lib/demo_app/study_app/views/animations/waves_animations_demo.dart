@@ -15,15 +15,8 @@ class _WavesAnimationsState extends State<WavesAnimations> with SingleTickerProv
 
   @override
   void initState() {
-    _controller = AnimationController(
-      duration: Duration(seconds: 2),
-      value: 0,
-      vsync: this,
-    );
-    widthAnimation = Tween<double>(begin: -1, end: 1).animate(_controller)
-      ..addListener(() {
-        setState(() {});
-      });
+    _controller = AnimationController(duration: Duration(seconds: 2), value: 0, vsync: this);
+    widthAnimation = Tween<double>(begin: -1, end: 1).animate(_controller);
 
     _controller.repeat();
     super.initState();
@@ -49,8 +42,8 @@ class _WavesAnimationsState extends State<WavesAnimations> with SingleTickerProv
             top: 0,
             left: 0,
             right: 0,
-            child: ClipPath(
-              clipper: WavesClipper(widthAnimation.value),
+            child: AnimatedBuilder(
+              animation: widthAnimation,
               child: Container(
                 height: 200,
                 decoration: BoxDecoration(
@@ -64,13 +57,20 @@ class _WavesAnimationsState extends State<WavesAnimations> with SingleTickerProv
                   ),
                 ),
               ),
+              builder: (context, child) => ClipPath(
+                clipper: WavesClipper(widthAnimation.value),
+                child: child,
+              ),
             ),
           ),
           Positioned(
             bottom: 0,
-            child: CustomPaint(
-              size: Size(100, 100),
-              painter: MyPainter(_controller.value),
+            child: AnimatedBuilder(
+              animation: widthAnimation,
+              builder: (context, child) => CustomPaint(
+                size: Size(100, 100),
+                painter: MyPainter(_controller.value),
+              ),
             ),
           ),
         ],
@@ -107,19 +107,25 @@ class MyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    double waveWidth = size.width;
+    canvas.translate(-2 * waveWidth + 2 * waveWidth * progress, 0);
+
+    print(canvas, size, Colors.yellow[500], -2 * waveWidth + 2 * waveWidth * progress);
+    print(canvas, size, Colors.yellow[800], 0);
+  }
+
+  void print(Canvas canvas, Size size, Color color, double x) {
     Paint _mainPaint = Paint()
-      ..color = Colors.yellow[700]
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 
-    double waveWidth = size.width / 2;
+    double waveWidth = size.width;
     double wrapHeight = size.height;
-    double waveHeight = 8;
+    double waveHeight = 6;
     Path _mainPath = Path();
 
-    canvas.translate(-2 * waveWidth + 2 * waveWidth * progress, 0);
-
-    _mainPath.moveTo(0, 0);
+    _mainPath.moveTo(x, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0);
@@ -138,11 +144,7 @@ class MyPainter extends CustomPainter {
     _mainPath.relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0);
     _mainPath.relativeLineTo(0, wrapHeight);
     _mainPath.relativeLineTo(-waveWidth * 8 * 2.0, 0);
-    canvas.drawPath(
-        _mainPath,
-        _mainPaint
-          ..style = PaintingStyle.fill
-          ..color = Colors.yellow);
+    canvas.drawPath(_mainPath, _mainPaint..style = PaintingStyle.fill);
   }
 
   //在实际场景中正确利用此回调可以避免重绘开销，本示例我们简单的返回true
