@@ -10,7 +10,7 @@ class ShopHomeWallhaven extends StatefulWidget {
   _ShopHomeWallhavenState createState() => _ShopHomeWallhavenState();
 }
 
-class _ShopHomeWallhavenState extends State<ShopHomeWallhaven> {
+class _ShopHomeWallhavenState extends State<ShopHomeWallhaven> with AutomaticKeepAliveClientMixin {
   List<ThemeFlowModel> data = List.from(wallhavenFlowModelData);
   bool isLoading = false;
   ScrollController scrollController = ScrollController();
@@ -74,6 +74,7 @@ class _ShopHomeWallhavenState extends State<ShopHomeWallhaven> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView(
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: 16),
@@ -138,4 +139,7 @@ class _ShopHomeWallhavenState extends State<ShopHomeWallhaven> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

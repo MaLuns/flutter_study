@@ -10,7 +10,7 @@ class ShopHomeTheme extends StatefulWidget {
   _ShopHomeThemeState createState() => _ShopHomeThemeState();
 }
 
-class _ShopHomeThemeState extends State<ShopHomeTheme> {
+class _ShopHomeThemeState extends State<ShopHomeTheme> with AutomaticKeepAliveClientMixin {
   List<ThemeFlowModel> data = List.from(themeFlowModelData);
   bool isLoading = false;
   ScrollController scrollController = ScrollController();
@@ -74,6 +74,7 @@ class _ShopHomeThemeState extends State<ShopHomeTheme> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView(
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: 16),
@@ -139,6 +140,9 @@ class _ShopHomeThemeState extends State<ShopHomeTheme> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class TuiJian extends StatelessWidget {

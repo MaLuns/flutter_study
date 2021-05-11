@@ -12,7 +12,7 @@ class ShopHomePush extends StatefulWidget {
   _ShopHomePushState createState() => _ShopHomePushState();
 }
 
-class _ShopHomePushState extends State<ShopHomePush> {
+class _ShopHomePushState extends State<ShopHomePush> with AutomaticKeepAliveClientMixin {
   bool isLoading = false;
   List<ThemeFlowModel> data = List.from(tuijianFlowModelData);
   List<String> urls = [
@@ -76,6 +76,7 @@ class _ShopHomePushState extends State<ShopHomePush> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView(
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: 16),
@@ -164,6 +165,9 @@ class _ShopHomePushState extends State<ShopHomePush> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 // 分片
