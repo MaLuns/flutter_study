@@ -23,6 +23,9 @@ class DiscountsPage extends StatelessWidget {
                   Container(
                     width: 110,
                     /*  color: Colors.red, */
+                    child: Center(
+                      child: Text('满减券'),
+                    ),
                   ),
                   Expanded(
                     child: Padding(
