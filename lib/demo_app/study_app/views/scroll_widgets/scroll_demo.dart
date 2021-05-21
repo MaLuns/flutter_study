@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/demo_app/study_app/views/scroll_widgets/reorderable_list_view_demo.dart';
 import '../../components/basice_app_layout.dart';
 import '../../components/list_title.dart';
 import '../../models/list_model.dart';
@@ -32,6 +33,12 @@ class ScrollDemo extends StatelessWidget {
       subtitle: '自定义滚动',
       icon: Icons.exposure_zero,
       route: CustomScrollViewDemo(),
+    ),
+    ListModel(
+      title: 'ReorderableListViewDemo 组件',
+      subtitle: '列表排序',
+      icon: Icons.exposure_zero,
+      route: ReorderableListViewDemo(),
     ),
   ];
 
