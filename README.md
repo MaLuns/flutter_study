@@ -4,18 +4,18 @@ Flutter练习，欢迎Star，一起学习~
 
 ### 截图
 <div>
-    <img width="24% src="/demo/demo1.png">
-    <img width="24% src="/demo/demo2.png">
-    <img width="24% src="/demo/demo3.png">
-    <img width="24% src="/demo/demo4.png">
-    <img width="24% src="/demo/demo5.png">
-    <img width="24% src="/demo/demo6.png">
-    <img width="24% src="/demo/demo7.png">
-    <img width="24% src="/demo/demo8.png">
-    <img width="24% src="/demo/demo9.png">
-    <img width="24% src="/demo/demo10.png">
-    <img width="24% src="/demo/demo11.png">
-    <img width="24% src="/demo/demo12.png">
+    <img width="24%" src="/demo/demo1.png">
+    <img width="24%" src="/demo/demo2.png">
+    <img width="24%" src="/demo/demo3.png">
+    <img width="24%" src="/demo/demo4.png">
+    <img width="24%" src="/demo/demo5.png">
+    <img width="24%" src="/demo/demo6.png">
+    <img width="24%" src="/demo/demo7.png">
+    <img width="24%" src="/demo/demo8.png">
+    <img width="24%" src="/demo/demo9.png">
+    <img width="24%" src="/demo/demo10.png">
+    <img width="24%" src="/demo/demo11.png">
+    <img width="24%" src="/demo/demo12.png">
 </div>
 
 ### 修改LOGO
