@@ -1,31 +1,22 @@
 # flutter_study
 
-Flutter 学习提交仓库
+Flutter练习，欢迎Star，一起学习~
 
 ### 截图
-<style>
-figure{display:flex}
-</style>
-<figure>
-    <img src="/demo/demo1.png">
-    <img src="/demo/demo2.png">
-    <img src="/demo/demo3.png">
-</figure>
-<figure>
-    <img src="/demo/demo4.png">
-    <img src="/demo/demo5.png">
-    <img src="/demo/demo6.png">
-</figure>
-<figure>
-    <img src="/demo/demo7.png">
-    <img src="/demo/demo8.png">
-    <img src="/demo/demo9.png">
-</figure>
-<figure>
-    <img src="/demo/demo10.png">
-    <img src="/demo/demo11.png">
-    <img src="/demo/demo12.png">
-</figure>
+<div>
+    <img width="24% src="/demo/demo1.png">
+    <img width="24% src="/demo/demo2.png">
+    <img width="24% src="/demo/demo3.png">
+    <img width="24% src="/demo/demo4.png">
+    <img width="24% src="/demo/demo5.png">
+    <img width="24% src="/demo/demo6.png">
+    <img width="24% src="/demo/demo7.png">
+    <img width="24% src="/demo/demo8.png">
+    <img width="24% src="/demo/demo9.png">
+    <img width="24% src="/demo/demo10.png">
+    <img width="24% src="/demo/demo11.png">
+    <img width="24% src="/demo/demo12.png">
+</div>
 
 ### 修改LOGO
     ios 对应icon文件地址
